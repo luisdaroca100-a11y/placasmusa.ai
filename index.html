@@ -157,9 +157,73 @@
       .details{padding:60px 0 68px}
     }
 
+  
+    /* Cabeçalho premium e galeria demonstrativa: não altera o personalizador */
+    .site-header{position:relative;z-index:5;background:#111;color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}
+    .header-inner{width:min(1240px,calc(100% - 40px));min-height:82px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand-mark{display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:"League Spartan",sans-serif;font-size:1.55rem;font-weight:800;letter-spacing:-.04em;white-space:nowrap}
+    .brand-mark span{color:#ed3d2a}
+    .brand-symbol{display:grid;place-items:center;width:38px;height:38px;border:2px solid #ed3d2a;border-radius:10px;font-family:"DM Sans",sans-serif;font-size:1.05rem;letter-spacing:0}
+    .header-nav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(14px,2.4vw,30px)}
+    .header-nav a{color:#e8e8e8;text-decoration:none;font-size:.88rem;font-weight:600;transition:color .2s}
+    .header-nav a:hover{color:#ff6550}
+    .header-nav .header-cta{background:#e33b27;color:#fff;padding:11px 16px;border-radius:5px}
+    .header-nav .header-cta:hover{background:#b92a1a;color:#fff}
+    .examples{padding:64px 0 72px;background:#f5f3ef;color:#181817}
+    .examples-heading{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:28px}
+    .examples-heading h2{font-size:clamp(2.25rem,4.4vw,3.8rem);max-width:12ch}
+    .examples-heading p{margin:0;max-width:430px;color:#65645e}
+    .examples-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .example-card{min-width:0;overflow:hidden;border:1px solid #dedbd4;border-radius:12px;background:#fff;box-shadow:0 12px 34px rgba(30,25,20,.08)}
+    .example-scene{height:250px;display:flex;align-items:center;justify-content:center;padding:22px;background-size:cover;background-position:center;position:relative;isolation:isolate}
+    .example-scene:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.25));z-index:-1}
+    .scene-cafe{background-image:url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=85")}
+    .scene-salon{background-image:url("https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=85")}
+    .scene-clinic{background-image:url("https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1000&q=85")}
+    .scene-store{background-image:url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1000&q=85")}
+    .scene-restaurant{background-image:url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85")}
+    .scene-office{background-image:url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=85")}
+    .demo-plaque{width:min(190px,78%);min-height:170px;padding:17px 14px 13px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;color:#fff;background:rgba(20,20,20,.88);border:2px solid rgba(255,255,255,.65);border-radius:5px;box-shadow:0 16px 25px rgba(0,0,0,.38),inset 0 0 0 1px rgba(255,255,255,.18);backdrop-filter:blur(3px);transform:perspective(700px) rotateY(-4deg)}
+    .demo-plaque.light{background:rgba(250,249,245,.9);color:#171717;border-color:rgba(255,255,255,.95)}
+    .demo-stars{font-size:1.05rem;letter-spacing:3px;color:#f5b82e;line-height:1}
+    .demo-name{font-size:.9rem;font-weight:800;letter-spacing:.04em;line-height:1.15;text-transform:uppercase}
+    .demo-caption{font-size:.61rem;line-height:1.3;opacity:.88}
+    .demo-qr{width:44px;height:44px;border:4px solid #fff;background:repeating-conic-gradient(#111 0% 25%,#fff 0% 50%) 0 0/9px 9px;box-shadow:0 0 0 2px rgba(255,255,255,.8)}
+    .light .demo-qr{border-color:#fff}
+    .demo-nfc{font-size:.68rem;font-weight:800;letter-spacing:.12em}
+    .example-info{padding:18px 19px 20px}
+    .example-info h3{font-family:"DM Sans",sans-serif;font-size:1.02rem;letter-spacing:0;margin-bottom:5px}
+    .example-info p{font-size:.86rem;line-height:1.55;color:#66645f;margin:0}
+    .examples-note{margin:20px 0 0;color:#77736b;font-size:.76rem}
+    @media(max-width:760px){
+      .header-inner{min-height:72px;flex-wrap:wrap;padding:13px 0;gap:12px}
+      .brand-mark{font-size:1.35rem}
+      .brand-symbol{width:33px;height:33px}
+      .header-nav{width:100%;justify-content:space-between;gap:10px}
+      .header-nav a{font-size:.78rem}
+      .header-nav .header-cta{padding:9px 11px}
+      .examples{padding:45px 0 52px}
+      .examples-heading{display:block}
+      .examples-heading p{margin-top:13px}
+      .examples-grid{grid-template-columns:1fr;gap:15px}
+      .example-scene{height:235px}
+    }
+    @media(min-width:540px) and (max-width:900px){.examples-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
   </style>
 </head>
 <body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand-mark" href="#" aria-label="Placas Nota 10 - início"><span class="brand-symbol">10</span><span style="color:#fff">Placas Nota <span>10</span></span></a>
+      <nav class="header-nav" aria-label="Navegação principal">
+        <a href="#placas-exemplos">Modelos em ambientes</a>
+        <a href="#personalizar">Como personalizar</a>
+        <a class="header-cta" href="#personalizar">Criar minha placa ↗</a>
+      </nav>
+    </div>
+  </header>
   <main>
     <section class="intro shell">
       <div>
@@ -170,6 +234,43 @@
         <p class="intro-copy">Veja nome, logo e fundo aplicados na placa de acrílico, com transparência, reflexos, espessura e suporte realistas — sempre reta, de frente.</p>
         <div class="price-line"><span>A partir de</span><strong>R$ 49,99</strong><span>/ unidade</span></div>
         <a class="button primary intro-cta" href="#personalizar">Personalizar minha placa <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+
+    <section class="examples" id="placas-exemplos">
+      <div class="shell">
+        <div class="examples-heading">
+          <div><p class="kicker">Inspire-se</p><h2>Veja sua placa no seu negócio.</h2></div>
+          <p>Exemplos visuais de como uma placa de avaliação com QR Code e NFC pode ficar em diferentes espaços comerciais.</p>
+        </div>
+        <div class="examples-grid">
+          <article class="example-card">
+            <div class="example-scene scene-cafe"><div class="demo-plaque"><div class="demo-stars">★★★★★</div><div class="demo-name">Café da Praça</div><div class="demo-qr"></div><div class="demo-nfc">◉ NFC</div><div class="demo-caption">Avalie nosso atendimento</div></div></div>
+            <div class="example-info"><h3>Cafeterias e padarias</h3><p>Uma placa no balcão, ao lado do caixa ou da máquina de café.</p></div>
+          </article>
+          <article class="example-card">
+            <div class="example-scene scene-salon"><div class="demo-plaque light"><div class="demo-stars">★★★★★</div><div class="demo-name">Studio Bella</div><div class="demo-qr"></div><div class="demo-nfc">◉ NFC</div><div class="demo-caption">Sua opinião importa</div></div></div>
+            <div class="example-info"><h3>Salões e barbearias</h3><p>Visual elegante para recepções, espelhos de atendimento e caixas.</p></div>
+          </article>
+          <article class="example-card">
+            <div class="example-scene scene-clinic"><div class="demo-plaque"><div class="demo-stars">★★★★★</div><div class="demo-name">Clínica Vida</div><div class="demo-qr"></div><div class="demo-nfc">◉ NFC</div><div class="demo-caption">Conte como foi sua visita</div></div></div>
+            <div class="example-info"><h3>Clínicas e consultórios</h3><p>Uma forma discreta de convidar clientes a compartilhar a experiência.</p></div>
+          </article>
+          <article class="example-card">
+            <div class="example-scene scene-store"><div class="demo-plaque light"><div class="demo-stars">★★★★★</div><div class="demo-name">Sua Loja</div><div class="demo-qr"></div><div class="demo-nfc">◉ NFC</div><div class="demo-caption">Avalie nosso atendimento</div></div></div>
+            <div class="example-info"><h3>Lojas e boutiques</h3><p>Combina com balcões de pagamento e espaços de retirada de pedidos.</p></div>
+          </article>
+          <article class="example-card">
+            <div class="example-scene scene-restaurant"><div class="demo-plaque"><div class="demo-stars">★★★★★</div><div class="demo-name">Sabor &amp; Brasa</div><div class="demo-qr"></div><div class="demo-nfc">◉ NFC</div><div class="demo-caption">Obrigado pela visita</div></div></div>
+            <div class="example-info"><h3>Restaurantes</h3><p>Uma placa personalizada perto do caixa ou na recepção.</p></div>
+          </article>
+          <article class="example-card">
+            <div class="example-scene scene-office"><div class="demo-plaque light"><div class="demo-stars">★★★★★</div><div class="demo-name">Seu Escritório</div><div class="demo-qr"></div><div class="demo-nfc">◉ NFC</div><div class="demo-caption">Deixe sua avaliação</div></div></div>
+            <div class="example-info"><h3>Escritórios e serviços</h3><p>Um acabamento profissional para recepções e áreas de espera.</p></div>
+          </article>
+        </div>
+        <p class="examples-note">Imagens ilustrativas. Os nomes e códigos exibidos são exemplos demonstrativos.</p>
       </div>
     </section>
 
