@@ -1325,14 +1325,27 @@
           await prepareOrderFiles();
           var pdfFile=pdfFileFromOrderBlob(preparedOrderPdfBlob),photoFile=fileFromOrderBlob(preparedOrderBlob);
           var canSharePdf=canAttemptFileShare(pdfFile),canSharePhoto=canAttemptFileShare(photoFile);
-          if(canSharePdf){
+          var canShareBoth=false;
+          if(navigator.share&&navigator.canShare){
+            try{canShareBoth=navigator.canShare({files:[photoFile,pdfFile]})}catch(error){canShareBoth=false}
+          }
+          if(canShareBoth){
+            await navigator.share({files:[photoFile,pdfFile],text:orderMessage(),title:'Pedido Placa Nota 10'});
+            revealShareHelper('Foto, PDF e mensagem preparados','A foto da placa e o PDF foram enviados ao menu de compartilhamento. Se o WhatsApp não aceitar os dois arquivos juntos, use “Compartilhar foto” abaixo para enviar a imagem separadamente.',canSharePhoto,true);
+            showToast('Foto e PDF prontos para compartilhar.');
+          }else if(canSharePhoto){
+            await navigator.share({files:[photoFile],text:orderMessage(),title:'Pedido Placa Nota 10'});
+            revealShareHelper('Foto e mensagem preparadas','A foto da placa foi enviada ao menu de compartilhamento. Se a mensagem não aparecer no WhatsApp, use “Copiar mensagem” abaixo.',true,canSharePdf);
+            showToast('Foto pronta para compartilhar.');
+          }else if(canSharePdf){
             await navigator.share({files:[pdfFile],text:orderMessage(),title:'Pedido Placa Nota 10'});
-            revealShareHelper('PDF e mensagem compartilhados','O PDF leva a foto da placa. Se o WhatsApp não preencher o texto automaticamente, use “Copiar mensagem” abaixo.',canSharePhoto,true);
-            showToast('PDF e mensagem prontos no compartilhamento.');
+            revealShareHelper('PDF compartilhado','Este navegador não permite anexar a foto diretamente. Use “Compartilhar foto” abaixo para enviar a imagem da placa.',false,true);
+            showToast('PDF pronto para compartilhar.');
           }else{
+            downloadPlatePng(preparedOrderBlob);
             downloadPlatePdf(preparedOrderPdfBlob);
-            revealShareHelper('PDF baixado','Este navegador não compartilha PDF diretamente. Anexe o PDF baixado no WhatsApp e use a mensagem pronta abaixo.',canSharePhoto,false);
-            showToast('PDF baixado para anexar no WhatsApp.');
+            revealShareHelper('Foto e PDF baixados','Este navegador não consegue anexar arquivos automaticamente. Anexe a foto e o PDF baixados no WhatsApp e use a mensagem pronta abaixo.',false,false);
+            showToast('Foto e PDF baixados para anexar no WhatsApp.');
           }
         }catch(error){
           if(error&&error.name==='AbortError'){
