@@ -172,14 +172,14 @@
     .model-card strong{font-family:"League Spartan",sans-serif;font-size:1.22rem;letter-spacing:-.02em}
     .model-card span{color:var(--red);font-size:.72rem;font-weight:700;letter-spacing:.065em;text-transform:uppercase}
 
-    .stage{position:relative;aspect-ratio:1;min-height:0;overflow:hidden;background:#261c15 url("https://files.catbox.moe/0b4nh3.webp") center/cover no-repeat;box-shadow:var(--shadow);isolation:isolate;border:1px solid rgba(15,45,42,.18)}
+    .stage{position:relative;aspect-ratio:1;min-height:0;overflow:hidden;background:#261c15 url("assets/placa-acrilico-pizzaria.webp") center/cover no-repeat;box-shadow:var(--shadow);isolation:isolate;border:1px solid rgba(15,45,42,.18)}
     .caption{position:absolute;top:16px;right:16px;z-index:6;color:#fff;background:rgba(10,22,21,.82);font-size:.72rem;font-weight:700;padding:7px 10px;border:1px solid rgba(255,255,255,.2);border-radius:3px;backdrop-filter:blur(5px)}
     .stand{display:none}
     .plate{container-type:inline-size;position:absolute;z-index:3;left:49.22%;top:5.75%;transform:translateX(-50%);width:51.7%;height:79.95%;background-color:transparent;border:1px solid rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(35,29,23,.07);overflow:hidden;color:var(--plate-ink)}
     .plate:before{content:"";position:absolute;inset:0;background:var(--plate-bg,none);background-size:cover;background-position:center;opacity:.82}
     .plate:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,rgba(255,255,255,.15),transparent 22% 68%,rgba(255,255,255,.08));pointer-events:none}
     .plate-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;padding:6.5cqw 7cqw 6cqw;color:#fff;text-shadow:0 .7cqw 2cqw rgba(0,0,0,.5)}
-    .logo{position:relative;width:42cqw;height:19cqw;min-width:0;min-height:0;max-width:42cqw;max-height:19cqw;flex:0 0 19cqw;display:grid;place-items:center;color:#fff;font-weight:800;font-size:3.6cqw;line-height:1;border:0;border-radius:0;overflow:hidden;background:transparent;margin-bottom:3cqw;contain:layout paint}
+    .logo{position:relative;width:62cqw;height:27cqw;min-width:0;min-height:0;max-width:62cqw;max-height:27cqw;flex:0 0 27cqw;display:grid;place-items:center;color:#fff;font-weight:800;font-size:4.2cqw;line-height:1;border:0;border-radius:0;overflow:hidden;background:transparent;margin-bottom:7cqw;contain:layout paint}
     .logo img{position:absolute;inset:0;margin:auto;display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;object-position:center;border:0;background:transparent;filter:drop-shadow(0 .8cqw 1.8cqw rgba(0,0,0,.3))}
     .company{font-family:"League Spartan";font-size:7.4cqw;line-height:.95;font-weight:800;margin:0 0 4.5cqw;max-width:100%;overflow-wrap:anywhere;color:#fff}
     .touch-title{font-family:"DM Sans",sans-serif;font-weight:700;letter-spacing:-.025em;font-size:6.9cqw;line-height:1.04;text-transform:uppercase;margin:0;color:var(--message-color,#fff);max-width:91cqw;overflow-wrap:anywhere}
@@ -187,7 +187,7 @@
     .decorative-rule:before,.decorative-rule:after{content:"";height:.65cqw;background:currentColor;flex:1}
     .decorative-rule span{font-size:5cqw;line-height:1;transform:translateY(-.15cqw)}
     .connect-row{width:74cqw;display:flex;align-items:center;justify-content:space-between;margin-top:auto;color:#fff}
-    .nfc,.qr{width:33cqw;height:33cqw;flex:0 0 33cqw}
+    .nfc,.qr{width:24cqw;height:24cqw;flex:0 0 24cqw}
     .nfc svg,.qr svg,.qr canvas{width:100%;height:100%;display:block;filter:drop-shadow(0 .65cqw 1.2cqw rgba(0,0,0,.34))}
     .qr{display:grid;place-items:center;background:rgba(255,255,255,.94);padding:1.8cqw;color:#27312f;font-size:4.5cqw;font-weight:800;text-shadow:none}
     .qr canvas{image-rendering:pixelated;filter:none}
@@ -205,6 +205,42 @@
     .spec p{margin:0;color:var(--muted);font-size:.92rem}
     .toast{position:fixed;z-index:20;left:50%;bottom:22px;transform:translate(-50%,18px);opacity:0;pointer-events:none;background:var(--ink);color:var(--paper);padding:11px 15px;border-radius:4px;font-size:.85rem;font-weight:700;transition:.22s}
     .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    .topnav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .topnav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px 0}
+    .topnav-brand{font-family:"League Spartan",sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.02em;color:var(--ink);text-decoration:none;white-space:nowrap}
+    .topnav-brand span{color:var(--red)}
+    .topnav-links{display:flex;gap:6px;flex-wrap:wrap}
+    .topnav-links a{padding:9px 15px;border-radius:999px;color:var(--muted);font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s,color .2s}
+    .topnav-links a:hover{color:var(--ink);background:var(--soft)}
+    .topnav-links a:focus-visible{outline:3px solid color-mix(in srgb,var(--yellow) 70%,transparent);outline-offset:2px}
+    .topnav-links a[aria-current="page"]{background:var(--red);color:#fff}
+    .page[hidden]{display:none}
+    .intro-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+    .benefits-copy{margin:0;color:var(--muted);font-size:1.02rem;max-width:560px}
+    .cta-band{background:#073d39;color:#fff;padding:60px 0;position:relative;overflow:hidden}
+    .cta-band:after{content:"";position:absolute;inset:0 0 auto auto;width:32%;height:4px;background:var(--yellow)}
+    .cta-band-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+    .cta-band h2{font-size:clamp(1.9rem,3.4vw,3rem);max-width:16ch}
+    .cta-band p{margin:10px 0 0;color:#c9ddda}
+    .cta-band-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .cta-catalog{background:var(--yellow);color:#17332f}
+    .cta-catalog:hover{background:#ffd166}
+    .cta-custom{background:transparent;border:1px solid rgba(255,255,255,.45);color:#fff}
+    .model-buy{padding:15px 19px 19px}
+    .model-desc{margin:0 0 14px;color:var(--muted);font-size:.9rem}
+    .model-buy-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    .model-price{font-family:"League Spartan",sans-serif;font-size:1.55rem;color:var(--ink)}
+    .model-buy-button{padding:11px 15px;font-size:.88rem}
+    .catalog-note{margin:24px 0 0;color:var(--muted)}
+    .catalog-note a{color:var(--red-deep);font-weight:700;text-underline-offset:3px}
+    @media(max-width:560px){
+      .topnav-inner{padding:10px 0;gap:12px}
+      .topnav-brand{font-size:1.05rem}
+      .topnav-links a{padding:8px 10px;font-size:.82rem}
+      .cta-band{padding:44px 0}
+      .model-buy{padding:14px 16px 16px}
+    }
     @media(max-width:900px){
       .intro{grid-template-columns:1fr;gap:34px;padding-top:48px}.intro-content{margin-right:0}.intro-copy{max-width:650px}.hero-media{justify-self:center;width:min(100%,340px)}.logo-lab-head,.gallery-head{grid-template-columns:1fr;gap:24px;align-items:start}.logo-generator{grid-template-columns:1fr}.logo-form{padding:30px 0}.logo-result{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:30px 0 0}.builder{grid-template-columns:1fr}.panel{order:2}.stage{order:1;min-height:0}.workbench-head{align-items:start;flex-direction:column}.workbench-head p{max-width:640px}.details-lead{grid-template-columns:1fr;gap:26px;align-items:start}
     }
@@ -215,11 +251,22 @@
   </style>
 </head>
 <body>
+  <header class="topnav">
+    <div class="shell topnav-inner">
+      <a class="topnav-brand" href="#inicio">Placa <span>Nota 10</span></a>
+      <nav class="topnav-links" aria-label="Navegação principal">
+        <a href="#inicio" data-nav="inicio">Início</a>
+        <a href="#catalogo" data-nav="catalogo">Catálogo</a>
+        <a href="#personalizar" data-nav="personalizar">Personalizar</a>
+      </nav>
+    </div>
+  </header>
   <main>
+    <div class="page" data-page="inicio">
     <section class="intro shell">
       <div class="intro-content">
         <figure class="brand">
-          <img src="https://files.catbox.moe/6vni5b.webp" alt="Placa Nota 10" />
+          <img src="assets/logo-placa-nota-10-clean.png" alt="Placa Nota 10" />
         </figure>
         <h1>Sua marca, a um toque.</h1>
         <p class="intro-copy">Placas NFC personalizadas para apresentar sua empresa com clareza. Visualize nome, logo e fundo na placa de acrílico, reta e de frente.</p>
@@ -229,10 +276,14 @@
           <li>Vista frontal</li>
           <li>Exportação em PNG e PDF</li>
         </ul>
+        <div class="intro-actions">
+          <a class="button primary" href="#catalogo">Ver placas prontas</a>
+          <a class="button secondary" href="#personalizar">Personalizar a minha</a>
+        </div>
       </div>
       <figure class="hero-media" aria-label="Vídeo comercial da Placa Nota 10">
-        <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="https://files.catbox.moe/q35uvv.jpg" disablepictureinpicture aria-label="Apresentação em vídeo da placa personalizada Placa Nota 10">
-          <source src="https://files.catbox.moe/jbvq63.mp4" type="video/mp4" />
+        <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/video-placanota10-poster.jpg" disablepictureinpicture aria-label="Apresentação em vídeo da placa personalizada Placa Nota 10">
+          <source src="assets/video-placanota10-comercial.mp4" type="video/mp4" />
         </video>
         <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Ativar som do vídeo">
           <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m19 9-6 6m0-6 6 6"/></svg>
@@ -242,6 +293,36 @@
       </figure>
     </section>
 
+    <section class="details shell">
+      <div class="details-lead">
+        <div>
+          <p class="kicker">Benefícios</p>
+          <h2>Mais avaliações, sem esforço.</h2>
+        </div>
+        <p class="benefits-copy">A placa fica no balcão, na mesa ou na parede: o cliente avalia em segundos, enquanto a experiência ainda está fresca.</p>
+      </div>
+      <div class="specs">
+        <article class="spec"><b>01</b><h3>Toque ou aponte a câmera</h3><p>NFC e QR Code levam o cliente direto ao seu link de avaliação no Google.</p></article>
+        <article class="spec"><b>02</b><h3>Com a cara do seu negócio</h3><p>Nome, logo, mensagem e cores da sua marca em acrílico com acabamento profissional.</p></article>
+        <article class="spec"><b>03</b><h3>Pedido sem sair de casa</h3><p>Escolha um modelo pronto no catálogo ou personalize o seu e finalize pelo WhatsApp.</p></article>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="shell cta-band-inner">
+        <div>
+          <h2>Pronto para deixar seu negócio mais profissional?</h2>
+          <p>Veja os modelos prontos ou monte a placa com a sua marca em minutos.</p>
+        </div>
+        <div class="cta-band-actions">
+          <a class="button cta-catalog" href="#catalogo">Ver placas prontas</a>
+          <a class="button cta-custom" href="#personalizar">Personalizar a minha</a>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <div class="page" data-page="personalizar" hidden>
     <section class="logo-lab" id="gerador-logo">
       <div class="shell">
         <div class="logo-lab-head">
@@ -288,33 +369,6 @@
       </div>
     </section>
 
-    <section class="gallery" id="galeria-modelos">
-      <div class="shell">
-        <div class="gallery-head">
-          <div><p class="kicker">Inspirações para o seu negócio</p><h2>Galeria de Modelos</h2></div>
-          <p>Veja como o fundo temático transforma cada placa em uma peça alinhada à identidade do negócio.</p>
-        </div>
-        <div class="model-grid">
-          <figure class="model-card">
-            <img src="https://files.catbox.moe/1nwbfw.webp" alt="Placa NFC de pizzaria com papel de parede de pizzas, tomates, ervas e forno a lenha" loading="lazy" />
-            <figcaption><strong>Pizzaria</strong><span>Forno a lenha</span></figcaption>
-          </figure>
-          <figure class="model-card">
-            <img src="https://files.catbox.moe/p2mbv3.webp" alt="Placa NFC de barbearia com papel de parede preto e dourado de tesouras, navalhas e bigodes" loading="lazy" />
-            <figcaption><strong>Barbearia</strong><span>Corte fino</span></figcaption>
-          </figure>
-          <figure class="model-card">
-            <img src="https://files.catbox.moe/haq4r3.webp" alt="Placa NFC Café Aurora com papel de parede de grãos, xícaras e ramos de café" loading="lazy" />
-            <figcaption><strong>Café Aurora</strong><span>Cafeteria</span></figcaption>
-          </figure>
-          <figure class="model-card">
-            <img src="https://files.catbox.moe/1q9r34.webp" alt="Placa NFC de salão de beleza com papel de parede floral, espelhos e acessórios de maquiagem" loading="lazy" />
-            <figcaption><strong>Salão de beleza</strong><span>Studio</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
     <section class="workbench" id="personalizar">
       <div class="shell">
         <div class="workbench-head">
@@ -348,7 +402,7 @@
             <div class="field">
               <label for="logoInput">Logo</label>
               <input class="file" id="logoInput" type="file" accept="image/png,image/jpeg,image/webp" />
-              <p class="hint" id="logoStatus">PNG, JPG ou WebP · fundo removido automaticamente</p>
+              <p class="hint" id="logoStatus">PNG, JPG ou WebP · bordas vazias recortadas automaticamente</p>
             </div>
             <div class="field">
               <label for="backgroundInput">Imagem de fundo</label>
@@ -474,19 +528,65 @@
       </div>
     </section>
 
-    <section class="details shell">
-      <div class="details-lead">
-        <div>
-          <p class="kicker">Resultado profissional</p>
-          <h2>Feita para valorizar sua marca.</h2>
+    </div>
+
+    <div class="page" data-page="catalogo" hidden>
+    <section class="gallery" id="catalogo">
+      <div class="shell">
+        <div class="gallery-head">
+          <div><p class="kicker">Placas prontas</p><h2>Catálogo de modelos</h2></div>
+          <p>Modelos prontos com mensagem de avaliação, QR Code e NFC. Escolha o seu e peça pelo WhatsApp — a gente configura com o link de avaliação do seu negócio.</p>
         </div>
-      </div>
-      <div class="specs">
-        <article class="spec"><b>01</b><h3>Enquadramento preciso</h3><p>A face frontal sem inclinação facilita posicionar logo, nome e imagem.</p></article>
-        <article class="spec"><b>02</b><h3>Identidade sob medida</h3><p>Use as cores da marca ou carregue uma imagem para preencher o fundo.</p></article>
-        <article class="spec"><b>03</b><h3>Arquivo pronto para revisar</h3><p>Exporte a composição em PNG e confira todos os detalhes antes de finalizar.</p></article>
+        <div class="model-grid">
+          <figure class="model-card">
+            <img src="assets/modelo-pizzaria.webp" alt="Placa NFC de pizzaria com papel de parede de pizzas, tomates, ervas e forno a lenha" loading="lazy" />
+            <figcaption><strong>Pizzaria</strong><span>Forno a lenha</span></figcaption>
+            <div class="model-buy">
+              <p class="model-desc">Fundo temático de pizzas, tomates e forno a lenha — pronta para o balcão da sua pizzaria.</p>
+              <div class="model-buy-row">
+                <strong class="model-price">R$ 49,99</strong>
+                <a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Pizzaria%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+              </div>
+            </div>
+          </figure>
+          <figure class="model-card">
+            <img src="assets/modelo-barbearia.webp" alt="Placa NFC de barbearia com papel de parede preto e dourado de tesouras, navalhas e bigodes" loading="lazy" />
+            <figcaption><strong>Barbearia</strong><span>Corte fino</span></figcaption>
+            <div class="model-buy">
+              <p class="model-desc">Visual preto e dourado com tesouras, navalhas e bigodes, no estilo clássico das barbearias.</p>
+              <div class="model-buy-row">
+                <strong class="model-price">R$ 49,99</strong>
+                <a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Barbearia%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+              </div>
+            </div>
+          </figure>
+          <figure class="model-card">
+            <img src="assets/modelo-cafe-aurora.webp" alt="Placa NFC Café Aurora com papel de parede de grãos, xícaras e ramos de café" loading="lazy" />
+            <figcaption><strong>Café Aurora</strong><span>Cafeteria</span></figcaption>
+            <div class="model-buy">
+              <p class="model-desc">Grãos, xícaras e ramos de café em um fundo acolhedor, feito para cafeterias e padarias.</p>
+              <div class="model-buy-row">
+                <strong class="model-price">R$ 49,99</strong>
+                <a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Caf%C3%A9%20Aurora%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+              </div>
+            </div>
+          </figure>
+          <figure class="model-card">
+            <img src="assets/modelo-salao-beleza.webp" alt="Placa NFC de salão de beleza com papel de parede floral, espelhos e acessórios de maquiagem" loading="lazy" />
+            <figcaption><strong>Salão de beleza</strong><span>Studio</span></figcaption>
+            <div class="model-buy">
+              <p class="model-desc">Fundo floral com espelhos e acessórios de maquiagem, feito para salões e studios de beleza.</p>
+              <div class="model-buy-row">
+                <strong class="model-price">R$ 49,99</strong>
+                <a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Sal%C3%A3o%20de%20Beleza%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+              </div>
+            </div>
+          </figure>
+        </div>
+        <p class="catalog-note">Prefere com a sua logo, suas cores e sua mensagem? <a href="#personalizar">Monte a sua no personalizador</a>.</p>
       </div>
     </section>
+    </div>
   </main>
   <div class="toast" id="toast" role="status">Arte baixada.</div>
 
@@ -880,17 +980,58 @@
           return new Promise(function(resolve){crop.toBlob(function(blob){resolve(blob?URL.createObjectURL(blob):url)},'image/png')});
         }).catch(function(){return removeFlatLogoBackground(url)});
       }
+      function trimUploadedLogoBorders(url){
+        return loadImage(url).then(function(image){
+          var naturalWidth=image.naturalWidth||image.width,naturalHeight=image.naturalHeight||image.height;
+          var scale=Math.min(1,1600/Math.max(naturalWidth,naturalHeight));
+          var width=Math.max(1,Math.round(naturalWidth*scale)),height=Math.max(1,Math.round(naturalHeight*scale));
+          var canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;
+          var context=canvas.getContext('2d',{willReadFrequently:true});context.drawImage(image,0,0,width,height);
+          var pixels=context.getImageData(0,0,width,height),data=pixels.data,total=width*height;
+          var empty=new Uint8Array(total),connected=new Uint8Array(total),queue=new Int32Array(total),head=0,tail=0;
+          function isEmptyPixel(index){
+            var offset=index*4,alpha=data[offset+3];
+            if(alpha<=18)return true;
+            var r=data[offset],g=data[offset+1],b=data[offset+2];
+            return r>=235&&g>=235&&b>=235&&(Math.max(r,g,b)-Math.min(r,g,b))<=20;
+          }
+          for(var index=0;index<total;index++)empty[index]=isEmptyPixel(index)?1:0;
+          function add(index){if(!connected[index]&&empty[index]){connected[index]=1;queue[tail++]=index}}
+          for(var x=0;x<width;x++){add(x);add((height-1)*width+x)}
+          for(var y=1;y<height-1;y++){add(y*width);add(y*width+width-1)}
+          while(head<tail){
+            var current=queue[head++],cx=current%width;
+            if(cx>0)add(current-1);if(cx<width-1)add(current+1);
+            if(current>=width)add(current-width);if(current<total-width)add(current+width);
+          }
+          var minX=width,minY=height,maxX=-1,maxY=-1;
+          for(var py=0;py<height;py++)for(var px=0;px<width;px++){
+            var pixel=py*width+px,offset=pixel*4;
+            if(connected[pixel])data[offset+3]=0;
+            if(data[offset+3]>18){if(px<minX)minX=px;if(px>maxX)maxX=px;if(py<minY)minY=py;if(py>maxY)maxY=py}
+          }
+          if(maxX<minX||maxY<minY)return url;
+          var subjectWidth=maxX-minX+1,subjectHeight=maxY-minY+1;
+          var pad=Math.max(2,Math.round(Math.max(subjectWidth,subjectHeight)*.018));
+          minX=Math.max(0,minX-pad);minY=Math.max(0,minY-pad);maxX=Math.min(width-1,maxX+pad);maxY=Math.min(height-1,maxY+pad);
+          context.putImageData(pixels,0,0);
+          var crop=document.createElement('canvas');crop.width=maxX-minX+1;crop.height=maxY-minY+1;
+          crop.getContext('2d').drawImage(canvas,minX,minY,crop.width,crop.height,0,0,crop.width,crop.height);
+          return new Promise(function(resolve){crop.toBlob(function(blob){resolve(blob?URL.createObjectURL(blob):url)},'image/png')});
+        }).catch(function(){return url});
+      }
       async function setFile(input,type){
         var file=input.files&&input.files[0];
         if(!file)return;
         var url=URL.createObjectURL(file);
         if(type==='logo'){
-          var preparedUrl=await extractCentralLogoSubject(url);
+          logoStatus.textContent='Recortando bordas vazias…';
+          var preparedUrl=await trimUploadedLogoBorders(url);
           if(preparedUrl!==url)URL.revokeObjectURL(url);
           if(logoUrl)URL.revokeObjectURL(logoUrl);
           logoUrl=preparedUrl;logoPreview.innerHTML='';
           var image=document.createElement('img');image.src=preparedUrl;image.alt='Logo carregada';logoPreview.appendChild(image);
-          logoStatus.textContent=file.name+' · fundo removido';
+          logoStatus.textContent=file.name+' · bordas vazias recortadas';
         }else{
           if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);
           backgroundUrl=url;plate.style.setProperty('--plate-bg','url("'+url+'")');backgroundStatus.textContent=file.name;
@@ -928,7 +1069,7 @@
         updateQuantity(1);updateName();updateMessage();updateMessageColor();updateReviewLink();updateOrderTotals();
         if(logoUrl)URL.revokeObjectURL(logoUrl);if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);
         logoUrl='';backgroundUrl='';logoInput.value='';backgroundInput.value='';
-        logoPreview.innerHTML='<span>LOGO</span>';logoStatus.textContent='PNG, JPG ou WebP · fundo removido automaticamente';backgroundStatus.textContent='Opcional';
+        logoPreview.innerHTML='<span>LOGO</span>';logoStatus.textContent='PNG, JPG ou WebP · bordas vazias recortadas automaticamente';backgroundStatus.textContent='Opcional';
         plate.style.removeProperty('--plate-bg');setColor('transparent');
       });
 
@@ -1203,7 +1344,7 @@
         context.fillStyle=messageColor.value;var messageStart=475-(messageLines.length-1)*38;
         messageLines.forEach(function(line,index){context.fillText(line,540,messageStart+index*78)});
         context.shadowColor='transparent';context.fillStyle=gold;context.fillRect(190,725,285,6);context.fillRect(605,725,285,6);drawHeart(context,540,707,35,gold);
-        drawNfc(context,280,940,340,white);drawQr(context,800,940,340);
+        drawNfc(context,330,940,250,white);drawQr(context,normalizedReviewLink(),750,940,245);
         context.shadowColor='rgba(0,0,0,.48)';context.shadowBlur=12;context.shadowOffsetY=5;context.fillStyle=white;context.font='800 34px "DM Sans", Arial, sans-serif';context.fillText('APROXIME SEU CELULAR!',540,1165);context.shadowColor='transparent';
         return canvas;
       }
@@ -1325,27 +1466,14 @@
           await prepareOrderFiles();
           var pdfFile=pdfFileFromOrderBlob(preparedOrderPdfBlob),photoFile=fileFromOrderBlob(preparedOrderBlob);
           var canSharePdf=canAttemptFileShare(pdfFile),canSharePhoto=canAttemptFileShare(photoFile);
-          var canShareBoth=false;
-          if(navigator.share&&navigator.canShare){
-            try{canShareBoth=navigator.canShare({files:[photoFile,pdfFile]})}catch(error){canShareBoth=false}
-          }
-          if(canShareBoth){
-            await navigator.share({files:[photoFile,pdfFile],text:orderMessage(),title:'Pedido Placa Nota 10'});
-            revealShareHelper('Foto, PDF e mensagem preparados','A foto da placa e o PDF foram enviados ao menu de compartilhamento. Se o WhatsApp não aceitar os dois arquivos juntos, use “Compartilhar foto” abaixo para enviar a imagem separadamente.',canSharePhoto,true);
-            showToast('Foto e PDF prontos para compartilhar.');
-          }else if(canSharePhoto){
-            await navigator.share({files:[photoFile],text:orderMessage(),title:'Pedido Placa Nota 10'});
-            revealShareHelper('Foto e mensagem preparadas','A foto da placa foi enviada ao menu de compartilhamento. Se a mensagem não aparecer no WhatsApp, use “Copiar mensagem” abaixo.',true,canSharePdf);
-            showToast('Foto pronta para compartilhar.');
-          }else if(canSharePdf){
+          if(canSharePdf){
             await navigator.share({files:[pdfFile],text:orderMessage(),title:'Pedido Placa Nota 10'});
-            revealShareHelper('PDF compartilhado','Este navegador não permite anexar a foto diretamente. Use “Compartilhar foto” abaixo para enviar a imagem da placa.',false,true);
-            showToast('PDF pronto para compartilhar.');
+            revealShareHelper('PDF e mensagem compartilhados','O PDF leva a foto da placa. Se o WhatsApp não preencher o texto automaticamente, use “Copiar mensagem” abaixo.',canSharePhoto,true);
+            showToast('PDF e mensagem prontos no compartilhamento.');
           }else{
-            downloadPlatePng(preparedOrderBlob);
             downloadPlatePdf(preparedOrderPdfBlob);
-            revealShareHelper('Foto e PDF baixados','Este navegador não consegue anexar arquivos automaticamente. Anexe a foto e o PDF baixados no WhatsApp e use a mensagem pronta abaixo.',false,false);
-            showToast('Foto e PDF baixados para anexar no WhatsApp.');
+            revealShareHelper('PDF baixado','Este navegador não compartilha PDF diretamente. Anexe o PDF baixado no WhatsApp e use a mensagem pronta abaixo.',canSharePhoto,false);
+            showToast('PDF baixado para anexar no WhatsApp.');
           }
         }catch(error){
           if(error&&error.name==='AbortError'){
@@ -1379,6 +1507,30 @@
         copyOrderMessage().then(function(){showToast('Mensagem copiada.')}).catch(function(){showToast('Não foi possível copiar. Selecione a mensagem no WhatsApp.')});
       });
 
+    })();
+  </script>
+  <script>
+    (function(){
+      var navLinks=document.querySelectorAll('[data-nav]');
+      function pageFromHash(){
+        var hash=location.hash.replace('#','');
+        if(hash==='catalogo')return 'catalogo';
+        if(hash==='personalizar'||hash==='gerador-logo')return 'personalizar';
+        return 'inicio';
+      }
+      function renderPage(){
+        var current=pageFromHash();
+        document.querySelectorAll('[data-page]').forEach(function(page){
+          page.hidden=page.getAttribute('data-page')!==current;
+        });
+        navLinks.forEach(function(link){
+          if(link.getAttribute('data-nav')===current)link.setAttribute('aria-current','page');
+          else link.removeAttribute('aria-current');
+        });
+        window.scrollTo(0,0);
+      }
+      window.addEventListener('hashchange',renderPage);
+      renderPage();
     })();
   </script>
 </body>
