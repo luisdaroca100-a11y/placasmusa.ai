@@ -195,8 +195,8 @@
     .caption{position:absolute;top:16px;right:16px;z-index:6;color:#fff;background:rgba(10,22,21,.82);font-size:.72rem;font-weight:700;padding:7px 10px;border:1px solid rgba(255,255,255,.2);border-radius:3px;backdrop-filter:blur(5px)}
     .stand{display:none}
     .plate{container-type:inline-size;position:absolute;z-index:3;left:49.22%;top:5.75%;transform:translateX(-50%);width:51.7%;height:79.95%;background-color:transparent;border:1px solid rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(35,29,23,.07);overflow:hidden;color:var(--plate-ink)}
-    .plate:before{content:"";position:absolute;inset:0;background:var(--plate-bg,none);background-size:cover;background-position:center;opacity:.82}
-    .plate:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,rgba(255,255,255,.15),transparent 22% 68%,rgba(255,255,255,.08));pointer-events:none}
+    .plate:before{content:"";position:absolute;inset:0;background:var(--plate-bg,none);background-size:cover;background-position:center;filter:blur(2.2cqw) brightness(.68);transform:scale(1.18);opacity:1}
+    .plate:after{content:"";position:absolute;inset:0;background-image:linear-gradient(110deg,rgba(255,255,255,.15),transparent 22% 68%,rgba(255,255,255,.08)),var(--plate-bg,none);background-size:auto,contain;background-position:center,center;background-repeat:no-repeat,no-repeat;pointer-events:none}
     .plate-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;padding:6.5cqw 7cqw 6cqw;color:#fff;text-shadow:0 .7cqw 2cqw rgba(0,0,0,.5)}
     .logo{position:relative;width:62cqw;height:27cqw;min-width:0;min-height:0;max-width:62cqw;max-height:27cqw;flex:0 0 27cqw;display:grid;place-items:center;color:#fff;font-weight:800;font-size:4.2cqw;line-height:1;border:0;border-radius:0;overflow:hidden;background:transparent;margin-bottom:7cqw;contain:layout paint}
     .logo img{position:absolute;inset:0;margin:auto;display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;object-position:center;border:0;background:transparent;filter:drop-shadow(0 .8cqw 1.8cqw rgba(0,0,0,.3))}
@@ -1407,6 +1407,15 @@
         var scale=Math.max(width/image.width,height/image.height);var w=image.width*scale,h=image.height*scale;
         context.save();context.globalAlpha=alpha;context.drawImage(image,x+(width-w)/2,y+(height-h)/2,w,h);context.restore();
       }
+      function drawFittedBackground(context,image,width,height,alpha){
+        var tw=28,th=Math.max(8,Math.round(tw*height/width)),tmp=document.createElement('canvas');tmp.width=tw;tmp.height=th;
+        var tctx=tmp.getContext('2d'),bs=Math.max(tw/image.width,th/image.height);
+        tctx.drawImage(image,(tw-image.width*bs)/2,(th-image.height*bs)/2,image.width*bs,image.height*bs);
+        context.save();context.drawImage(tmp,0,0,width,height);
+        context.fillStyle='rgba(8,8,12,.30)';context.fillRect(0,0,width,height);
+        var sc=Math.min(width/image.width,height/image.height),w=image.width*sc,h=image.height*sc;
+        context.globalAlpha=alpha;context.drawImage(image,(width-w)/2,(height-h)/2,w,h);context.restore();
+      }
       function drawLogo(context,image,x,y,maxWidth,maxHeight){
         var scale=Math.min(maxWidth/image.width,maxHeight/image.height),w=image.width*scale,h=image.height*scale;
         context.save();context.shadowColor='rgba(0,0,0,.32)';context.shadowBlur=15;context.shadowOffsetY=6;
@@ -1452,7 +1461,7 @@
         if(shaped){plateShapePath(context,currentShape,shape.w,shape.h);context.clip()}
         var transparent=currentColor==='transparent'&&!backgroundUrl;
         if(!transparent){context.fillStyle=currentColor==='transparent'?'#e9eff0':currentColor;context.fillRect(0,0,shape.w,shape.h)}
-        if(backgroundUrl){try{drawCover(context,await loadImage(backgroundUrl),0,0,shape.w,shape.h,.68)}catch(error){}}
+        if(backgroundUrl){try{drawFittedBackground(context,await loadImage(backgroundUrl),shape.w,shape.h,.94)}catch(error){}}
         if(!transparent){var shade=context.createLinearGradient(0,0,0,shape.h);shade.addColorStop(0,'rgba(0,0,0,.02)');shade.addColorStop(1,'rgba(0,0,0,.38)');context.fillStyle=shade;context.fillRect(0,0,shape.w,shape.h)}
         var white='#ffffff',gold='#f2b632';
         context.textAlign='center';context.textBaseline='alphabetic';context.shadowColor='rgba(0,0,0,.48)';context.shadowBlur=14;context.shadowOffsetY=6;
