@@ -70,12 +70,14 @@
     .shapes{display:flex;gap:8px;flex-wrap:wrap}
     .shape-btn{font:inherit;font-size:.85rem;font-weight:600;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
     .shape-btn[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
-    .stage.shaped{background:#2a211b}
-    .plate.shaped{box-shadow:0 22px 44px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.14)}
-    .plate[data-shape="redonda"]{left:50%;top:47%;transform:translate(-50%,-50%);width:63%;height:63%;border-radius:50%}
-    .plate[data-shape="quadrada"]{left:50%;top:47%;transform:translate(-50%,-50%);width:65%;height:65%;border-radius:5%}
-    .plate[data-shape="oval"]{border-radius:50%}
-    .plate[data-shape="hexagonal"]{left:50%;top:47%;transform:translate(-50%,-50%);width:67%;height:67%;border:0;border-radius:0;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);box-shadow:0 22px 44px rgba(0,0,0,.5)}
+    .stage[data-shape="redonda"]{background-image:url("https://files.catbox.moe/npqamc.webp")}
+    .stage[data-shape="quadrada"]{background-image:url("https://files.catbox.moe/fu08cg.webp")}
+    .stage[data-shape="oval"]{background-image:url("https://files.catbox.moe/mlekvi.webp")}
+    .stage[data-shape="hexagonal"]{background-image:url("https://files.catbox.moe/45bfxu.webp")}
+    .plate[data-shape="redonda"]{left:25.3%;top:23.1%;width:49.3%;height:49.5%;border-radius:50%;transform:none}
+    .plate[data-shape="quadrada"]{left:27.3%;top:25.6%;width:45%;height:46%;border-radius:5%;transform:none}
+    .plate[data-shape="oval"]{left:21%;top:8.8%;width:58%;height:77.4%;border-radius:50%;transform:none}
+    .plate[data-shape="hexagonal"]{left:25%;top:24.4%;width:52.4%;height:47.2%;transform:none;border:0;border-radius:0;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
     .plate[data-shape="oval"] .plate-content{padding:10cqw 11cqw 9cqw}
     .plate[data-shape="oval"] .connect-row{width:62cqw}
     .plate[data-shape="oval"] .nfc,.plate[data-shape="oval"] .qr{width:21cqw;height:21cqw;flex-basis:21cqw}
@@ -90,6 +92,10 @@
     .plate[data-shape="redonda"] .connect-row{width:58cqw}
     .plate[data-shape="redonda"] .logo{width:50cqw;max-width:50cqw}
     .plate[data-shape="hexagonal"] .logo{width:54cqw;max-width:54cqw}
+    .plate[data-shape="hexagonal"] .plate-content{padding:3.2cqw 8cqw 2.8cqw}
+    .plate[data-shape="hexagonal"] .logo{height:14.5cqw;flex:0 0 14.5cqw;margin-bottom:2cqw}
+    .plate[data-shape="hexagonal"] .tap{margin-top:1.8cqw;font-size:2.8cqw}
+    .plate[data-shape="hexagonal"] .connect-row{margin-top:3cqw}
     .colors{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
     .swatch{width:34px;height:34px;border-radius:50%;border:2px solid var(--paper);outline:1px solid var(--line);padding:0;background:var(--c)}
     .swatch[aria-pressed="true"]{outline:3px solid var(--red)}
@@ -772,7 +778,7 @@
         context.beginPath();
         if(shape==='redonda'||shape==='oval'){context.ellipse(w/2,h/2,w/2,h/2,0,0,Math.PI*2)}
         else if(shape==='quadrada'){var r=Math.min(w,h)*.05;if(context.roundRect){context.roundRect(0,0,w,h,r)}else{context.rect(0,0,w,h)}}
-        else if(shape==='hexagonal'){context.moveTo(w*.25,0);context.lineTo(w*.75,0);context.lineTo(w,h*.5);context.lineTo(w*.75,h);context.lineTo(w*.25,h);context.lineTo(0,h*.5);context.closePath()}
+        else if(shape==='hexagonal'){context.moveTo(w*.5,0);context.lineTo(w,h*.25);context.lineTo(w,h*.75);context.lineTo(w*.5,h);context.lineTo(0,h*.75);context.lineTo(0,h*.25);context.closePath()}
       }
       function safeName(){return companyInput.value.trim()||'SUA EMPRESA'}
       function safeMessage(){return messageInput.value.trim()}
@@ -1170,10 +1176,9 @@
         currentShape=PLATE_SHAPES[shape]?shape:'tradicional';
         plate.dataset.shape=currentShape;
         plate.classList.toggle('shaped',currentShape!=='tradicional');
-        document.querySelector('.stage').classList.toggle('shaped',currentShape!=='tradicional');
+        document.querySelector('.stage').dataset.shape=currentShape;
         document.querySelectorAll('.shape-btn').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.shape===currentShape))});
-        if(currentShape!=='tradicional'&&currentColor==='transparent'){plate.style.backgroundColor='rgba(18,18,18,.95)'}
-        else{plate.style.backgroundColor=colorWithAcrylic(currentColor)}
+        plate.style.backgroundColor=colorWithAcrylic(currentColor)
         preparedOrderBlob=null;preparedOrderPdfBlob=null;
       }
       document.getElementById('shapeOptions').addEventListener('click',function(event){
