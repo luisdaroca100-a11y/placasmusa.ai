@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="color-scheme" content="light dark" />
-  <link rel="icon" href="data:," />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@600;700;800&display=swap" rel="stylesheet" />
-  <title>placanota10 | Placas NFC personalizadas</title>
-  <style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@600;700;800&display=swap" rel="stylesheet" />
+<title>placanota10 | Placas NFC personalizadas</title>
+<style>
     :root{
       color-scheme:light dark;
       --bg:#f1f4f3;--paper:#ffffff;--ink:#10201f;--muted:#596765;--line:#d7dfdd;
@@ -50,7 +50,6 @@
     .sound-toggle .sound-on{display:none}
     .sound-toggle[aria-pressed="true"] .sound-off{display:none}
     .sound-toggle[aria-pressed="true"] .sound-on{display:block}
-
     .workbench{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:58px 0 76px}
     .workbench-head{display:flex;justify-content:space-between;gap:32px;align-items:end;margin-bottom:30px}
     .workbench-head h2{font-size:clamp(2.25rem,4vw,4.2rem);max-width:10ch}
@@ -126,7 +125,6 @@
     .share-helper-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     .share-helper-actions .button{padding:10px 12px;font-size:.78rem;min-height:42px}
     .share-helper-actions .whatsapp{grid-column:1/-1}
-
     .logo-lab{background:#073d39;color:#fff;padding:70px 0;position:relative;overflow:hidden}
     .logo-lab:after{content:"";position:absolute;inset:0 0 auto auto;width:32%;height:4px;background:var(--yellow)}
     .logo-lab-head{display:grid;grid-template-columns:minmax(0,.88fr) minmax(320px,1.12fr);gap:64px;align-items:end;margin-bottom:34px}
@@ -160,7 +158,6 @@
     .logo-result-actions .button.secondary{border-color:rgba(255,255,255,.34);color:#fff}
     .logo-message{min-height:22px;margin:0 0 10px;color:#f7d783;font-size:.8rem;font-weight:600}
     @keyframes spin{to{transform:rotate(360deg)}}
-
     .gallery{padding:76px 0 84px;background:var(--bg)}
     .gallery-head{display:grid;grid-template-columns:minmax(0,.9fr) minmax(320px,1.1fr);gap:64px;align-items:end;margin-bottom:32px}
     .gallery h2{font-size:clamp(2.35rem,4.8vw,4.9rem);max-width:11ch}
@@ -171,7 +168,6 @@
     .model-card figcaption{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 19px;border-top:3px solid var(--yellow)}
     .model-card strong{font-family:"League Spartan",sans-serif;font-size:1.22rem;letter-spacing:-.02em}
     .model-card span{color:var(--red);font-size:.72rem;font-weight:700;letter-spacing:.065em;text-transform:uppercase}
-
     .stage{position:relative;aspect-ratio:1;min-height:0;overflow:hidden;background:#261c15 url("assets/placa-acrilico-pizzaria.webp") center/cover no-repeat;box-shadow:var(--shadow);isolation:isolate;border:1px solid rgba(15,45,42,.18)}
     .caption{position:absolute;top:16px;right:16px;z-index:6;color:#fff;background:rgba(10,22,21,.82);font-size:.72rem;font-weight:700;padding:7px 10px;border:1px solid rgba(255,255,255,.2);border-radius:3px;backdrop-filter:blur(5px)}
     .stand{display:none}
@@ -193,7 +189,6 @@
     .qr canvas{image-rendering:pixelated;filter:none}
     .qr-placeholder{line-height:1}
     .tap{font-family:"DM Sans",sans-serif;font-size:3.4cqw;font-weight:800;letter-spacing:.055em;text-transform:uppercase;margin-top:4cqw;color:#fff}
-
     .details{padding:76px 0 84px}
     .details-lead{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.92fr);gap:64px;align-items:end;margin-bottom:34px}
     .details h2{font-size:clamp(2.2rem,4vw,4.3rem);max-width:11ch}
@@ -205,7 +200,6 @@
     .spec p{margin:0;color:var(--muted);font-size:.92rem}
     .toast{position:fixed;z-index:20;left:50%;bottom:22px;transform:translate(-50%,18px);opacity:0;pointer-events:none;background:var(--ink);color:var(--paper);padding:11px 15px;border-radius:4px;font-size:.85rem;font-weight:700;transition:.22s}
     .toast.show{opacity:1;transform:translate(-50%,0)}
-
     .topnav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
     .topnav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px 0}
     .topnav-brand{font-family:"League Spartan",sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.02em;color:var(--ink);text-decoration:none;white-space:nowrap}
@@ -248,350 +242,427 @@
       .shell{width:min(100% - 24px,1180px)}.intro{padding:36px 0 34px}.intro-content{padding:26px 22px}.hero-media{width:min(88vw,320px)}h1{font-size:clamp(3rem,15vw,4.7rem)}.logo-lab{padding:50px 0}.logo-canvas{min-height:280px}.logo-result{min-height:0}.logo-result-actions{grid-template-columns:1fr}.gallery{padding:52px 0 58px}.model-grid{grid-template-columns:1fr;gap:16px}.model-card figcaption{padding:15px 16px}.workbench{padding:40px 0 50px}.panel{padding:18px}.shipping-head{display:block}.shipping-badge{display:inline-block;margin-top:8px}.cep-entry{grid-template-columns:1fr}.cep-entry .button{min-height:42px}.address-grid{grid-template-columns:minmax(0,1fr) 82px}.share-helper-actions{grid-template-columns:1fr}.share-helper-actions .whatsapp{grid-column:auto}.stage{min-height:0}.caption{top:10px;right:10px}.details{padding:58px 0 64px}.details-lead{margin-bottom:28px}.specs{grid-template-columns:1fr}.spec{border-right:0;border-bottom:1px solid var(--line);margin:0;padding:22px 0}.spec:last-child{border-bottom:0}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.toast{transition:none}.spinner{animation:none}}
-  </style>
+</style>
 </head>
 <body>
-  <header class="topnav">
-    <div class="shell topnav-inner">
-      <a class="topnav-brand" href="#inicio">Placa <span>Nota 10</span></a>
-      <nav class="topnav-links" aria-label="Navegação principal">
-        <a href="#inicio" data-nav="inicio">Início</a>
-        <a href="#catalogo" data-nav="catalogo">Catálogo</a>
-        <a href="#personalizar" data-nav="personalizar">Personalizar</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <div class="page" data-page="inicio">
-    <section class="intro shell">
-      <div class="intro-content">
-        <figure class="brand">
-          <img src="assets/logo-placa-nota-10-clean.png" alt="Placa Nota 10" />
-        </figure>
-        <h1>Sua marca, a um toque.</h1>
-        <p class="intro-copy">Placas NFC personalizadas para apresentar sua empresa com clareza. Visualize nome, logo e fundo na placa de acrílico, reta e de frente.</p>
-        <div class="price-line"><span>A partir de</span><strong>R$ 49,99</strong><span>/ unidade</span></div>
-        <ul class="proofs" aria-label="Recursos da personalização">
-          <li>Prévia em tempo real</li>
-          <li>Vista frontal</li>
-          <li>Exportação em PNG e PDF</li>
-        </ul>
-        <div class="intro-actions">
-          <a class="button primary" href="#catalogo">Ver placas prontas</a>
-          <a class="button secondary" href="#personalizar">Personalizar a minha</a>
-        </div>
-      </div>
-      <figure class="hero-media" aria-label="Vídeo comercial da Placa Nota 10">
-        <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/video-placanota10-poster.jpg" disablepictureinpicture aria-label="Apresentação em vídeo da placa personalizada Placa Nota 10">
-          <source src="assets/video-placanota10-comercial.mp4" type="video/mp4" />
-        </video>
-        <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Ativar som do vídeo">
-          <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m19 9-6 6m0-6 6 6"/></svg>
-          <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8.5 8.5 0 0 1 0 12"/></svg>
-          <span id="soundToggleLabel">Ativar som</span>
-        </button>
-      </figure>
-    </section>
-
-    <section class="details shell">
-      <div class="details-lead">
-        <div>
-          <p class="kicker">Benefícios</p>
-          <h2>Mais avaliações, sem esforço.</h2>
-        </div>
-        <p class="benefits-copy">A placa fica no balcão, na mesa ou na parede: o cliente avalia em segundos, enquanto a experiência ainda está fresca.</p>
-      </div>
-      <div class="specs">
-        <article class="spec"><b>01</b><h3>Toque ou aponte a câmera</h3><p>NFC e QR Code levam o cliente direto ao seu link de avaliação no Google.</p></article>
-        <article class="spec"><b>02</b><h3>Com a cara do seu negócio</h3><p>Nome, logo, mensagem e cores da sua marca em acrílico com acabamento profissional.</p></article>
-        <article class="spec"><b>03</b><h3>Pedido sem sair de casa</h3><p>Escolha um modelo pronto no catálogo ou personalize o seu e finalize pelo WhatsApp.</p></article>
-      </div>
-    </section>
-
-    <section class="cta-band">
-      <div class="shell cta-band-inner">
-        <div>
-          <h2>Pronto para deixar seu negócio mais profissional?</h2>
-          <p>Veja os modelos prontos ou monte a placa com a sua marca em minutos.</p>
-        </div>
-        <div class="cta-band-actions">
-          <a class="button cta-catalog" href="#catalogo">Ver placas prontas</a>
-          <a class="button cta-custom" href="#personalizar">Personalizar a minha</a>
-        </div>
-      </div>
-    </section>
-    </div>
-
-    <div class="page" data-page="personalizar" hidden>
-    <section class="logo-lab" id="gerador-logo">
-      <div class="shell">
-        <div class="logo-lab-head">
-          <div><p class="kicker">Criação instantânea</p><h2>Gerador de Logo com IA</h2></div>
-          <p>Informe o nome e o segmento do negócio. A IA cria o símbolo e o site aplica o nome corretamente, pronto para baixar ou usar direto na placa.</p>
-        </div>
-
-        <div class="logo-generator">
-          <form class="logo-form" id="logoGeneratorForm">
-            <div class="field">
-              <label for="aiBusinessName">Nome do negócio</label>
-              <input class="text-input" id="aiBusinessName" type="text" maxlength="50" placeholder="Ex.: Pizzaria do Zé" autocomplete="organization" required />
-            </div>
-            <div class="field">
-              <label for="aiBusinessNiche">Nicho ou segmento</label>
-              <input class="text-input" id="aiBusinessNiche" type="text" maxlength="50" placeholder="Ex.: pizzaria artesanal" required />
-            </div>
-            <button class="button generate-button" id="generateLogoButton" type="submit">
-              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2L12 3Z"/><path d="m19 14 .7 2.3L22 17l-2.3.7L19 20l-.7-2.3L16 17l2.3-.7L19 14Z"/><path d="m5 14 .7 2.3L8 17l-2.3.7L5 20l-.7-2.3L2 17l2.3-.7L5 14Z"/></svg>
-              <span id="generateLogoLabel">Gerar logo</span>
-            </button>
-            <p class="ai-disclosure">O segmento é enviado à Pollinations.ai para criar o símbolo. O nome é aplicado nesta página. Se a IA estiver indisponível, uma opção automática é criada para você continuar.</p>
-          </form>
-
-          <div class="logo-result">
-            <div>
-              <div class="logo-canvas" id="generatedLogoCanvas" aria-live="polite">
-                <div class="logo-placeholder" id="logoPlaceholder">
-                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="m4 16 4.5-4.5 3.2 3.2 2.3-2.3 6 6"/><circle cx="15.5" cy="8.5" r="1.5"/></svg>
-                  <strong>Sua logo aparece aqui</strong>
-                  <span>Use um nome curto e um segmento específico para orientar melhor a criação.</span>
-                </div>
-                <div class="logo-loading" id="logoLoading" role="status"><div class="spinner" aria-hidden="true"></div>Criando uma opção de logo…</div>
-              </div>
-              <p class="logo-message" id="logoGeneratorMessage" role="status"></p>
-            </div>
-            <div class="logo-result-actions" id="logoResultActions">
-              <button class="button secondary" id="regenerateLogoButton" type="button">Gerar outra</button>
-              <button class="button secondary" id="downloadLogoButton" type="button">Baixar logo</button>
-              <button class="button primary" id="useGeneratedLogoButton" type="button">Usar na placa</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="workbench" id="personalizar">
-      <div class="shell">
-        <div class="workbench-head">
-          <div><p class="kicker">Seu projeto</p><h2>Personalize na hora</h2></div>
-          <p>Defina nome, mensagem, cores e link de avaliação. A composição aparece aplicada na placa e fica pronta para baixar em PNG ou compartilhar em PDF.</p>
-        </div>
-
-        <div class="builder">
-          <form class="panel" id="designerForm" onsubmit="return false">
-            <h3>Conteúdo da placa</h3>
-            <div class="field">
-              <label for="companyInput">Nome da empresa</label>
-              <input class="text-input" id="companyInput" type="text" maxlength="28" value="SUA EMPRESA" autocomplete="organization" />
-            </div>
-            <div class="field">
-              <label for="messageInput">Mensagem abaixo do nome</label>
-              <input class="text-input" id="messageInput" type="text" maxlength="72" value="Sua avaliação é muito importante para nós ❤️" />
-            </div>
-            <div class="field">
-              <label for="messageColor">Cor da mensagem</label>
-              <div class="color-choice">
-                <input class="color-input" id="messageColor" type="color" value="#ffffff" aria-label="Escolher a cor da mensagem" />
-                <output id="messageColorValue" for="messageColor">#FFFFFF</output>
-              </div>
-            </div>
-            <div class="field">
-              <label for="reviewLink">Link de avaliação</label>
-              <input class="text-input" id="reviewLink" type="url" inputmode="url" autocomplete="url" placeholder="https://..." aria-describedby="reviewLinkStatus" />
-              <p class="hint link-status" id="reviewLinkStatus">Este link será usado no NFC, no QR Code e no pedido.</p>
-            </div>
-            <div class="field">
-              <label for="logoInput">Logo</label>
-              <input class="file" id="logoInput" type="file" accept="image/png,image/jpeg,image/webp" />
-              <p class="hint" id="logoStatus">PNG, JPG ou WebP · bordas vazias recortadas automaticamente</p>
-            </div>
-            <div class="field">
-              <label for="backgroundInput">Imagem de fundo</label>
-              <input class="file" id="backgroundInput" type="file" accept="image/png,image/jpeg,image/webp" />
-              <p class="hint" id="backgroundStatus">Opcional</p>
-            </div>
-            <div class="field">
-              <span class="field-title">Cor do fundo</span>
-              <div class="colors" id="colorOptions">
-                <button class="swatch clear" type="button" data-color="transparent" aria-label="Fundo transparente" aria-pressed="true"></button>
-                <button class="swatch" type="button" data-color="#151515" style="--c:#151515" aria-label="Fundo preto" aria-pressed="false"></button>
-                <button class="swatch" type="button" data-color="#8b1f18" style="--c:#8b1f18" aria-label="Fundo vermelho" aria-pressed="false"></button>
-                <button class="swatch" type="button" data-color="#173f6f" style="--c:#173f6f" aria-label="Fundo azul" aria-pressed="false"></button>
-                <button class="swatch" type="button" data-color="#1d553c" style="--c:#1d553c" aria-label="Fundo verde" aria-pressed="false"></button>
-                <button class="swatch" type="button" data-color="#6b3b79" style="--c:#6b3b79" aria-label="Fundo roxo" aria-pressed="false"></button>
-                <input class="color-input" id="customColor" type="color" value="#151515" aria-label="Escolher outra cor" />
-              </div>
-            </div>
-            <div class="actions">
-              <button class="button primary" id="downloadButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 20h14"/></svg>Baixar arte em PNG</button>
-              <div class="quantity-selector" aria-label="Quantidade de placas">
-                <div class="quantity-copy">
-                  <strong>Quantidade de placas</strong>
-                  <span id="quantitySummary">1 placa × R$ 49,99 cada</span>
-                </div>
-                <div class="quantity-stepper">
-                  <button class="quantity-button" id="decreaseQuantity" type="button" aria-label="Diminuir quantidade">−</button>
-                  <output class="quantity-value" id="quantityValue" aria-live="polite">1</output>
-                  <button class="quantity-button" id="increaseQuantity" type="button" aria-label="Aumentar quantidade">+</button>
-                </div>
-              </div>
-              <section class="shipping-box" aria-labelledby="shippingTitle">
-                <div class="shipping-head">
-                  <div>
-                    <strong id="shippingTitle">Entrega e cálculo do frete</strong>
-                    <span>Piracicaba grátis · região próxima R$ 15 · demais cidades R$ 40</span>
-                  </div>
-                  <span class="shipping-badge">Consulta pelo CEP</span>
-                </div>
-                <div class="field">
-                  <label for="postalCode">CEP de entrega</label>
-                  <div class="cep-entry">
-                    <input class="text-input" id="postalCode" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000" required aria-describedby="shippingStatus" />
-                    <button class="button secondary" id="calculateShippingButton" type="button">Calcular frete</button>
-                  </div>
-                  <p class="shipping-status" id="shippingStatus" role="status">Digite o CEP para preencher o endereço e calcular o frete.</p>
-                </div>
-                <div class="address-grid">
-                  <div class="field wide">
-                    <label for="deliveryStreet">Rua ou avenida</label>
-                    <input class="text-input" id="deliveryStreet" type="text" maxlength="80" autocomplete="address-line1" required />
-                  </div>
-                  <div class="field">
-                    <label for="deliveryNumber">Número</label>
-                    <input class="text-input" id="deliveryNumber" type="text" maxlength="12" inputmode="numeric" autocomplete="address-line2" required />
-                  </div>
-                  <div class="field">
-                    <label for="deliveryComplement">Complemento</label>
-                    <input class="text-input" id="deliveryComplement" type="text" maxlength="40" autocomplete="address-line2" placeholder="Opcional" />
-                  </div>
-                  <div class="field wide">
-                    <label for="deliveryNeighborhood">Bairro</label>
-                    <input class="text-input" id="deliveryNeighborhood" type="text" maxlength="60" required />
-                  </div>
-                  <div class="field city-field">
-                    <label for="deliveryCity">Cidade</label>
-                    <input class="text-input" id="deliveryCity" type="text" maxlength="60" autocomplete="address-level2" required />
-                  </div>
-                  <div class="field state-field">
-                    <label for="deliveryState">UF</label>
-                    <input class="text-input" id="deliveryState" type="text" maxlength="2" autocomplete="address-level1" placeholder="SP" required />
-                  </div>
-                </div>
-                <div class="shipping-totals" aria-live="polite">
-                  <div class="shipping-total-row"><span id="productsLabel">Produtos (1 placa)</span><b id="productsTotal">R$ 49,99</b></div>
-                  <div class="shipping-total-row"><span>Frete</span><b id="shippingTotal">A calcular</b></div>
-                  <div class="shipping-total-row grand"><span>Total do pedido</span><b id="orderTotal">R$ 49,99</b></div>
-                </div>
-              </section>
-              <a class="button whatsapp" id="whatsappButton" href="#personalizar" aria-disabled="true" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Pedir pelo WhatsApp</a>
-              <button class="button secondary" id="resetButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M5.4 15a7 7 0 1 0 1.2-7.7L4 10"/></svg>Começar de novo</button>
-            </div>
-            <p class="session-note">Os arquivos usados na prévia ficam somente enquanto esta página estiver aberta.</p>
-            <div class="share-helper" id="shareHelper" hidden>
-              <strong id="shareHelperTitle">Arquivos prontos para o pedido</strong>
-              <p id="shareHelperText">Compartilhe o PDF com a mensagem pelo menu do celular. A foto PNG também fica disponível.</p>
-              <div class="share-helper-actions">
-                <button class="button secondary" id="sharePdfButton" type="button">Compartilhar PDF + mensagem</button>
-                <button class="button secondary" id="downloadPdfButton" type="button">Baixar PDF</button>
-                <button class="button secondary" id="sharePhotoButton" type="button">Compartilhar foto PNG</button>
-                <button class="button secondary" id="copyOrderButton" type="button">Copiar mensagem</button>
-                <a class="button whatsapp" id="openWhatsappButton" href="https://wa.me/5519971995144" target="_blank" rel="noopener noreferrer">Abrir WhatsApp com a mensagem</a>
-              </div>
-            </div>
-          </form>
-
-          <div class="stage" aria-live="polite">
-            <span class="caption">Prévia realista · vista frontal</span>
-            <div class="stand" aria-hidden="true"></div>
-            <div class="plate" id="plate">
-              <div class="plate-content">
-                <div class="logo" id="logoPreview"><span>LOGO</span></div>
-                <div class="company" id="companyPreview">SUA EMPRESA</div>
-                <p class="touch-title" id="messagePreview">Sua avaliação é muito importante para nós ❤️</p>
-                <div class="decorative-rule" aria-hidden="true"><span>♥</span></div>
-                <div class="connect-row" aria-label="NFC à esquerda e QR Code à direita">
-                  <div class="nfc" aria-hidden="true">
-                    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
-                      <path d="M29 69c-10-11-10-27 0-38"/><path d="M44 61c-5-6-5-16 0-22"/>
-                      <path d="M71 31c10 11 10 27 0 38"/><path d="M56 39c5 6 5 16 0 22"/>
-                      <circle cx="50" cy="50" r="4" fill="currentColor" stroke="none"/>
-                    </svg>
-                  </div>
-                  <div class="qr" id="qrPreview" aria-label="QR Code do link de avaliação">
-                    <span class="qr-placeholder">QR</span>
-                  </div>
-                </div>
-                <div class="tap">Aproxime seu celular!</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    </div>
-
-    <div class="page" data-page="catalogo" hidden>
-    <section class="gallery" id="catalogo">
-      <div class="shell">
-        <div class="gallery-head">
-          <div><p class="kicker">Placas prontas</p><h2>Catálogo de modelos</h2></div>
-          <p>Modelos prontos com mensagem de avaliação, QR Code e NFC. Escolha o seu e peça pelo WhatsApp — a gente configura com o link de avaliação do seu negócio.</p>
-        </div>
-        <div class="model-grid">
-          <figure class="model-card">
-            <img src="assets/modelo-pizzaria.webp" alt="Placa NFC de pizzaria com papel de parede de pizzas, tomates, ervas e forno a lenha" loading="lazy" />
-            <figcaption><strong>Pizzaria</strong><span>Forno a lenha</span></figcaption>
-            <div class="model-buy">
-              <p class="model-desc">Fundo temático de pizzas, tomates e forno a lenha — pronta para o balcão da sua pizzaria.</p>
-              <div class="model-buy-row">
-                <strong class="model-price">R$ 49,99</strong>
-                <a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Pizzaria%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
-              </div>
-            </div>
-          </figure>
-          <figure class="model-card">
-            <img src="assets/modelo-barbearia.webp" alt="Placa NFC de barbearia com papel de parede preto e dourado de tesouras, navalhas e bigodes" loading="lazy" />
-            <figcaption><strong>Barbearia</strong><span>Corte fino</span></figcaption>
-            <div class="model-buy">
-              <p class="model-desc">Visual preto e dourado com tesouras, navalhas e bigodes, no estilo clássico das barbearias.</p>
-              <div class="model-buy-row">
-                <strong class="model-price">R$ 49,99</strong>
-                <a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Barbearia%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
-              </div>
-            </div>
-          </figure>
-          <figure class="model-card">
-            <img src="assets/modelo-cafe-aurora.webp" alt="Placa NFC Café Aurora com papel de parede de grãos, xícaras e ramos de café" loading="lazy" />
-            <figcaption><strong>Café Aurora</strong><span>Cafeteria</span></figcaption>
-            <div class="model-buy">
-              <p class="model-desc">Grãos, xícaras e ramos de café em um fundo acolhedor, feito para cafeterias e padarias.</p>
-              <div class="model-buy-row">
-                <strong class="model-price">R$ 49,99</strong>
-                <a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Caf%C3%A9%20Aurora%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
-              </div>
-            </div>
-          </figure>
-          <figure class="model-card">
-            <img src="assets/modelo-salao-beleza.webp" alt="Placa NFC de salão de beleza com papel de parede floral, espelhos e acessórios de maquiagem" loading="lazy" />
-            <figcaption><strong>Salão de beleza</strong><span>Studio</span></figcaption>
-            <div class="model-buy">
-              <p class="model-desc">Fundo floral com espelhos e acessórios de maquiagem, feito para salões e studios de beleza.</p>
-              <div class="model-buy-row">
-                <strong class="model-price">R$ 49,99</strong>
-                <a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Sal%C3%A3o%20de%20Beleza%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
-              </div>
-            </div>
-          </figure>
-        </div>
-        <p class="catalog-note">Prefere com a sua logo, suas cores e sua mensagem? <a href="#personalizar">Monte a sua no personalizador</a>.</p>
-      </div>
-    </section>
-    </div>
-  </main>
-  <div class="toast" id="toast" role="status">Arte baixada.</div>
-
-  <script src="assets/qrcode.js"></script>
-  <script>
+<header class="topnav">
+<div class="shell topnav-inner">
+<a class="topnav-brand" href="#inicio">Placa <span>Nota 10</span></a>
+<nav class="topnav-links" aria-label="Navegação principal">
+<a href="#inicio" data-nav="inicio">Início</a>
+<a href="#catalogo" data-nav="catalogo">Catálogo</a>
+<a href="#personalizar" data-nav="personalizar">Personalizar</a>
+</nav>
+</div>
+</header>
+<main>
+<div class="page" data-page="inicio">
+<section class="intro shell">
+<div class="intro-content">
+<figure class="brand">
+<img src="assets/logo-placa-nota-10-clean.png" alt="Placa Nota 10" />
+</figure>
+<h1>Sua marca, a um toque.</h1>
+<p class="intro-copy">Placas NFC personalizadas para apresentar sua empresa com clareza. Visualize nome, logo e fundo na placa de acrílico, reta e de frente.</p>
+<div class="price-line"><span>A partir de</span><strong>R$ 49,99</strong><span>/ unidade</span></div>
+<ul class="proofs" aria-label="Recursos da personalização">
+<li>Prévia em tempo real</li>
+<li>Vista frontal</li>
+<li>Exportação em PNG e PDF</li>
+</ul>
+<div class="intro-actions">
+<a class="button primary" href="#catalogo">Ver placas prontas</a>
+<a class="button secondary" href="#personalizar">Personalizar a minha</a>
+</div>
+</div>
+<figure class="hero-media" aria-label="Vídeo comercial da Placa Nota 10">
+<video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/video-placanota10-poster.jpg" disablepictureinpicture aria-label="Apresentação em vídeo da placa personalizada Placa Nota 10">
+<source src="https://files.catbox.moe/jbvq63.mp4" type="video/mp4" />
+</video>
+<button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Ativar som do vídeo">
+<svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m19 9-6 6m0-6 6 6"/></svg>
+<svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8.5 8.5 0 0 1 0 12"/></svg>
+<span id="soundToggleLabel">Ativar som</span>
+</button>
+</figure>
+</section>
+<section class="details shell">
+<div class="details-lead">
+<div>
+<p class="kicker">Benefícios</p>
+<h2>Mais avaliações, sem esforço.</h2>
+</div>
+<p class="benefits-copy">A placa fica no balcão, na mesa ou na parede: o cliente avalia em segundos, enquanto a experiência ainda está fresca.</p>
+</div>
+<div class="specs">
+<article class="spec"><b>01</b><h3>Toque ou aponte a câmera</h3><p>NFC e QR Code levam o cliente direto ao seu link de avaliação no Google.</p></article>
+<article class="spec"><b>02</b><h3>Com a cara do seu negócio</h3><p>Nome, logo, mensagem e cores da sua marca em acrílico com acabamento profissional.</p></article>
+<article class="spec"><b>03</b><h3>Pedido sem sair de casa</h3><p>Escolha um modelo pronto no catálogo ou personalize o seu e finalize pelo WhatsApp.</p></article>
+</div>
+</section>
+<section class="cta-band">
+<div class="shell cta-band-inner">
+<div>
+<h2>Pronto para deixar seu negócio mais profissional?</h2>
+<p>Veja os modelos prontos ou monte a placa com a sua marca em minutos.</p>
+</div>
+<div class="cta-band-actions">
+<a class="button cta-catalog" href="#catalogo">Ver placas prontas</a>
+<a class="button cta-custom" href="#personalizar">Personalizar a minha</a>
+</div>
+</div>
+</section>
+</div>
+<div class="page" data-page="personalizar" hidden>
+<section class="logo-lab" id="gerador-logo">
+<div class="shell">
+<div class="logo-lab-head">
+<div><p class="kicker">Criação instantânea</p><h2>Gerador de Logo com IA</h2></div>
+<p>Informe o nome e o segmento do negócio. A IA cria o símbolo e o site aplica o nome corretamente, pronto para baixar ou usar direto na placa.</p>
+</div>
+<div class="logo-generator">
+<form class="logo-form" id="logoGeneratorForm">
+<div class="field">
+<label for="aiBusinessName">Nome do negócio</label>
+<input class="text-input" id="aiBusinessName" type="text" maxlength="50" placeholder="Ex.: Pizzaria do Zé" autocomplete="organization" required />
+</div>
+<div class="field">
+<label for="aiBusinessNiche">Nicho ou segmento</label>
+<input class="text-input" id="aiBusinessNiche" type="text" maxlength="50" placeholder="Ex.: pizzaria artesanal" required />
+</div>
+<button class="button generate-button" id="generateLogoButton" type="submit">
+<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2L12 3Z"/><path d="m19 14 .7 2.3L22 17l-2.3.7L19 20l-.7-2.3L16 17l2.3-.7L19 14Z"/><path d="m5 14 .7 2.3L8 17l-2.3.7L5 20l-.7-2.3L2 17l2.3-.7L5 14Z"/></svg>
+<span id="generateLogoLabel">Gerar logo</span>
+</button>
+<p class="ai-disclosure">O segmento é enviado à Pollinations.ai para criar o símbolo. O nome é aplicado nesta página. Se a IA estiver indisponível, uma opção automática é criada para você continuar.</p>
+</form>
+<div class="logo-result">
+<div>
+<div class="logo-canvas" id="generatedLogoCanvas" aria-live="polite">
+<div class="logo-placeholder" id="logoPlaceholder">
+<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="m4 16 4.5-4.5 3.2 3.2 2.3-2.3 6 6"/><circle cx="15.5" cy="8.5" r="1.5"/></svg>
+<strong>Sua logo aparece aqui</strong>
+<span>Use um nome curto e um segmento específico para orientar melhor a criação.</span>
+</div>
+<div class="logo-loading" id="logoLoading" role="status"><div class="spinner" aria-hidden="true"></div>Criando uma opção de logo…</div>
+</div>
+<p class="logo-message" id="logoGeneratorMessage" role="status"></p>
+</div>
+<div class="logo-result-actions" id="logoResultActions">
+<button class="button secondary" id="regenerateLogoButton" type="button">Gerar outra</button>
+<button class="button secondary" id="downloadLogoButton" type="button">Baixar logo</button>
+<button class="button primary" id="useGeneratedLogoButton" type="button">Usar na placa</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="workbench" id="personalizar">
+<div class="shell">
+<div class="workbench-head">
+<div><p class="kicker">Seu projeto</p><h2>Personalize na hora</h2></div>
+<p>Defina nome, mensagem, cores e link de avaliação. A composição aparece aplicada na placa e fica pronta para baixar em PNG ou compartilhar em PDF.</p>
+</div>
+<div class="builder">
+<form class="panel" id="designerForm" onsubmit="return false">
+<h3>Conteúdo da placa</h3>
+<div class="field">
+<label for="companyInput">Nome da empresa</label>
+<input class="text-input" id="companyInput" type="text" maxlength="28" value="SUA EMPRESA" autocomplete="organization" />
+</div>
+<div class="field">
+<label for="messageInput">Mensagem abaixo do nome</label>
+<input class="text-input" id="messageInput" type="text" maxlength="72" value="Sua avaliação é muito importante para nós ❤️" />
+</div>
+<div class="field">
+<label for="messageColor">Cor da mensagem</label>
+<div class="color-choice">
+<input class="color-input" id="messageColor" type="color" value="#ffffff" aria-label="Escolher a cor da mensagem" />
+<output id="messageColorValue" for="messageColor">#FFFFFF</output>
+</div>
+</div>
+<div class="field">
+<label for="reviewLink">Link de avaliação</label>
+<input class="text-input" id="reviewLink" type="url" inputmode="url" autocomplete="url" placeholder="https://..." aria-describedby="reviewLinkStatus" />
+<p class="hint link-status" id="reviewLinkStatus">Este link será usado no NFC, no QR Code e no pedido.</p>
+</div>
+<div class="field">
+<label for="logoInput">Logo</label>
+<input class="file" id="logoInput" type="file" accept="image/png,image/jpeg,image/webp" />
+<p class="hint" id="logoStatus">PNG, JPG ou WebP · bordas vazias recortadas automaticamente</p>
+</div>
+<div class="field">
+<label for="backgroundInput">Imagem de fundo</label>
+<input class="file" id="backgroundInput" type="file" accept="image/png,image/jpeg,image/webp" />
+<p class="hint" id="backgroundStatus">Opcional</p>
+</div>
+<div class="field">
+<span class="field-title">Cor do fundo</span>
+<div class="colors" id="colorOptions">
+<button class="swatch clear" type="button" data-color="transparent" aria-label="Fundo transparente" aria-pressed="true"></button>
+<button class="swatch" type="button" data-color="#151515" style="--c:#151515" aria-label="Fundo preto" aria-pressed="false"></button>
+<button class="swatch" type="button" data-color="#8b1f18" style="--c:#8b1f18" aria-label="Fundo vermelho" aria-pressed="false"></button>
+<button class="swatch" type="button" data-color="#173f6f" style="--c:#173f6f" aria-label="Fundo azul" aria-pressed="false"></button>
+<button class="swatch" type="button" data-color="#1d553c" style="--c:#1d553c" aria-label="Fundo verde" aria-pressed="false"></button>
+<button class="swatch" type="button" data-color="#6b3b79" style="--c:#6b3b79" aria-label="Fundo roxo" aria-pressed="false"></button>
+<input class="color-input" id="customColor" type="color" value="#151515" aria-label="Escolher outra cor" />
+</div>
+</div>
+<div class="actions">
+<button class="button primary" id="downloadButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 20h14"/></svg>Baixar arte em PNG</button>
+<div class="quantity-selector" aria-label="Quantidade de placas">
+<div class="quantity-copy">
+<strong>Quantidade de placas</strong>
+<span id="quantitySummary">1 placa × R$ 49,99 cada</span>
+</div>
+<div class="quantity-stepper">
+<button class="quantity-button" id="decreaseQuantity" type="button" aria-label="Diminuir quantidade">−</button>
+<output class="quantity-value" id="quantityValue" aria-live="polite">1</output>
+<button class="quantity-button" id="increaseQuantity" type="button" aria-label="Aumentar quantidade">+</button>
+</div>
+</div>
+<section class="shipping-box" aria-labelledby="shippingTitle">
+<div class="shipping-head">
+<div>
+<strong id="shippingTitle">Entrega e cálculo do frete</strong>
+<span>Piracicaba grátis · região próxima R$ 15 · demais cidades R$ 40</span>
+</div>
+<span class="shipping-badge">Consulta pelo CEP</span>
+</div>
+<div class="field">
+<label for="postalCode">CEP de entrega</label>
+<div class="cep-entry">
+<input class="text-input" id="postalCode" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000" required aria-describedby="shippingStatus" />
+<button class="button secondary" id="calculateShippingButton" type="button">Calcular frete</button>
+</div>
+<p class="shipping-status" id="shippingStatus" role="status">Digite o CEP para preencher o endereço e calcular o frete.</p>
+</div>
+<div class="address-grid">
+<div class="field wide">
+<label for="deliveryStreet">Rua ou avenida</label>
+<input class="text-input" id="deliveryStreet" type="text" maxlength="80" autocomplete="address-line1" required />
+</div>
+<div class="field">
+<label for="deliveryNumber">Número</label>
+<input class="text-input" id="deliveryNumber" type="text" maxlength="12" inputmode="numeric" autocomplete="address-line2" required />
+</div>
+<div class="field">
+<label for="deliveryComplement">Complemento</label>
+<input class="text-input" id="deliveryComplement" type="text" maxlength="40" autocomplete="address-line2" placeholder="Opcional" />
+</div>
+<div class="field wide">
+<label for="deliveryNeighborhood">Bairro</label>
+<input class="text-input" id="deliveryNeighborhood" type="text" maxlength="60" required />
+</div>
+<div class="field city-field">
+<label for="deliveryCity">Cidade</label>
+<input class="text-input" id="deliveryCity" type="text" maxlength="60" autocomplete="address-level2" required />
+</div>
+<div class="field state-field">
+<label for="deliveryState">UF</label>
+<input class="text-input" id="deliveryState" type="text" maxlength="2" autocomplete="address-level1" placeholder="SP" required />
+</div>
+</div>
+<div class="shipping-totals" aria-live="polite">
+<div class="shipping-total-row"><span id="productsLabel">Produtos (1 placa)</span><b id="productsTotal">R$ 49,99</b></div>
+<div class="shipping-total-row"><span>Frete</span><b id="shippingTotal">A calcular</b></div>
+<div class="shipping-total-row grand"><span>Total do pedido</span><b id="orderTotal">R$ 49,99</b></div>
+</div>
+</section>
+<a class="button whatsapp" id="whatsappButton" href="#personalizar" aria-disabled="true" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Pedir pelo WhatsApp</a>
+<button class="button secondary" id="resetButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M5.4 15a7 7 0 1 0 1.2-7.7L4 10"/></svg>Começar de novo</button>
+</div>
+<p class="session-note">Os arquivos usados na prévia ficam somente enquanto esta página estiver aberta.</p>
+<div class="share-helper" id="shareHelper" hidden>
+<strong id="shareHelperTitle">Arquivos prontos para o pedido</strong>
+<p id="shareHelperText">Compartilhe o PDF com a mensagem pelo menu do celular. A foto PNG também fica disponível.</p>
+<div class="share-helper-actions">
+<button class="button secondary" id="sharePdfButton" type="button">Compartilhar PDF + mensagem</button>
+<button class="button secondary" id="downloadPdfButton" type="button">Baixar PDF</button>
+<button class="button secondary" id="sharePhotoButton" type="button">Compartilhar foto PNG</button>
+<button class="button secondary" id="copyOrderButton" type="button">Copiar mensagem</button>
+<a class="button whatsapp" id="openWhatsappButton" href="https://wa.me/5519971995144" target="_blank" rel="noopener noreferrer">Abrir WhatsApp com a mensagem</a>
+</div>
+</div>
+</form>
+<div class="stage" aria-live="polite">
+<span class="caption">Prévia realista · vista frontal</span>
+<div class="stand" aria-hidden="true"></div>
+<div class="plate" id="plate">
+<div class="plate-content">
+<div class="logo" id="logoPreview"><span>LOGO</span></div>
+<div class="company" id="companyPreview">SUA EMPRESA</div>
+<p class="touch-title" id="messagePreview">Sua avaliação é muito importante para nós ❤️</p>
+<div class="decorative-rule" aria-hidden="true"><span>♥</span></div>
+<div class="connect-row" aria-label="NFC à esquerda e QR Code à direita">
+<div class="nfc" aria-hidden="true">
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
+<path d="M29 69c-10-11-10-27 0-38"/><path d="M44 61c-5-6-5-16 0-22"/>
+<path d="M71 31c10 11 10 27 0 38"/><path d="M56 39c5 6 5 16 0 22"/>
+<circle cx="50" cy="50" r="4" fill="currentColor" stroke="none"/>
+</svg>
+</div>
+<div class="qr" id="qrPreview" aria-label="QR Code do link de avaliação">
+<span class="qr-placeholder">QR</span>
+</div>
+</div>
+<div class="tap">Aproxime seu celular!</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="page" data-page="catalogo" hidden>
+<section class="gallery" id="catalogo">
+<div class="shell">
+<div class="gallery-head">
+<div><p class="kicker">Placas prontas</p><h2>Catálogo de modelos</h2></div>
+<p>Modelos prontos com mensagem de avaliação, QR Code e NFC. Escolha o seu e peça pelo WhatsApp — a gente configura com o link de avaliação do seu negócio.</p>
+</div>
+<div class="model-grid">
+<figure class="model-card">
+<img src="https://files.catbox.moe/1nwbfw.webp" alt="Placa NFC de pizzaria com papel de parede de pizzas, tomates, ervas e forno a lenha" loading="lazy" />
+<figcaption><strong>Pizzaria</strong><span>Forno a lenha</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Fundo temático de pizzas, tomates e forno a lenha — pronta para o balcão da sua pizzaria.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Pizzaria%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+<figure class="model-card">
+<img src="https://files.catbox.moe/p2mbv3.webp" alt="Placa NFC de barbearia com papel de parede preto e dourado de tesouras, navalhas e bigodes" loading="lazy" />
+<figcaption><strong>Barbearia</strong><span>Corte fino</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Visual preto e dourado com tesouras, navalhas e bigodes, no estilo clássico das barbearias.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Barbearia%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+<figure class="model-card">
+<img src="https://files.catbox.moe/haq4r3.webp" alt="Placa NFC Café Aurora com papel de parede de grãos, xícaras e ramos de café" loading="lazy" />
+<figcaption><strong>Café Aurora</strong><span>Cafeteria</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Grãos, xícaras e ramos de café em um fundo acolhedor, feito para cafeterias e padarias.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Caf%C3%A9%20Aurora%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+<figure class="model-card">
+<img src="https://files.catbox.moe/1q9r34.webp" alt="Placa NFC de salão de beleza com papel de parede floral, espelhos e acessórios de maquiagem" loading="lazy" />
+<figcaption><strong>Salão de beleza</strong><span>Studio</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Fundo floral com espelhos e acessórios de maquiagem, feito para salões e studios de beleza.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20pronta%20modelo%20Sal%C3%A3o%20de%20Beleza%20%28R%24%2049%2C99%29.%20Pode%20me%20passar%20os%20detalhes%3F" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+<figure class="model-card">
+<img src="https://files.catbox.moe/d0qx2e.webp" alt="Placa NFC preta e dourada com cruz e o versículo 'Tudo posso naquele que me fortalece' (Filipenses 4:13) sobre mesa de madeira" loading="lazy" />
+<figcaption><strong>Placa Bíblia</strong><span>Versículo</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Preto e dourado com cruz e o versículo de Filipenses 4:13 — para igrejas, livrarias e lares cristãos.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20B%C3%8DBLIA%20%28R%24%2049%2C99%29." target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+<figure class="model-card">
+<img src="https://files.catbox.moe/gnao14.webp" alt="Placa NFC branca e azul de representante comercial com nome, cargo, WhatsApp, NFC e QR Code sobre mesa de escritório" loading="lazy" />
+<figcaption><strong>Representante Comercial</strong><span>Cartão de visita</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Branca e azul com nome, cargo e WhatsApp — o cartão de visita moderno de quem trabalha com vendas.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20REPRESENTANTE%20COMERCIAL%20%28R%24%2049%2C99%29." target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+<figure class="model-card">
+<img src="https://files.catbox.moe/pf6ukv.webp" alt="Placa NFC de pet shop em laranja e verde-água com patinhas e a frase 'Avalie nosso atendimento!' no balcão da loja" loading="lazy" />
+<figcaption><strong>Pet Shop</strong><span>Pets</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Laranja e verde-água com patinhas e o convite para avaliar o atendimento — alegria para o seu pet shop.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20PET%20SHOP%20%28R%24%2049%2C99%29." target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+<figure class="model-card">
+<img src="https://files.catbox.moe/3o2n15.webp" alt="Placa NFC de hamburgueria vermelha com chamas e a frase 'Curtiu? Deixa sua avaliação!' sobre mesa com hambúrgueres e fritas" loading="lazy" />
+<figcaption><strong>Hamburgueria</strong><span>Smash burger</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Vermelha com chamas e lettering de smash burger — presença garantida na mesa da sua hamburgueria.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20HAMBURGUERIA%20%28R%24%2049%2C99%29." target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+<figure class="model-card">
+<img src="https://files.catbox.moe/mz4yn9.webp" alt="Placa NFC de farmácia branca e verde com cruz e a frase 'Sua saúde avaliada com carinho!' no balcão" loading="lazy" />
+<figcaption><strong>Farmácia</strong><span>Saúde</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Branca e verde com a cruz da farmácia e uma mensagem acolhedora, pronta para o balcão.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20FARM%C3%81CIA%20%28R%24%2049%2C99%29." target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+<figure class="model-card">
+<img src="https://files.catbox.moe/rasrcy.webp" alt="Placa NFC de advocacia azul-marinho e dourada com a balança da justiça sobre mesa de escritório" loading="lazy" />
+<figcaption><strong>Advocacia</strong><span>Escritório</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Azul-marinho e dourado com a balança da justiça — sobriedade e confiança para o seu escritório.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20ADVOCACIA%20%28R%24%2049%2C99%29." target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+<figure class="model-card">
+<img src="https://files.catbox.moe/3ogppk.webp" alt="Placa NFC de academia preta e laranja com haltere e a frase 'Treinou? Avalie a gente!' na recepção" loading="lazy" />
+<figcaption><strong>Academia</strong><span>Fitness</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Preta e laranja com haltere e energia de treino, feita para a recepção da sua academia.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20ACADEMIA%20%28R%24%2049%2C99%29." target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+<figure class="model-card">
+<img src="https://files.catbox.moe/n5he8n.webp" alt="Placa NFC de imobiliária verde-petróleo e dourada com chave e a frase 'Encontrou seu lar? Conte pra gente!' sobre mesa com maquete de casas" loading="lazy" />
+<figcaption><strong>Imobiliária</strong><span>Imóveis</span></figcaption>
+<div class="model-buy">
+<p class="model-desc">Verde-petróleo e dourado com chave e moldura fina, feita para imobiliárias e corretores.</p>
+<div class="model-buy-row">
+<strong class="model-price">R$ 49,99</strong>
+<a class="button whatsapp model-buy-button" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20comprar%20a%20placa%20IMOBILI%C3%81RIA%20%28R%24%2049%2C99%29." target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Comprar pelo WhatsApp</a>
+</div>
+</div>
+</figure>
+</div>
+<p class="catalog-note">Prefere com a sua logo, suas cores e sua mensagem? <a href="#personalizar">Monte a sua no personalizador</a>.</p>
+</div>
+</section>
+</div>
+</main>
+<div class="toast" id="toast" role="status">Arte baixada.</div>
+<script src="assets/qrcode.js"></script>
+<script>
     (function(){
       var heroVideo=document.getElementById('heroVideo');
       var soundToggle=document.getElementById('soundToggle');
@@ -622,7 +693,6 @@
         },{threshold:0});
         heroVideoObserver.observe(heroVideo);
       }
-
       var companyInput=document.getElementById('companyInput');
       var companyPreview=document.getElementById('companyPreview');
       var messageInput=document.getElementById('messageInput');
@@ -667,7 +737,6 @@
       var logoGeneratorMessage=document.getElementById('logoGeneratorMessage');
       var logoResultActions=document.getElementById('logoResultActions');
       var logoUrl='',backgroundUrl='',generatedLogoUrl='',generatedLogoBlob=null,generatedLogoSource='local',currentColor='transparent',generationSeed=0;
-
       function safeName(){return companyInput.value.trim()||'SUA EMPRESA'}
       function safeMessage(){return messageInput.value.trim()}
       function normalizedReviewLink(){
@@ -876,7 +945,6 @@
       messageColor.addEventListener('input',updateMessageColor);
       reviewLink.addEventListener('input',updateReviewLink);
       updateQuantity(1);updateMessageColor();updateReviewLink();
-
       function removeFlatLogoBackground(url){
         return loadImage(url).then(function(image){
           var canvas=document.createElement('canvas'),width=image.naturalWidth||image.width,height=image.naturalHeight||image.height;
@@ -1039,7 +1107,6 @@
       }
       logoInput.addEventListener('change',function(){setFile(logoInput,'logo')});
       backgroundInput.addEventListener('change',function(){setFile(backgroundInput,'background')});
-
       function contrastFor(hex){
         var h=hex.replace('#','');
         var r=parseInt(h.slice(0,2),16),g=parseInt(h.slice(2,4),16),b=parseInt(h.slice(4,6),16);
@@ -1061,7 +1128,6 @@
         if(button){setColor(button.dataset.color);if(button.dataset.color!=='transparent')customColor.value=button.dataset.color}
       });
       customColor.addEventListener('input',function(){setColor(customColor.value)});
-
       document.getElementById('resetButton').addEventListener('click',function(){
         companyInput.value='SUA EMPRESA';messageInput.value='Sua avaliação é muito importante para nós ❤️';messageColor.value='#ffffff';reviewLink.value='';
         postalCode.value='';deliveryStreet.value='';deliveryNumber.value='';deliveryComplement.value='';deliveryNeighborhood.value='';deliveryCity.value='';deliveryState.value='';
@@ -1072,7 +1138,6 @@
         logoPreview.innerHTML='<span>LOGO</span>';logoStatus.textContent='PNG, JPG ou WebP · bordas vazias recortadas automaticamente';backgroundStatus.textContent='Opcional';
         plate.style.removeProperty('--plate-bg');setColor('transparent');
       });
-
       function setGenerationState(isLoading){
         generateLogoButton.disabled=isLoading;
         generateLogoLabel.textContent=isLoading?'Gerando…':'Gerar logo';
@@ -1167,7 +1232,6 @@
         context.save();context.shadowColor='rgba(0,0,0,.32)';context.shadowBlur=34;context.shadowOffsetY=15;context.beginPath();context.arc(512,512,404,0,Math.PI*2);context.fillStyle=background;context.fill();context.restore();
         context.beginPath();context.arc(512,512,378,0,Math.PI*2);context.strokeStyle=palette.accent;context.lineWidth=4;context.stroke();
         context.beginPath();context.arc(512,512,360,0,Math.PI*2);context.strokeStyle='rgba(244,239,228,.34)';context.lineWidth=1.5;context.stroke();
-
         var initials=logoInitials(businessName),serif='"Cormorant Garamond", Georgia, serif',sans='"DM Sans", Arial, sans-serif';
         context.fillStyle=palette.accent;
         if(style===0){
@@ -1203,7 +1267,6 @@
           drawFineLine(context,338,525,686,525,'rgba(244,239,228,.32)',1.5);drawDiamond(context,512,295,10,palette.accent,true);
           context.font='700 252px '+serif;context.fillStyle=palette.soft;context.fillText(initials,512,430);
         }
-
         var name=businessName.toUpperCase(),nameTracking=name.length>18?2:4;
         var nameSize=fitTrackedText(context,name,650,58,30,nameTracking,'600',sans);
         drawTrackedText(context,name,512,676,nameSize,nameTracking,palette.soft,'600',sans);
@@ -1290,7 +1353,6 @@
           var toast=document.getElementById('toast');toast.textContent='Logo aplicada na placa.';toast.classList.add('show');setTimeout(function(){toast.classList.remove('show')},2200);
         }finally{button.disabled=false;button.textContent=originalText}
       });
-
       function loadImage(url){return new Promise(function(resolve,reject){var image=new Image();image.onload=function(){resolve(image)};image.onerror=reject;image.src=url})}
       function drawCover(context,image,x,y,width,height,alpha){
         var scale=Math.max(width/image.width,height/image.height);var w=image.width*scale,h=image.height*scale;
@@ -1437,11 +1499,9 @@
           try{document.execCommand('copy')?resolve():reject(new Error('copy_failed'))}catch(error){reject(error)}finally{area.remove()}
         });
       }
-
       document.getElementById('downloadButton').addEventListener('click',async function(){
         try{downloadPlatePng(await createPlatePng());showToast('Arte baixada.')}catch(error){showToast('Não foi possível gerar a arte agora.')}
       });
-
       document.getElementById('whatsappButton').addEventListener('click',async function(event){
         event.preventDefault();
         if(!normalizedReviewLink()){
@@ -1493,7 +1553,6 @@
           whatsappLink.removeAttribute('aria-busy');whatsappLink.lastChild.nodeValue=originalText;
         }
       });
-
       sharePdfButton.addEventListener('click',async function(){
         try{await sharePreparedPdf();showToast('PDF e mensagem prontos no compartilhamento.')}catch(error){if(error&&error.name==='AbortError')return;if(preparedOrderPdfBlob)downloadPlatePdf(preparedOrderPdfBlob);showToast('PDF baixado para anexar no WhatsApp.')}
       });
@@ -1506,10 +1565,9 @@
       document.getElementById('copyOrderButton').addEventListener('click',function(){
         copyOrderMessage().then(function(){showToast('Mensagem copiada.')}).catch(function(){showToast('Não foi possível copiar. Selecione a mensagem no WhatsApp.')});
       });
-
     })();
-  </script>
-  <script>
+</script>
+<script>
     (function(){
       var navLinks=document.querySelectorAll('[data-nav]');
       function pageFromHash(){
@@ -1532,6 +1590,6 @@
       window.addEventListener('hashchange',renderPage);
       renderPage();
     })();
-  </script>
+</script>
 </body>
 </html>
