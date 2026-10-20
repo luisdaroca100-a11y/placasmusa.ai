@@ -1329,6 +1329,164 @@
         drawTrackedText(context,nicheLabel,512,772,nicheSize,nicheTracking,palette.accent,'500',sans);
         return new Promise(function(resolve,reject){canvas.toBlob(function(blob){blob?resolve(blob):reject(new Error('canvas_failed'))},'image/png')});
       }
+      function nicheIconId(niche){
+        var v=niche.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+        if(/pizza/.test(v))return 'pizza';
+        if(/hamburg|burger|lanche/.test(v))return 'burger';
+        if(/cafe|espresso/.test(v))return 'coffee';
+        if(/barbear|barber/.test(v))return 'scissors';
+        if(/pet|veterin|animal/.test(v))return 'paw';
+        if(/farmacia|drogaria/.test(v))return 'cross';
+        if(/academia|fitness|crossfit|muscul/.test(v))return 'dumbbell';
+        if(/advoca|jurid|direito/.test(v))return 'scales';
+        if(/imobili|imove|corretor|constru|engenharia|arquitetura/.test(v))return 'house';
+        if(/restaurante|comida|marmita|refeicao|gastronomia/.test(v))return 'cloche';
+        if(/padaria|confeitaria|bolo|doce|doceria/.test(v))return 'cake';
+        if(/sorvet|gelato|acai/.test(v))return 'icecream';
+        if(/oficina|mecanica|auto|carro|moto|pneu/.test(v))return 'wrench';
+        if(/floricultura|flor|jardim|planta/.test(v))return 'flower';
+        if(/saude|clinica|odonto|medic|estetica|beleza|salao|cabeleir|maquiagem|unha|spa|cosmet/.test(v))return 'flower';
+        if(/moda|roupa|boutique|vestuario/.test(v))return 'bag';
+        if(/mercado|mercearia|emporio|loja/.test(v))return 'cart';
+        if(/chaveiro|chave/.test(v))return 'key';
+        if(/natural|organico|vegan|natureza/.test(v))return 'leaf';
+        if(/amor|coracao|presente|festa|evento/.test(v))return 'heart';
+        return 'star';
+      }
+      function rrPath(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
+      function drawLogoIcon(context,icon,x,y,size,color,hole){
+        var s=size;context.save();context.translate(x,y);context.fillStyle=color;context.strokeStyle=color;context.lineCap='round';context.lineJoin='round';
+        function dot(cx,cy,r,fill){context.save();context.fillStyle=fill;context.beginPath();context.arc(cx*s,cy*s,r*s,0,Math.PI*2);context.fill();context.restore()}
+        if(icon==='pizza'){
+          context.lineWidth=s*.045;context.beginPath();context.arc(0,0,s*.40,0,Math.PI*2);context.stroke();
+          context.lineWidth=s*.02;context.beginPath();context.arc(0,0,s*.335,0,Math.PI*2);context.stroke();
+          context.beginPath();context.moveTo(0,s*.40);context.lineTo(-s*.235,-s*.155);context.quadraticCurveTo(0,-s*.335,s*.235,-s*.155);context.closePath();context.fill();
+          dot(-.07,-.02,.045,hole);dot(.09,.10,.045,hole);dot(-.02,.20,.045,hole);
+        }else if(icon==='burger'){
+          context.beginPath();context.arc(0,-s*.02,s*.30,Math.PI,0);context.closePath();context.fill();
+          dot(-.12,-.20,.02,hole);dot(.02,-.26,.02,hole);dot(.14,-.19,.02,hole);
+          rrPath(context,-s*.32,s*.04,s*.64,s*.10,s*.05);context.fill();
+          context.lineWidth=s*.045;context.beginPath();context.moveTo(-s*.34,s*.21);context.quadraticCurveTo(-s*.17,s*.13,0,s*.21);context.quadraticCurveTo(s*.17,s*.29,s*.34,s*.21);context.stroke();
+          rrPath(context,-s*.30,s*.27,s*.60,s*.09,s*.04);context.fill();
+        }else if(icon==='coffee'){
+          context.beginPath();context.moveTo(-s*.26,-s*.16);context.lineTo(s*.26,-s*.16);context.lineTo(s*.19,s*.22);context.lineTo(-s*.19,s*.22);context.closePath();context.fill();
+          context.lineWidth=s*.06;context.beginPath();context.arc(s*.315,-s*.03,s*.105,-1.15,1.15);context.stroke();
+          rrPath(context,-s*.30,s*.30,s*.60,s*.05,s*.02);context.fill();
+          context.lineWidth=s*.05;context.globalAlpha=.75;
+          context.beginPath();context.moveTo(-s*.10,-s*.28);context.quadraticCurveTo(-s*.16,-s*.38,-s*.10,-s*.48);context.stroke();
+          context.beginPath();context.moveTo(s*.10,-s*.28);context.quadraticCurveTo(s*.04,-s*.38,s*.10,-s*.48);context.stroke();
+          context.globalAlpha=1;
+        }else if(icon==='scissors'){
+          context.lineWidth=s*.07;
+          context.beginPath();context.moveTo(-s*.11,s*.12);context.lineTo(s*.28,-s*.28);context.stroke();
+          context.beginPath();context.moveTo(s*.11,s*.12);context.lineTo(-s*.28,-s*.28);context.stroke();
+          context.beginPath();context.arc(-s*.17,s*.21,s*.09,0,Math.PI*2);context.stroke();
+          context.beginPath();context.arc(s*.17,s*.21,s*.09,0,Math.PI*2);context.stroke();
+          dot(0,-s*.03,.04,color);
+        }else if(icon==='paw'){
+          [[-.26,-.06,-.31],[ -.09,-.17,-.10],[.09,-.17,.10],[.26,-.06,.31]].forEach(function(t){
+            context.save();context.translate(t[0]*s,t[1]*s);context.rotate(t[2]);context.beginPath();context.ellipse(0,0,s*.075,s*.102,0,0,Math.PI*2);context.fill();context.restore();
+          });
+          context.beginPath();context.ellipse(0,s*.14,s*.175,s*.14,0,0,Math.PI*2);context.fill();
+        }else if(icon==='cross'){
+          rrPath(context,-s*.11,-s*.40,s*.22,s*.80,s*.05);context.fill();
+          rrPath(context,-s*.40,-s*.11,s*.80,s*.22,s*.05);context.fill();
+        }else if(icon==='dumbbell'){
+          context.fillRect(-s*.46,-s*.045,s*.92,s*.09);
+          rrPath(context,-s*.46,-s*.20,s*.13,s*.40,s*.04);context.fill();
+          rrPath(context,-s*.30,-s*.28,s*.13,s*.56,s*.04);context.fill();
+          rrPath(context,s*.17,-s*.28,s*.13,s*.56,s*.04);context.fill();
+          rrPath(context,s*.33,-s*.20,s*.13,s*.40,s*.04);context.fill();
+        }else if(icon==='house'){
+          context.lineWidth=s*.09;context.beginPath();context.moveTo(-s*.44,-s*.02);context.lineTo(0,-s*.38);context.lineTo(s*.44,-s*.02);context.stroke();
+          context.fillRect(-s*.30,-s*.02,s*.60,s*.38);
+          context.save();context.fillStyle=hole;context.fillRect(-s*.08,s*.12,s*.16,s*.24);context.restore();
+        }else if(icon==='scales'){
+          context.fillRect(-s*.035,-s*.30,s*.07,s*.56);
+          context.fillRect(-s*.40,-s*.36,s*.80,s*.06);
+          dot(0,-s*.43,.05,color);
+          rrPath(context,-s*.20,s*.28,s*.40,s*.07,s*.03);context.fill();
+          context.lineWidth=s*.032;
+          [-1,1].forEach(function(side){
+            context.beginPath();context.moveTo(side*s*.36,-s*.33);context.lineTo(side*s*.23,-s*.02);context.stroke();
+            context.beginPath();context.moveTo(side*s*.36,-s*.33);context.lineTo(side*s*.49,-s*.02);context.stroke();
+            context.beginPath();context.arc(side*s*.36,-s*.02,s*.14,0,Math.PI);context.closePath();context.fill();
+          });
+        }else if(icon==='cloche'){
+          context.beginPath();context.arc(0,s*.08,s*.34,Math.PI,0);context.closePath();context.fill();
+          context.fillRect(-s*.015,-s*.30,s*.03,s*.06);
+          dot(0,-s*.335,.05,color);
+          rrPath(context,-s*.42,s*.14,s*.84,s*.06,s*.03);context.fill();
+        }else if(icon==='cake'){
+          rrPath(context,-s*.34,s*.02,s*.68,s*.30,s*.04);context.fill();
+          rrPath(context,-s*.24,-s*.24,s*.48,s*.26,s*.04);context.fill();
+          context.fillRect(-s*.02,-s*.42,s*.04,s*.16);
+          context.save();context.fillStyle=hole;context.beginPath();context.ellipse(0,-s*.485,s*.035,s*.06,0,0,Math.PI*2);context.fill();context.restore();
+        }else if(icon==='icecream'){
+          context.beginPath();context.arc(0,-s*.08,s*.24,0,Math.PI*2);context.fill();
+          context.beginPath();context.moveTo(-s*.20,s*.0);context.lineTo(s*.20,s*.0);context.lineTo(0,s*.44);context.closePath();context.fill();
+          dot(0,-s*.26,.045,hole);
+        }else if(icon==='wrench'){
+          context.save();context.rotate(-.6);
+          rrPath(context,-s*.065,-s*.20,s*.13,s*.52,s*.06);context.fill();
+          context.beginPath();context.arc(0,-s*.26,s*.175,0,Math.PI*2);context.fill();
+          context.save();context.fillStyle=hole;context.beginPath();context.moveTo(0,-s*.26);context.lineTo(-s*.105,-s*.47);context.lineTo(s*.105,-s*.47);context.closePath();context.fill();context.restore();
+          context.restore();
+        }else if(icon==='flower'){
+          for(var k=0;k<5;k++){context.save();context.rotate(k*Math.PI*2/5);context.beginPath();context.ellipse(0,-s*.21,s*.11,s*.20,0,0,Math.PI*2);context.fill();context.restore()}
+          dot(0,0,.07,hole);
+        }else if(icon==='heart'){
+          context.beginPath();context.moveTo(0,s*.36);context.bezierCurveTo(-s*.55,s*.02,-s*.30,-s*.40,0,-s*.17);context.bezierCurveTo(s*.30,-s*.40,s*.55,s*.02,0,s*.36);context.fill();
+        }else if(icon==='bag'){
+          context.beginPath();context.moveTo(-s*.30,-s*.16);context.lineTo(s*.30,-s*.16);context.lineTo(s*.34,s*.38);context.lineTo(-s*.34,s*.38);context.closePath();context.fill();
+          context.lineWidth=s*.06;context.beginPath();context.arc(0,-s*.16,s*.16,Math.PI,0);context.stroke();
+          dot(-.16,-.16,.028,hole);dot(.16,-.16,.028,hole);
+        }else if(icon==='cart'){
+          context.beginPath();context.moveTo(-s*.36,-s*.26);context.lineTo(s*.38,-s*.26);context.lineTo(s*.29,s*.12);context.lineTo(-s*.28,s*.12);context.closePath();context.fill();
+          rrPath(context,-s*.48,-s*.30,s*.13,s*.055,s*.025);context.fill();
+          dot(-.22,.30,.06,color);dot(.22,.30,.06,color);
+        }else if(icon==='key'){
+          context.lineWidth=s*.08;
+          context.beginPath();context.arc(-s*.18,-s*.18,s*.155,0,Math.PI*2);context.stroke();
+          context.beginPath();context.moveTo(-s*.07,-s*.07);context.lineTo(s*.34,s*.34);context.stroke();
+          context.beginPath();context.moveTo(s*.22,s*.22);context.lineTo(s*.34,s*.10);context.stroke();
+          context.beginPath();context.moveTo(s*.11,s*.11);context.lineTo(s*.23,-s*.01);context.stroke();
+        }else if(icon==='leaf'){
+          context.beginPath();context.moveTo(0,s*.40);context.quadraticCurveTo(-s*.46,s*.08,-s*.30,-s*.32);context.quadraticCurveTo(-s*.02,-s*.46,s*.34,-s*.36);context.quadraticCurveTo(s*.42,s*.06,0,s*.40);context.fill();
+          context.save();context.strokeStyle=hole;context.lineWidth=s*.04;context.beginPath();context.moveTo(0,s*.32);context.quadraticCurveTo(s*.03,-s*.02,s*.17,-s*.24);context.stroke();context.restore();
+        }else{
+          context.beginPath();
+          for(var p=0;p<10;p++){var ang=-Math.PI/2+p*Math.PI/5,rad=p%2?s*.17:s*.42;var px=Math.cos(ang)*rad,py=Math.sin(ang)*rad;if(p===0)context.moveTo(px,py);else context.lineTo(px,py)}
+          context.closePath();context.fill();
+        }
+        context.restore();
+      }
+      function createIconLogoBlob(businessName,niche,variant){
+        var combos=[
+          {bg1:'#1e3d31',bg2:'#0d231b',ring:'#c9a227',icon:'#c9a227',name:'#f4efe4',niche:'#c9a227',serif:true},
+          {bg1:'#fdfbf5',bg2:'#ece3cd',ring:'#173f39',icon:'#173f39',name:'#173f39',niche:'#a07d14',serif:true},
+          {bg1:'#26292f',bg2:'#0f1013',ring:'#c0c4cc',icon:'#e8eaed',name:'#f2f3f5',niche:'#9aa1ab',serif:false},
+          {bg1:'#1d3453',bg2:'#0c1c31',ring:'#d2ad67',icon:'#d2ad67',name:'#f6f0e5',niche:'#d2ad67',serif:true},
+          {bg1:'#5c2432',bg2:'#30111a',ring:'#e8cdb2',icon:'#e8cdb2',name:'#f7ead9',niche:'#d9a679',serif:true},
+          {bg1:'#1a1b1f',bg2:'#060607',ring:'#f2f2f2',icon:'#ffffff',name:'#ffffff',niche:'#bdbdbd',serif:false}
+        ];
+        var signature=hashLogoText(businessName+'|'+niche),combo=combos[(signature+variant)%combos.length];
+        var canvas=document.createElement('canvas');canvas.width=1024;canvas.height=1024;
+        var context=canvas.getContext('2d');context.textAlign='center';context.textBaseline='middle';context.lineCap='round';context.lineJoin='round';
+        var background=context.createRadialGradient(512,420,60,512,512,730);background.addColorStop(0,combo.bg1);background.addColorStop(1,combo.bg2);
+        context.fillStyle=background;context.fillRect(0,0,1024,1024);
+        context.strokeStyle=combo.ring;context.lineWidth=9;context.beginPath();context.arc(512,512,470,0,Math.PI*2);context.stroke();
+        context.globalAlpha=.5;context.lineWidth=2;context.beginPath();context.arc(512,512,446,0,Math.PI*2);context.stroke();context.globalAlpha=1;
+        drawLogoIcon(context,nicheIconId(niche),512,326,302,combo.icon,combo.bg2);
+        var serif='"Playfair Display",Georgia,"Times New Roman",serif',sans='"DM Sans",Arial,sans-serif';
+        var name=businessName.toUpperCase(),family=combo.serif?serif:sans,weight=combo.serif?'700':'800',tracking=name.length>16?2:4;
+        var nameSize=fitTrackedText(context,name,650,62,30,tracking,weight,family);
+        drawTrackedText(context,name,512,648,nameSize,tracking,combo.name,weight,family);
+        drawFineLine(context,352,706,468,706,combo.ring,2.5);drawFineLine(context,556,706,672,706,combo.ring,2.5);drawDiamond(context,512,706,8,combo.ring,true);
+        var nicheLabel=niche.toUpperCase(),nicheSize=fitTrackedText(context,nicheLabel,520,27,17,5,'600',sans);
+        drawTrackedText(context,nicheLabel,512,754,nicheSize,5,combo.niche,'600',sans);
+        return new Promise(function(resolve,reject){canvas.toBlob(function(blob){blob?resolve(blob):reject(new Error('canvas_failed'))},'image/png')});
+      }
       function createAiLogoBlob(businessName,niche,variant){
         var prompt='professional vector logo symbol for '+niche+', centered emblem, bold simple shapes, high contrast, no words, no letters, no mockup, square composition';
         var endpoint='https://image.pollinations.ai/prompt/'+encodeURIComponent(prompt)+'?width=1024&height=1024&model=flux&seed='+(hashLogoText(niche)+variant)+'&nologo=true&enhance=true';
@@ -1369,14 +1527,14 @@
         try{
           var usedFallback=false;
           try{
-            generatedLogoBlob=await createAiLogoBlob(businessName,niche,generationSeed);generatedLogoSource='ia';
+            generatedLogoBlob=await createIconLogoBlob(businessName,niche,generationSeed);generatedLogoSource='icone';
           }catch(aiError){
             generatedLogoBlob=await createLogoBlob(businessName,niche,generationSeed);generatedLogoSource='local';usedFallback=true;
           }
           generatedLogoUrl=URL.createObjectURL(generatedLogoBlob);
           var image=document.createElement('img');image.src=generatedLogoUrl;image.alt='Logo criada para '+businessName;
           await loadImage(generatedLogoUrl);generatedLogoCanvas.appendChild(image);
-          logoGeneratorMessage.textContent=usedFallback?'A IA não respondeu agora, então criamos uma opção automática para você continuar.':'Logo criada com IA. Se quiser, gere outra opção ou aplique esta na placa.';
+          logoGeneratorMessage.textContent=usedFallback?'Criamos uma opção alternativa para você continuar.':'Logo criada! Se quiser, gere outra opção ou aplique esta na placa.';
           logoResultActions.classList.add('show');
         }catch(error){
           logoPlaceholder.hidden=false;logoGeneratorMessage.textContent='Não foi possível criar a logo. Recarregue a página e tente novamente.';
