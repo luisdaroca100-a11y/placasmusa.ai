@@ -230,7 +230,7 @@
     .topnav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px 0}
     .topnav-brand{font-family:"League Spartan",sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.02em;color:var(--ink);text-decoration:none;white-space:nowrap}
     .topnav-brand span{color:var(--red)}
-    .topnav-links{display:flex;gap:6px;flex-wrap:wrap}
+    .topnav-links{display:flex;gap:6px;flex-wrap:nowrap}
     .topnav-links a{padding:9px 15px;border-radius:999px;color:var(--muted);font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s,color .2s}
     .topnav-links a:hover{color:var(--ink);background:var(--soft)}
     .topnav-links a:focus-visible{outline:3px solid color-mix(in srgb,var(--yellow) 70%,transparent);outline-offset:2px}
@@ -255,13 +255,20 @@
     .catalog-note{margin:24px 0 0;color:var(--muted)}
     .catalog-note a{color:var(--red-deep);font-weight:700;text-underline-offset:3px}
     @media(max-width:560px){
-      .topnav-inner{padding:10px 0;gap:12px}
-      .topnav-brand{font-size:1.05rem}
-      .topnav-links a{padding:8px 10px;font-size:.82rem}
+      .topnav-inner{flex-direction:column;align-items:stretch;gap:10px;padding:12px 0}
+      .topnav-brand{font-size:1.18rem;text-align:center}
+      .topnav-links{display:flex;flex-wrap:nowrap;gap:2px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px}
+      .topnav-links a{flex:1 1 0;text-align:center;padding:8px 2px;font-size:.8rem;border-radius:999px;white-space:nowrap}
       .cta-band{padding:44px 0}
       .model-buy{padding:14px 16px 16px}
     }
-    @media(max-width:900px){
+    @media(max-width:860px){
+      .topnav-inner{flex-direction:column;align-items:stretch;gap:10px;padding:12px 0}
+      .topnav-brand{font-size:1.18rem;text-align:center}
+      .topnav-links{display:flex;flex-wrap:nowrap;gap:2px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px}
+      .topnav-links a{flex:1 1 0;text-align:center;padding:8px 2px;font-size:.8rem;border-radius:999px;white-space:nowrap}
+    }
+@media(max-width:900px){
       .intro{grid-template-columns:1fr;gap:34px;padding-top:48px}.intro-content{margin-right:0}.intro-copy{max-width:650px}.hero-media{justify-self:center;width:min(100%,340px)}.logo-lab-head,.gallery-head{grid-template-columns:1fr;gap:24px;align-items:start}.logo-generator{grid-template-columns:1fr}.logo-form{padding:30px 0}.logo-result{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:30px 0 0}.builder{grid-template-columns:1fr}.panel{order:2}.stage{order:1;min-height:0}.workbench-head{align-items:start;flex-direction:column}.workbench-head p{max-width:640px}.details-lead{grid-template-columns:1fr;gap:26px;align-items:start}
     }
     @media(max-width:560px){
