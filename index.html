@@ -127,6 +127,14 @@
     .shipping-status[data-state="loading"]{color:var(--red-deep);font-weight:600}
     .shipping-status[data-state="valid"]{color:var(--red-deep);font-weight:700}
     .shipping-status[data-state="invalid"]{color:#a53b32;font-weight:700}
+.order-review{margin:18px 0 4px;padding:16px 18px;border:1.5px solid var(--line);border-radius:14px;background:var(--paper)}
+    .order-review h3{margin:0 0 10px;font-size:1rem}
+    .order-review ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+    .order-review li{display:flex;justify-content:space-between;gap:14px;font-size:.92rem}
+    .order-review li span{color:var(--muted);white-space:nowrap}
+    .order-review li b{text-align:right;font-weight:700}
+    .order-review li.total{border-top:1px solid var(--line);padding-top:9px;font-size:1.05rem}
+    .order-review-note{margin:12px 0 0;color:var(--muted);font-size:.85rem}
     .shipping-totals{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:13px;margin-top:3px;font-size:.75rem}
     .shipping-total-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;color:var(--muted)}
     .shipping-total-row b{color:var(--ink);font-variant-numeric:tabular-nums}
@@ -301,7 +309,7 @@
 <ul class="proofs" aria-label="Recursos da personalização">
 <li>Prévia em tempo real</li>
 <li>Vista frontal</li>
-<li>Exportação em PNG e PDF</li>
+<li>Exportação em PNG</li>
 </ul>
 <div class="intro-actions">
 <a class="button primary" href="#catalogo">Ver placas prontas</a>
@@ -433,7 +441,7 @@
 <input class="color-input" id="customColor" type="color" value="#151515" aria-label="Escolher outra cor" />
 </div>
 </div>
-<div class="field"> <span class="field-title">Formato da placa</span> <div class="shapes" id="shapeOptions"> <button class="shape-btn" type="button" data-shape="tradicional" aria-pressed="true">Tradicional</button> <button class="shape-btn" type="button" data-shape="redonda" aria-pressed="false">Redonda</button> <button class="shape-btn" type="button" data-shape="quadrada" aria-pressed="false">Quadrada</button> <button class="shape-btn" type="button" data-shape="oval" aria-pressed="false">Oval</button>  </div> <p class="hint">O formato vale pra prévia, pra arte do pedido (PNG/PDF) e vai avisado na mensagem do WhatsApp.</p> </div> <div class="actions">
+<div class="field"> <span class="field-title">Formato da placa</span> <div class="shapes" id="shapeOptions"> <button class="shape-btn" type="button" data-shape="tradicional" aria-pressed="true">Tradicional</button> <button class="shape-btn" type="button" data-shape="redonda" aria-pressed="false">Redonda</button> <button class="shape-btn" type="button" data-shape="quadrada" aria-pressed="false">Quadrada</button> <button class="shape-btn" type="button" data-shape="oval" aria-pressed="false">Oval</button>  </div> <p class="hint">O formato vale pra prévia, pra arte do pedido (PNG) e vai avisado na mensagem do WhatsApp.</p> </div> <div class="actions">
 <button class="button primary" id="downloadButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 20h14"/></svg>Baixar arte em PNG</button>
 <div class="quantity-selector" aria-label="Quantidade de placas">
 <div class="quantity-copy">
@@ -494,21 +502,15 @@
 <div class="shipping-total-row grand"><span>Total do pedido</span><b id="orderTotal">R$ 49,99</b></div>
 </div>
 </section>
-<a class="button whatsapp" id="whatsappButton" href="#personalizar" aria-disabled="true" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Pedir pelo WhatsApp</a>
+<div class="order-review" id="orderReview">
+<h3>Resumo do pedido</h3>
+<ul id="orderReviewList"></ul>
+<p class="order-review-note">Confira tudo aqui no site. Ao finalizar, só esse resumo vai pro WhatsApp — se quiser, baixe a foto da placa no botão de PNG e envie na conversa.</p>
+</div>
+<a class="button whatsapp" id="whatsappButton" href="#personalizar" aria-disabled="true" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Finalizar pedido pelo WhatsApp</a>
 <button class="button secondary" id="resetButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M5.4 15a7 7 0 1 0 1.2-7.7L4 10"/></svg>Começar de novo</button>
 </div>
 <p class="session-note">Os arquivos usados na prévia ficam somente enquanto esta página estiver aberta.</p>
-<div class="share-helper" id="shareHelper" hidden>
-<strong id="shareHelperTitle">Arquivos prontos para o pedido</strong>
-<p id="shareHelperText">Compartilhe o PDF com a mensagem pelo menu do celular. A foto PNG também fica disponível.</p>
-<div class="share-helper-actions">
-<button class="button secondary" id="sharePdfButton" type="button">Compartilhar PDF + mensagem</button>
-<button class="button secondary" id="downloadPdfButton" type="button">Baixar PDF</button>
-<button class="button secondary" id="sharePhotoButton" type="button">Compartilhar foto PNG</button>
-<button class="button secondary" id="copyOrderButton" type="button">Copiar mensagem</button>
-<a class="button whatsapp" id="openWhatsappButton" href="https://wa.me/5519971995144" target="_blank" rel="noopener noreferrer">Abrir WhatsApp com a mensagem</a>
-</div>
-</div>
 </form>
 <div class="stage" aria-live="polite">
 <span class="caption">Prévia realista · vista frontal</span>
@@ -764,39 +766,62 @@
       function shippingLabel(){return shippingCents===0?'GRÁTIS':shippingCents===null?'A calcular':formatPrice(shippingCents)}
       function orderMessage(){
         var productCents=quantity*unitPriceCents,totalCents=productCents+(shippingCents||0);
-        return 'Olá! Quero pedir uma Placa Nota 10 personalizada.\n\n'+
+        return '*NOVO PEDIDO — PLACA NOTA 10* ✅\n\n'+
+          '*PLACA*\n'+
           'Empresa: '+safeName()+'\n'+
-          'Formato: '+(PLATE_SHAPES[currentShape]?PLATE_SHAPES[currentShape].label:'Tradicional')+'\n'+           (referenceModel?('Modelo de referência: '+referenceModel+'\n'):'')+
+          'Formato: '+(PLATE_SHAPES[currentShape]?PLATE_SHAPES[currentShape].label:'Tradicional')+'\n'+
+          (referenceModel?('Modelo de referência: '+referenceModel+'\n'):'')+
           'Mensagem: '+(safeMessage()||'Sem mensagem')+'\n'+
           'Cor da mensagem: '+messageColor.value.toUpperCase()+'\n'+
           'Link de avaliação (NFC e QR Code): '+(normalizedReviewLink()||'Não informado')+'\n\n'+
-          'PEDIDO\n'+
+          '*PEDIDO*\n'+
           'Quantidade: '+quantity+' '+(quantity===1?'placa':'placas')+'\n'+
           'Valor unitário: '+formatPrice(unitPriceCents)+'\n'+
-          'Subtotal dos produtos: '+formatPrice(productCents)+'\n\n'+
-          'ENDEREÇO DE ENTREGA\n'+
+          'Subtotal: '+formatPrice(productCents)+'\n\n'+
+          '*ENTREGA*\n'+
           'CEP: '+postalCode.value.trim()+'\n'+
           'Endereço: '+deliveryStreet.value.trim()+', '+deliveryNumber.value.trim()+(deliveryComplement.value.trim()?' — '+deliveryComplement.value.trim():'')+'\n'+
           'Bairro: '+deliveryNeighborhood.value.trim()+'\n'+
-          'Cidade/UF: '+deliveryCity.value.trim()+'/'+deliveryState.value.trim().toUpperCase()+'\n\n'+
-          'Produtos ('+quantity+' '+(quantity===1?'placa':'placas')+'): '+formatPrice(productCents)+'\n'+
-          'Frete: '+shippingLabel()+'\n'+
-          'TOTAL DO PEDIDO: '+formatPrice(totalCents)+'.';
+          'Cidade/UF: '+deliveryCity.value.trim()+'/'+deliveryState.value.trim().toUpperCase()+'\n'+
+          'Frete: '+shippingLabel()+'\n\n'+
+          '*TOTAL: '+formatPrice(totalCents)+'*\n\n'+
+          'Vou enviar a foto da minha placa aqui na conversa. 📷';
+      }
+      function renderOrderReview(){
+        var list=document.getElementById('orderReviewList');if(!list)return;
+        var productCents=quantity*unitPriceCents,totalCents=productCents+(shippingCents||0);
+        var cityUf=(deliveryCity.value.trim()+'/'+deliveryState.value.trim().toUpperCase()).replace(/^\//,'').replace(/\/$/,'');
+        var address=[deliveryStreet.value.trim()+(deliveryNumber.value.trim()?', '+deliveryNumber.value.trim():''),deliveryNeighborhood.value.trim(),cityUf,postalCode.value.trim()?'CEP '+postalCode.value.trim():''].filter(Boolean).join(' · ');
+        var rows=[
+          ['Empresa',safeName()],
+          ['Formato',(PLATE_SHAPES[currentShape]?PLATE_SHAPES[currentShape].label:'Tradicional')+(referenceModel?' · ref.: '+referenceModel:'')],
+          ['Mensagem',safeMessage()||'Sem mensagem'],
+          ['Link de avaliação',normalizedReviewLink()||'Não informado'],
+          ['Quantidade',quantity+' '+(quantity===1?'placa':'placas')+' × '+formatPrice(unitPriceCents)],
+          ['Subtotal',formatPrice(productCents)],
+          ['Entrega',address||'Preencha o CEP e o endereço'],
+          ['Frete',shippingLabel()]
+        ];
+        list.innerHTML=rows.map(function(){return '<li><span></span><b></b></li>'}).join('')+'<li class="total"><span>Total</span><b></b></li>';
+        var items=list.querySelectorAll('li');
+        rows.forEach(function(r,k){items[k].querySelector('span').textContent=r[0];items[k].querySelector('b').textContent=r[1]});
+        items[items.length-1].querySelector('b').textContent=formatPrice(totalCents);
       }
       function updateOrderTotals(){
         var productCents=quantity*unitPriceCents,totalCents=productCents+(shippingCents||0),quantityName=quantity===1?'placa':'placas';
         quantitySummary.textContent=quantity+' '+quantityName+' × '+formatPrice(unitPriceCents)+' cada';
         productsLabel.textContent='Produtos ('+quantity+' '+quantityName+')';
         productsTotal.textContent=formatPrice(productCents);
-        shippingTotal.textContent=shippingLabel();orderTotal.textContent=formatPrice(totalCents);
+        shippingTotal.textContent=shippingLabel();orderTotal.textContent=formatPrice(totalCents);renderOrderReview();
       }
       function updateWhatsAppLink(){
         var ready=!!normalizedReviewLink()&&shippingCents!==null&&addressIsComplete()&&!shippingLookupPending;
         var href=ready?'https://wa.me/5519971995144?text='+encodeURIComponent(orderMessage()):'#personalizar';
-        ['whatsappButton','openWhatsappButton'].forEach(function(id){
+        ['whatsappButton'].forEach(function(id){
           var button=document.getElementById(id);button.href=href;
           if(ready)button.removeAttribute('aria-disabled');else button.setAttribute('aria-disabled','true');
         });
+        renderOrderReview();
       }
       function updateQuantity(nextQuantity){
         quantity=Math.max(1,Math.min(99,nextQuantity));
@@ -1653,52 +1678,10 @@
       function showToast(message){
         var toast=document.getElementById('toast');toast.textContent=message;toast.classList.add('show');setTimeout(function(){toast.classList.remove('show')},2600);
       }
-      var preparedOrderBlob=null,preparedOrderPdfBlob=null;
-      var shareHelper=document.getElementById('shareHelper');
-      var shareHelperTitle=document.getElementById('shareHelperTitle');
-      var shareHelperText=document.getElementById('shareHelperText');
-      var sharePhotoButton=document.getElementById('sharePhotoButton');
-      var sharePdfButton=document.getElementById('sharePdfButton');
-      var downloadPdfButton=document.getElementById('downloadPdfButton');
-      function fileFromOrderBlob(blob){return new File([blob],'placanota10-'+safeDownloadName(safeName())+'.png',{type:'image/png'})}
-      function pdfFileFromOrderBlob(blob){return new File([blob],'placanota10-pedido-'+safeDownloadName(safeName())+'.pdf',{type:'application/pdf'})}
-      function canAttemptFileShare(file){
-        if(!navigator.share||typeof File==='undefined')return false;
-        if(!navigator.canShare)return true;
-        try{return navigator.canShare({files:[file]})}catch(error){return false}
-      }
-      function revealShareHelper(title,message,canSharePhoto,canSharePdf){
-        shareHelperTitle.textContent=title;shareHelperText.textContent=message;sharePhotoButton.hidden=!canSharePhoto;sharePdfButton.hidden=!canSharePdf;shareHelper.hidden=false;
-        shareHelper.scrollIntoView({behavior:'smooth',block:'nearest'});
-      }
-      async function prepareOrderFiles(){
-        var canvas=await createPlateCanvas();
-        preparedOrderBlob=await canvasToPngBlob(canvas);preparedOrderPdfBlob=await createPlatePdf(canvas);
-      }
-      async function sharePreparedPhoto(){
-        if(!preparedOrderBlob)await prepareOrderFiles();
-        var file=fileFromOrderBlob(preparedOrderBlob);
-        if(!canAttemptFileShare(file))throw new Error('file_share_unavailable');
-        await navigator.share({files:[file]});
-      }
-      async function sharePreparedPdf(){
-        if(!preparedOrderPdfBlob)await prepareOrderFiles();
-        var file=pdfFileFromOrderBlob(preparedOrderPdfBlob);
-        if(!canAttemptFileShare(file))throw new Error('file_share_unavailable');
-        await navigator.share({files:[file],text:orderMessage(),title:'Pedido Placa Nota 10'});
-      }
-      function copyOrderMessage(){
-        var text=orderMessage();
-        if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(text);
-        return new Promise(function(resolve,reject){
-          var area=document.createElement('textarea');area.value=text;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();
-          try{document.execCommand('copy')?resolve():reject(new Error('copy_failed'))}catch(error){reject(error)}finally{area.remove()}
-        });
-      }
       document.getElementById('downloadButton').addEventListener('click',async function(){
         try{downloadPlatePng(await createPlatePng());showToast('Arte baixada.')}catch(error){showToast('Não foi possível gerar a arte agora.')}
       });
-      document.getElementById('whatsappButton').addEventListener('click',async function(event){
+      document.getElementById('whatsappButton').addEventListener('click',function(event){
         event.preventDefault();
         if(!normalizedReviewLink()){
           reviewLink.setCustomValidity('Informe um link completo começando com https://');
@@ -1716,53 +1699,8 @@
             requiredAddressFields[fieldIndex].focus();requiredAddressFields[fieldIndex].reportValidity();showToast('Complete o endereço de entrega.');return;
           }
         }
-        var whatsappLink=this,originalText=whatsappLink.lastChild.nodeValue;
-        whatsappLink.setAttribute('aria-busy','true');whatsappLink.lastChild.nodeValue=' Preparando PDF…';shareHelper.hidden=true;
-        try{
-          await prepareOrderFiles();
-          var pdfFile=pdfFileFromOrderBlob(preparedOrderPdfBlob),photoFile=fileFromOrderBlob(preparedOrderBlob);
-          var canSharePdf=canAttemptFileShare(pdfFile),canSharePhoto=canAttemptFileShare(photoFile);
-          if(canSharePdf){
-            await navigator.share({files:[pdfFile],text:orderMessage(),title:'Pedido Placa Nota 10'});
-            revealShareHelper('PDF e mensagem compartilhados','O PDF leva a foto da placa. Se o WhatsApp não preencher o texto automaticamente, use “Copiar mensagem” abaixo.',canSharePhoto,true);
-            showToast('PDF e mensagem prontos no compartilhamento.');
-          }else{
-            downloadPlatePdf(preparedOrderPdfBlob);
-            revealShareHelper('PDF baixado','Este navegador não compartilha PDF diretamente. Anexe o PDF baixado no WhatsApp e use a mensagem pronta abaixo.',canSharePhoto,false);
-            showToast('PDF baixado para anexar no WhatsApp.');
-          }
-        }catch(error){
-          if(error&&error.name==='AbortError'){
-            if(preparedOrderPdfBlob){
-              var cancelledPdf=pdfFileFromOrderBlob(preparedOrderPdfBlob),cancelledPhoto=fileFromOrderBlob(preparedOrderBlob);
-              revealShareHelper('Arquivos prontos','O compartilhamento foi fechado. Você pode tentar de novo ou abrir o WhatsApp com a mensagem.',canAttemptFileShare(cancelledPhoto),canAttemptFileShare(cancelledPdf));
-            }
-            return;
-          }
-          if(preparedOrderPdfBlob){
-            downloadPlatePdf(preparedOrderPdfBlob);
-            var fallbackPhoto=fileFromOrderBlob(preparedOrderBlob);
-            revealShareHelper('PDF baixado','O compartilhamento não abriu neste navegador. Anexe o PDF baixado no WhatsApp e use a mensagem pronta abaixo.',canAttemptFileShare(fallbackPhoto),false);
-            showToast('PDF baixado para anexar no WhatsApp.');
-          }else showToast('Não foi possível gerar o PDF agora.');
-        }finally{
-          whatsappLink.removeAttribute('aria-busy');whatsappLink.lastChild.nodeValue=originalText;
-        }
+        window.open('https://wa.me/5519971995144?text='+encodeURIComponent(orderMessage()),'_blank');
       });
-      sharePdfButton.addEventListener('click',async function(){
-        try{await sharePreparedPdf();showToast('PDF e mensagem prontos no compartilhamento.')}catch(error){if(error&&error.name==='AbortError')return;if(preparedOrderPdfBlob)downloadPlatePdf(preparedOrderPdfBlob);showToast('PDF baixado para anexar no WhatsApp.')}
-      });
-      downloadPdfButton.addEventListener('click',async function(){
-        try{if(!preparedOrderPdfBlob)await prepareOrderFiles();downloadPlatePdf(preparedOrderPdfBlob);showToast('PDF baixado.')}catch(error){showToast('Não foi possível gerar o PDF agora.')}
-      });
-      sharePhotoButton.addEventListener('click',async function(){
-        try{await sharePreparedPhoto();showToast('Foto compartilhada.')}catch(error){if(error&&error.name==='AbortError')return;if(preparedOrderBlob)downloadPlatePng(preparedOrderBlob);showToast('Foto baixada para anexar no WhatsApp.')}
-      });
-      document.getElementById('copyOrderButton').addEventListener('click',function(){
-        copyOrderMessage().then(function(){showToast('Mensagem copiada.')}).catch(function(){showToast('Não foi possível copiar. Selecione a mensagem no WhatsApp.')});
-      });
-    
-      
 
       document.querySelectorAll('.use-fundo').forEach(function(btn){
         btn.addEventListener('click',function(){
