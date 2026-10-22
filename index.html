@@ -218,7 +218,7 @@
     .spec p{margin:0;color:var(--muted);font-size:.92rem}
     .toast{position:fixed;z-index:20;left:50%;bottom:22px;transform:translate(-50%,18px);opacity:0;pointer-events:none;background:var(--ink);color:var(--paper);padding:11px 15px;border-radius:4px;font-size:.85rem;font-weight:700;transition:.22s}
     .toast.show{opacity:1;transform:translate(-50%,0)}
-    .topnav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .topnav{position:sticky;top:var(--promoH,0px);z-index:30;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
     .topnav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px 0}
     .topnav-brand{font-family:"League Spartan",sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.02em;color:var(--ink);text-decoration:none;white-space:nowrap}
     .topnav-brand span{color:var(--red)}
@@ -289,7 +289,7 @@
 .site-footer a{color:#d7e3df;text-decoration:none;font-size:14.5px}
 .site-footer a:hover{color:#f2b632}
 .site-footer .f-bottom{border-top:1px solid rgba(255,255,255,.14);padding:15px 0 20px;font-size:13px;color:#8fa8a2;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
-.promo-bar{overflow:hidden;background:linear-gradient(90deg,#a87b12,#e9c860 30%,#f4dc8a 50%,#e9c860 70%,#a87b12);color:#2a1f02;font-size:13.5px;font-weight:700;letter-spacing:.02em;border-bottom:1px solid rgba(0,0,0,.18)}
+.promo-bar{position:sticky;top:0;z-index:40;overflow:hidden;background:linear-gradient(90deg,#a87b12,#e9c860 30%,#f4dc8a 50%,#e9c860 70%,#a87b12);color:#2a1f02;font-size:13.5px;font-weight:700;letter-spacing:.02em;border-bottom:1px solid rgba(0,0,0,.18)}
     .promo-track{display:flex;width:max-content;animation:promoScroll 24s linear infinite;padding:7px 0}
     .promo-chunk{white-space:nowrap;padding-right:56px}
     .promo-chunk s{opacity:.62}
@@ -1397,6 +1397,8 @@
     var els=document.querySelectorAll('.promo-timer');
     for(var i=0;i<els.length;i++) els[i].textContent=txt;
   }
+  function medir(){ var b=document.querySelector('.promo-bar'); if(b) document.documentElement.style.setProperty('--promoH', b.offsetHeight+'px'); }
+  medir(); window.addEventListener('resize', medir); window.addEventListener('load', medir);
   tick(); setInterval(tick,1000);
 })();
 </script>
