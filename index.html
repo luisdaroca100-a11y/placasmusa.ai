@@ -505,7 +505,7 @@
 <div class="order-review" id="orderReview">
 <h3>Resumo do pedido</h3>
 <ul id="orderReviewList"></ul>
-<p class="order-review-note">Confira tudo aqui no site. Ao finalizar, o celular compartilha a foto da placa junto com esse resumo — é só escolher o WhatsApp.</p>
+<p class="order-review-note">Confira tudo aqui no site. Ao finalizar, você entra direto no WhatsApp da loja com esse resumo — a foto da placa baixa automaticamente pra você anexar na conversa.</p>
 </div>
 <a class="button whatsapp" id="whatsappButton" href="#personalizar" aria-disabled="true" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Finalizar pedido pelo WhatsApp</a>
 <button class="button secondary" id="resetButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M5.4 15a7 7 0 1 0 1.2-7.7L4 10"/></svg>Começar de novo</button>
@@ -785,7 +785,7 @@
           'Cidade/UF: '+deliveryCity.value.trim()+'/'+deliveryState.value.trim().toUpperCase()+'\n'+
           'Frete: '+shippingLabel()+'\n\n'+
           '*TOTAL: '+formatPrice(totalCents)+'*\n\n'+
-          'A foto da minha placa vai junto com este pedido. 📷';
+          'Vou enviar a foto da minha placa aqui na conversa. 📷';
       }
       function renderOrderReview(){
         var list=document.getElementById('orderReviewList');if(!list)return;
@@ -1700,29 +1700,14 @@
           }
         }
         var botao=this,rotuloOriginal=botao.lastChild.nodeValue;
-        botao.setAttribute('aria-busy','true');botao.lastChild.nodeValue=' Preparando a foto\u2026';
+        botao.setAttribute('aria-busy','true');botao.lastChild.nodeValue=' Preparando\u2026';
         try{
           var blob=await createPlatePng();
-          var arquivo=new File([blob],'placanota10-'+safeDownloadName(safeName())+'.png',{type:'image/png'});
-          var podeCompartilhar=false;
-          if(navigator.share&&typeof File!=='undefined'){
-            if(!navigator.canShare)podeCompartilhar=true;
-            else{try{podeCompartilhar=navigator.canShare({files:[arquivo]})}catch(e){podeCompartilhar=false}}
-          }
-          if(podeCompartilhar){
-            await navigator.share({files:[arquivo],text:orderMessage(),title:'Pedido Placa Nota 10'});
-            showToast('Pedido compartilhado com a foto!');
-          }else{
-            downloadPlatePng(blob);
-            window.open('https://wa.me/5519971995144?text='+encodeURIComponent(orderMessage()),'_blank');
-            showToast('Foto baixada \u2014 \u00e9 s\u00f3 anexar na conversa do WhatsApp.');
-          }
-        }catch(error){
-          if(error&&error.name==='AbortError'){showToast('Compartilhamento cancelado. Toque de novo quando quiser enviar.')}
-          else{window.open('https://wa.me/5519971995144?text='+encodeURIComponent(orderMessage()),'_blank')}
-        }finally{
-          botao.removeAttribute('aria-busy');botao.lastChild.nodeValue=rotuloOriginal;
-        }
+          downloadPlatePng(blob);
+          showToast('Foto da placa baixada \u2014 \u00e9 s\u00f3 anexar na conversa. \uD83D\uDCCE');
+        }catch(error){}
+        botao.removeAttribute('aria-busy');botao.lastChild.nodeValue=rotuloOriginal;
+        setTimeout(function(){window.open('https://wa.me/5519971995144?text='+encodeURIComponent(orderMessage()),'_blank')},900);
       });
 
       document.querySelectorAll('.use-fundo').forEach(function(btn){
