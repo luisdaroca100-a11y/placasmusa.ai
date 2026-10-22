@@ -343,6 +343,17 @@
       body .fundo-search{margin:0 0 26px}
     .fundo-search input{width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--line);background:var(--field);color:var(--ink);font:inherit;font-size:1rem}
     .fundo-search-msg{color:var(--muted);margin:10px 2px 0}
+    .faq-sec{padding:8px 0 30px}
+    .faq-sec h2{font-size:clamp(1.7rem,4.6vw,2.4rem);margin:0 0 6px}
+    .faq-sec .faq-sub{color:var(--muted);margin:0 0 18px}
+    .faq-item{background:var(--soft);border:1px solid var(--line);border-radius:14px;margin:0 0 10px;overflow:hidden}
+    .faq-item summary{cursor:pointer;padding:15px 18px;font-weight:700;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item summary::after{content:"+";font-size:1.35rem;color:var(--red);font-weight:800;line-height:1}
+    .faq-item[open ] summary::after{content:"–"}
+    .faq-item .faq-a{padding:0 18px 16px;color:var(--muted);line-height:1.55}
+    .faq-item .faq-a strong{color:var(--ink)}
+    .guarantee-seal{display:flex;gap:9px;align-items:flex-start;background:#fdf6e0;border:1px solid #e8cf7e;color:#5c4703;border-radius:12px;padding:11px 13px;margin:12px 0 0;font-size:.92rem;line-height:1.45}.guarantee-seal strong{color:#3d2f02}
     .wa-float{bottom:88px}
       body{padding-bottom:72px}
     }
@@ -453,6 +464,7 @@
 </div>
 </div>
 </section>
+<section class="faq-sec"><div class="shell"><h2>Dúvidas frequentes</h2><p class="faq-sub">O essencial sobre a sua Placa Nota 10.</p><details class="faq-item"><summary>Como a placa funciona?</summary><div class="faq-a">O cliente aproxima o celular do símbolo NFC da placa e a página de avaliação da sua empresa no Google abre na hora, com as 5 estrelas. Se o celular não tiver NFC, é só apontar a câmera pro QR code — dá no mesmo.</div></details><details class="faq-item"><summary>Quanto tempo demora pra ficar pronta?</summary><div class="faq-a">Produção em <strong>2 a 3 dias úteis</strong>, mais o prazo do frete até você.</div></details><details class="faq-item"><summary>Quanto custa o frete?</summary><div class="faq-a"><strong>Grátis em Piracicaba.</strong> R$ 15 na região (cerca de 50 km) e R$ 40 pro resto do Brasil. Você informa o CEP no site e o valor entra no total do pedido.</div></details><details class="faq-item"><summary>Quais são os formatos e tamanhos?</summary><div class="faq-a">São 4 formatos: <strong>Tradicional</strong> 100×180 mm, <strong>Oval</strong> 100×180 mm, <strong>Redonda</strong> Ø100 mm e <strong>Quadrada</strong> 100×100 mm.</div></details><details class="faq-item"><summary>Posso colocar minha logo e minha foto?</summary><div class="faq-a">Sim. Você pode enviar sua logo (ela aparece inteira, sem corte) ou escolher uma das <strong>55 logos prontas</strong> por ramo — padaria, barbearia, pet shop, academia e mais. Também dá pra colocar foto de fundo, com controle do quanto ela fica desfocada.</div></details><details class="faq-item"><summary>Como faço o pedido?</summary><div class="faq-a">Você monta a placa no site do seu jeito e toca em <strong>Finalizar</strong>: abre o compartilhamento do seu celular com a foto da sua placa e o resumo do pedido juntos — você escolhe o WhatsApp e envia tudo de uma vez pra loja.</div></details><details class="faq-item"><summary>Preciso pagar mensalidade?</summary><div class="faq-a">Não. A placa é sua, <strong>sem mensalidade</strong>.</div></details><details class="faq-item"><summary>E se a placa chegar com defeito?</summary><div class="faq-a">Se a sua placa chegar com defeito ou o NFC não funcionar, a gente troca. Simples assim.</div></details></div></section>
 <section class="cta-band">
 <div class="shell cta-band-inner">
 <div>
@@ -610,6 +622,7 @@
 <p class="order-review-note">Confira tudo aqui no site. Ao finalizar, você entra direto no WhatsApp da loja com esse resumo — a foto da placa baixa automaticamente pra você anexar na conversa.</p>
 </div>
 <a class="button whatsapp" id="whatsappButton" href="#personalizar" aria-disabled="true" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.5-5a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.8.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.4-.9 1.9-.6.5-1.3.8-2.2.6-1.1-.2-2.9-.8-4.9-2.6-1.7-1.6-2.8-3.5-3.1-4.8-.2-.8 0-1.4.4-1.7Z"/></svg>Finalizar pedido pelo WhatsApp</a>
+<p class="guarantee-seal">🛡️ <span><strong>Garantia:</strong> Se a sua placa chegar com defeito ou o NFC não funcionar, a gente troca. Simples assim.</span></p>
 <button class="button secondary" id="resetButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M5.4 15a7 7 0 1 0 1.2-7.7L4 10"/></svg>Começar de novo</button>
 </div>
 <p class="session-note">Os arquivos usados na prévia ficam somente enquanto esta página estiver aberta.</p>
