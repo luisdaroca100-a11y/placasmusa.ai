@@ -621,10 +621,10 @@
 <div class="connect-row" aria-label="NFC à esquerda e QR Code à direita">
 <div class="nfc" aria-hidden="true">
 <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
-<path d="M24 40.1 A16 16 0 0 1 45.9 46"/>
-<path d="M18 29.8 A28 28 0 0 1 56.2 40"/>
-<path d="M12 19.4 A40 40 0 0 1 66.6 34"/>
-<text x="28" y="82" font-family="DM Sans, Arial, sans-serif" font-size="19" font-weight="800" letter-spacing="1.5" fill="currentColor" stroke="none">NFC</text>
+<path d="M30 40 A16 16 0 0 1 46 56"/>
+<path d="M30 28 A28 28 0 0 1 58 56"/>
+<path d="M30 16 A40 40 0 0 1 70 56"/>
+<text x="27" y="84" font-family="DM Sans, Arial, sans-serif" font-size="19" font-weight="800" letter-spacing="1.5" fill="currentColor" stroke="none">NFC</text>
 </svg>
 </div>
 <div class="qr" id="qrPreview" aria-label="QR Code do link de avaliação">
@@ -1273,11 +1273,11 @@
       }
       function drawNfc(context,x,y,size,color){
         context.save();context.translate(x,y);context.strokeStyle=color;context.fillStyle=color;context.lineWidth=size*.07;context.lineCap='round';
-        var ox=-size*.18,oy=size*.04,radios=[.16,.28,.40];
-        for(var ri=0;ri<radios.length;ri++){context.beginPath();context.arc(ox,oy,size*radios[ri],-2.094,-0.524);context.stroke()}
+        var ox=-size*.30,oy=size*.06,radios=[.16,.28,.40];
+        for(var ri=0;ri<radios.length;ri++){context.beginPath();context.arc(ox,oy,size*radios[ri],-Math.PI/2,0);context.stroke()}
         context.font='800 '+Math.round(size*.19)+'px "DM Sans", Arial, sans-serif';context.textAlign='left';context.textBaseline='top';
         try{context.letterSpacing=Math.round(size*.015)+'px'}catch(e){}
-        context.fillText('NFC',ox-size*.02,oy+size*.13);
+        context.fillText('NFC',ox-size*.02,oy+size*.12);
         context.restore();
       }
       function drawQr(context,value,x,y,size){
