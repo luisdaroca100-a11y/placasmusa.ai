@@ -621,10 +621,11 @@
 <div class="connect-row" aria-label="NFC à esquerda e QR Code à direita">
 <div class="nfc" aria-hidden="true">
 <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
-<path d="M30 40 A16 16 0 0 1 46 56"/>
-<path d="M30 28 A28 28 0 0 1 58 56"/>
-<path d="M30 16 A40 40 0 0 1 70 56"/>
-<text x="27" y="84" font-family="DM Sans, Arial, sans-serif" font-size="19" font-weight="800" letter-spacing="1.5" fill="currentColor" stroke="none">NFC</text>
+<path d="M31.2 33.4 A14 14 0 0 1 31.2 54.6"/>
+<path d="M37.1 26.6 A23 23 0 0 1 37.1 61.4"/>
+<path d="M43 19.8 A32 32 0 0 1 43 68.2"/>
+<path d="M48.9 13 A41 41 0 0 1 48.9 75"/>
+<text x="47" y="93" text-anchor="middle" font-family="DM Sans, Arial, sans-serif" font-size="17" font-weight="800" letter-spacing="1.5" fill="currentColor" stroke="none">NFC</text>
 </svg>
 </div>
 <div class="qr" id="qrPreview" aria-label="QR Code do link de avaliação">
@@ -1273,11 +1274,11 @@
       }
       function drawNfc(context,x,y,size,color){
         context.save();context.translate(x,y);context.strokeStyle=color;context.fillStyle=color;context.lineWidth=size*.07;context.lineCap='round';
-        var ox=-size*.30,oy=size*.06,radios=[.16,.28,.40];
-        for(var ri=0;ri<radios.length;ri++){context.beginPath();context.arc(ox,oy,size*radios[ri],-Math.PI/2,0);context.stroke()}
-        context.font='800 '+Math.round(size*.19)+'px "DM Sans", Arial, sans-serif';context.textAlign='left';context.textBaseline='top';
+        var ox=-size*.28,oy=-size*.06,radios=[.14,.23,.32,.41];
+        for(var ri=0;ri<radios.length;ri++){context.beginPath();context.arc(ox,oy,size*radios[ri],-0.855,0.855);context.stroke()}
+        context.font='800 '+Math.round(size*.20)+'px "DM Sans", Arial, sans-serif';context.textAlign='center';context.textBaseline='top';
         try{context.letterSpacing=Math.round(size*.015)+'px'}catch(e){}
-        context.fillText('NFC',ox-size*.02,oy+size*.12);
+        context.fillText('NFC',-size*.03,oy+size*.36);
         context.restore();
       }
       function drawQr(context,value,x,y,size){
