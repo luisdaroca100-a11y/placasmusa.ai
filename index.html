@@ -204,6 +204,11 @@
     .stage[data-shape="tradicional"]{aspect-ratio:1000/1194}
     .caption{position:absolute;top:16px;right:16px;z-index:6;color:#fff;background:rgba(10,22,21,.82);font-size:.72rem;font-weight:700;padding:7px 10px;border:1px solid rgba(255,255,255,.2);border-radius:3px;backdrop-filter:blur(5px)}
     .stand{display:none}
+    .blur-control{display:flex;align-items:center;gap:10px;margin-top:10px}
+    .blur-control[hidden]{display:none}
+    .blur-control label{font:600 13px "DM Sans",Arial,sans-serif;color:var(--ink);white-space:nowrap}
+    .blur-control input[type="range"]{flex:1;accent-color:#2dd4bf}
+    .blur-value{font:700 13px "DM Sans",Arial,sans-serif;color:var(--ink);min-width:14px;text-align:right}
     .fit-toggle{display:flex;gap:8px;margin-top:8px}.fit-toggle[hidden]{display:none}.fit-toggle button{flex:1;padding:8px 6px;border-radius:8px;border:1px solid #2e423b;background:#16211d;color:#cfe3da;font:600 13px "DM Sans",Arial,sans-serif;cursor:pointer}.fit-toggle button[aria-pressed="true"]{background:#173f39;border-color:#2dd4bf;color:#a7f3ea}
     .plate{container-type:inline-size;position:absolute;z-index:3;left:49.1%;top:6.9%;transform:translateX(-50%);width:51.7%;height:77.9%;background-color:transparent;border:1px solid rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(35,29,23,.07);overflow:hidden;color:var(--plate-ink)}
     .plate:before{content:"";position:absolute;inset:0;background:none}
@@ -428,6 +433,7 @@
 <input class="file" id="backgroundInput" type="file" accept="image/png,image/jpeg,image/webp" />
 <p class="hint" id="backgroundStatus">Opcional</p>
 <div class="fit-toggle" id="bgFitToggle" hidden><button type="button" data-fit="contain" aria-pressed="true">Foto inteira</button><button type="button" data-fit="cover" aria-pressed="false">Preencher placa</button></div>
+<div class="blur-control" id="bgBlurControl" hidden><label for="bgBlurRange">Desfoque do fundo</label><input type="range" id="bgBlurRange" min="0" max="10" step="1" value="4" /><span class="blur-value" id="bgBlurValue">4</span></div>
 </div>
 <div class="field">
 <span class="field-title">Cor do fundo</span>
@@ -706,6 +712,12 @@
       var plate=document.getElementById('plate');
       var logoStatus=document.getElementById('logoStatus');
       var backgroundStatus=document.getElementById('backgroundStatus');var bgFitToggle=document.getElementById('bgFitToggle');
+      var bgBlurControl=document.getElementById('bgBlurControl'),bgBlurRange=document.getElementById('bgBlurRange'),bgBlurValue=document.getElementById('bgBlurValue');
+      bgBlurRange.addEventListener('input',function(){
+        bgBlur=parseInt(bgBlurRange.value,10)||0;
+        bgBlurValue.textContent=String(bgBlur);
+        plate.style.setProperty('--plate-blur',bgBlur>0?'blur('+(bgBlur*0.75)+'px)':'none');
+      });
       var customColor=document.getElementById('customColor');
       var quantityValue=document.getElementById('quantityValue');
       var quantitySummary=document.getElementById('quantitySummary');
@@ -734,7 +746,7 @@
       var logoLoading=document.getElementById('logoLoading');
       var logoGeneratorMessage=document.getElementById('logoGeneratorMessage');
       var logoResultActions=document.getElementById('logoResultActions');
-      var logoUrl='',backgroundUrl='',referenceModel='',generatedLogoUrl='',generatedLogoBlob=null,generatedLogoSource='local',currentColor='transparent',bgFit='contain',generationSeed=0,currentShape='tradicional';
+      var logoUrl='',backgroundUrl='',referenceModel='',generatedLogoUrl='',generatedLogoBlob=null,generatedLogoSource='local',currentColor='transparent',bgFit='contain',bgBlur=4,generationSeed=0,currentShape='tradicional';
       var PLATE_SHAPES={
         tradicional:{label:'Tradicional',w:1000,h:1800,x0:0,x1:1000,y0:0,y1:1800},
         redonda:{label:'Redonda',w:1200,h:1200,x0:70,x1:1130,y0:60,y1:1140},
@@ -1136,7 +1148,7 @@
           logoStatus.textContent=file.name+' · bordas vazias recortadas';
         }else{
           if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);
-          backgroundUrl=url;plate.style.setProperty('--plate-bg','url("'+url+'")');plate.style.setProperty('--plate-shade','rgba(6,6,10,.58)');plate.style.setProperty('--plate-blur','blur(3px)');backgroundStatus.textContent=file.name;bgFitToggle.hidden=false;setColor(currentColor);
+          backgroundUrl=url;plate.style.setProperty('--plate-bg','url("'+url+'")');plate.style.setProperty('--plate-shade','rgba(6,6,10,.58)');plate.style.setProperty('--plate-blur',bgBlur>0?'blur('+(bgBlur*0.75)+'px)':'none');backgroundStatus.textContent=file.name;bgFitToggle.hidden=false;bgBlurControl.hidden=false;setColor(currentColor);
         }
       }
       logoInput.addEventListener('change',function(){setFile(logoInput,'logo')});
@@ -1182,7 +1194,7 @@
         shippingRequestId++;shippingCents=null;shippingLookupCep='';shippingLookupPending=false;shippingAutoUnavailable=false;clearTimeout(cepLookupTimer);calculateShippingButton.disabled=false;calculateShippingButton.textContent='Calcular frete';setShippingStatus('Digite o CEP para preencher o endereço e calcular o frete.','');
         updateQuantity(1);updateName();updateMessage();updateMessageColor();updateReviewLink();updateOrderTotals();
         if(logoUrl)URL.revokeObjectURL(logoUrl);if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);
-        logoUrl='';backgroundUrl='';plate.style.setProperty('--plate-shade','rgba(6,6,10,0)');plate.style.setProperty('--plate-blur','none');logoInput.value='';backgroundInput.value='';bgFit='contain';plate.style.setProperty('--plate-fit','contain');bgFitToggle.hidden=true;bgFitToggle.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-fit')==='contain'?'true':'false')});
+        logoUrl='';backgroundUrl='';plate.style.setProperty('--plate-shade','rgba(6,6,10,0)');plate.style.setProperty('--plate-blur','none');logoInput.value='';backgroundInput.value='';bgFit='contain';plate.style.setProperty('--plate-fit','contain');bgFitToggle.hidden=true;bgBlurControl.hidden=true;bgBlur=4;bgBlurRange.value='4';bgBlurValue.textContent='4';bgFitToggle.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-fit')==='contain'?'true':'false')});
         logoPreview.innerHTML='<span>LOGO</span>';logoStatus.textContent='PNG, JPG ou WebP · bordas vazias recortadas automaticamente';backgroundStatus.textContent='Opcional';
         plate.style.removeProperty('--plate-bg');setColor('transparent');setShape('tradicional');
       });
@@ -1613,7 +1625,7 @@
         if(shaped){plateShapePath(context,currentShape,shape.w,shape.h);context.clip()}
         var transparent=currentColor==='transparent'&&!backgroundUrl;
         if(!transparent){context.fillStyle=currentColor==='transparent'?'#e9eff0':currentColor;context.fillRect(0,0,shape.w,shape.h)}
-        if(backgroundUrl){try{var bgImg=await loadImage(backgroundUrl);context.save();try{context.filter='blur(4px)'}catch(e){}if(bgFit==='cover')drawCover(context,bgImg,0,0,shape.w,shape.h,.9);else drawContained(context,bgImg,shape.w,shape.h,.94);context.restore()}catch(error){}}
+        if(backgroundUrl){try{var bgImg=await loadImage(backgroundUrl);context.save();try{context.filter='blur('+bgBlur+'px)'}catch(e){}if(bgFit==='cover')drawCover(context,bgImg,0,0,shape.w,shape.h,.9);else drawContained(context,bgImg,shape.w,shape.h,.94);context.restore()}catch(error){}}
         if(backgroundUrl){context.fillStyle='rgba(6,6,10,.58)';context.fillRect(0,0,shape.w,shape.h)}
         if(!transparent){var shade=context.createLinearGradient(0,0,0,shape.h);shade.addColorStop(0,'rgba(0,0,0,.02)');shade.addColorStop(1,'rgba(0,0,0,.38)');context.fillStyle=shade;context.fillRect(0,0,shape.w,shape.h)}
         var white='#ffffff',gold='#f2b632';
@@ -1721,9 +1733,9 @@
           fetch(img.src).then(function(r){return r.blob()}).then(function(blob){
             if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);
             backgroundUrl=URL.createObjectURL(blob);
-            plate.style.setProperty('--plate-bg','url("'+backgroundUrl+'")');plate.style.setProperty('--plate-shade','rgba(6,6,10,.58)');plate.style.setProperty('--plate-blur','blur(3px)');
+            plate.style.setProperty('--plate-bg','url("'+backgroundUrl+'")');plate.style.setProperty('--plate-shade','rgba(6,6,10,.58)');plate.style.setProperty('--plate-blur',bgBlur>0?'blur('+(bgBlur*0.75)+'px)':'none');
             backgroundStatus.textContent='Fundo da galeria: '+nome;
-            bgFitToggle.hidden=false;setColor(currentColor);
+            bgFitToggle.hidden=false;bgBlurControl.hidden=false;setColor(currentColor);
             bgFit='cover';plate.style.setProperty('--plate-fit','cover');bgFitToggle.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-fit')==='cover'?'true':'false')});
             referenceModel='';
             location.hash='personalizar';
