@@ -289,7 +289,12 @@
 .site-footer a{color:#d7e3df;text-decoration:none;font-size:14.5px}
 .site-footer a:hover{color:#f2b632}
 .site-footer .f-bottom{border-top:1px solid rgba(255,255,255,.14);padding:15px 0 20px;font-size:13px;color:#8fa8a2;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
-.promo-bar{position:sticky;top:0;z-index:40;overflow:hidden;background:linear-gradient(90deg,#a87b12,#e9c860 30%,#f4dc8a 50%,#e9c860 70%,#a87b12);color:#2a1f02;font-size:13.5px;font-weight:700;letter-spacing:.02em;border-bottom:1px solid rgba(0,0,0,.18)}
+.promo-count{display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,#f6dd8b,#eec95c);color:#2a1f02;border:1px solid rgba(0,0,0,.14);border-radius:12px;padding:9px 13px;font-weight:700;font-size:14px;line-height:1.35}
+    .promo-count .promo-timer{background:#2a1f02;color:#f4dc8a;border-radius:6px;padding:1px 8px;font-variant-numeric:tabular-nums;animation:promoPulse 1.6s ease-in-out infinite}
+    @keyframes promoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+    .intro .promo-count{margin:16px 0 4px;max-width:430px}
+    .shipping-totals .promo-count{margin-top:12px}
+    .promo-bar{position:sticky;top:0;z-index:40;overflow:hidden;background:linear-gradient(90deg,#a87b12,#e9c860 30%,#f4dc8a 50%,#e9c860 70%,#a87b12);color:#2a1f02;font-size:13.5px;font-weight:700;letter-spacing:.02em;border-bottom:1px solid rgba(0,0,0,.18)}
     .promo-track{display:flex;width:max-content;animation:promoScroll 24s linear infinite;padding:7px 0}
     .promo-chunk{white-space:nowrap;padding-right:56px}
     .promo-chunk s{opacity:.62}
@@ -325,6 +330,7 @@
 <h1>Sua marca, a um toque.</h1>
 <p class="intro-copy">Placas NFC personalizadas para apresentar sua empresa com clareza. Visualize nome, logo e fundo na placa de acrílico, reta e de frente.</p>
 <div class="price-line"><span>De</span><s>R$ 69,99</s><strong>R$ 49,99</strong><span>/ unidade</span></div>
+<div class="promo-count">⏰ <span>A promoção termina em</span><b class="promo-timer">45:00</b><span>— garanta a sua por R$ 49,99</span></div>
 <ul class="proofs" aria-label="Recursos da personalização">
 <li>Prévia em tempo real</li>
 <li>Vista frontal</li>
@@ -510,6 +516,7 @@
 <div class="shipping-total-row promo-savings"><span>Promoção de inauguração (de R$ 69,99/un)</span><b id="promoSavings">− R$ 20,00</b></div>
 <div class="shipping-total-row"><span>Frete</span><b id="shippingTotal">A calcular</b></div>
 <div class="shipping-total-row grand"><span>Total do pedido</span><b id="orderTotal">R$ 49,99</b></div>
+<div class="promo-count">⏰ <span>A promoção termina em</span><b class="promo-timer">45:00</b><span>— garanta a sua por R$ 49,99</span></div>
 </div>
 </section>
 <div class="order-review" id="orderReview">
