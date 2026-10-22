@@ -621,9 +621,10 @@
 <div class="connect-row" aria-label="NFC à esquerda e QR Code à direita">
 <div class="nfc" aria-hidden="true">
 <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
-<path d="M29 69c-10-11-10-27 0-38"/><path d="M44 61c-5-6-5-16 0-22"/>
-<path d="M71 31c10 11 10 27 0 38"/><path d="M56 39c5 6 5 16 0 22"/>
-<circle cx="50" cy="50" r="4" fill="currentColor" stroke="none"/>
+<path d="M24 40.1 A16 16 0 0 1 45.9 46"/>
+<path d="M18 29.8 A28 28 0 0 1 56.2 40"/>
+<path d="M12 19.4 A40 40 0 0 1 66.6 34"/>
+<text x="28" y="82" font-family="DM Sans, Arial, sans-serif" font-size="19" font-weight="800" letter-spacing="1.5" fill="currentColor" stroke="none">NFC</text>
 </svg>
 </div>
 <div class="qr" id="qrPreview" aria-label="QR Code do link de avaliação">
@@ -1014,7 +1015,7 @@
         if(!value){qrPreview.innerHTML='<span class="qr-placeholder">QR</span>';return true}
         try{
           var qr=new QRGenerator(-1,0);qr.addData(value);qr.make();
-          var count=qr.getModuleCount(),quiet=4,canvas=document.createElement('canvas'),size=count+quiet*2;
+          var count=qr.getModuleCount(),quiet=3,canvas=document.createElement('canvas'),size=count+quiet*2;
           canvas.width=size;canvas.height=size;canvas.setAttribute('aria-hidden','true');
           var context=canvas.getContext('2d');context.fillStyle='#ffffff';context.fillRect(0,0,size,size);context.fillStyle='#111111';
           for(var row=0;row<count;row++)for(var col=0;col<count;col++)if(qr.isDark(row,col))context.fillRect(col+quiet,row+quiet,1,1);
@@ -1271,16 +1272,19 @@
         context.save();context.translate(x,y);context.scale(size/32,size/32);context.beginPath();context.moveTo(0,9);context.bezierCurveTo(-18,-5,-22,17,0,29);context.bezierCurveTo(22,17,18,-5,0,9);context.fillStyle=color;context.fill();context.restore();
       }
       function drawNfc(context,x,y,size,color){
-        context.save();context.translate(x,y);context.strokeStyle=color;context.fillStyle=color;context.lineWidth=size*.075;context.lineCap='round';
-        context.beginPath();context.arc(-size*.16,0,size*.35,-.82,.82);context.stroke();context.beginPath();context.arc(-size*.06,0,size*.2,-.82,.82);context.stroke();
-        context.beginPath();context.arc(size*.16,0,size*.35,2.32,3.96);context.stroke();context.beginPath();context.arc(size*.06,0,size*.2,2.32,3.96);context.stroke();
-        context.beginPath();context.arc(0,0,size*.04,0,Math.PI*2);context.fill();context.restore();
+        context.save();context.translate(x,y);context.strokeStyle=color;context.fillStyle=color;context.lineWidth=size*.07;context.lineCap='round';
+        var ox=-size*.18,oy=size*.04,radios=[.16,.28,.40];
+        for(var ri=0;ri<radios.length;ri++){context.beginPath();context.arc(ox,oy,size*radios[ri],-2.094,-0.524);context.stroke()}
+        context.font='800 '+Math.round(size*.19)+'px "DM Sans", Arial, sans-serif';context.textAlign='left';context.textBaseline='top';
+        try{context.letterSpacing=Math.round(size*.015)+'px'}catch(e){}
+        context.fillText('NFC',ox-size*.02,oy+size*.13);
+        context.restore();
       }
       function drawQr(context,value,x,y,size){
         context.save();context.translate(x-size/2,y-size/2);context.fillStyle='#ffffff';context.fillRect(0,0,size,size);
         if(!value){context.fillStyle='#27312f';context.font='800 '+Math.round(size*.22)+'px "DM Sans", Arial, sans-serif';context.textAlign='center';context.textBaseline='middle';context.fillText('QR',size/2,size/2);context.restore();return}
         var qr=new QRGenerator(-1,0);qr.addData(value);qr.make();
-        var count=qr.getModuleCount(),quiet=4,unit=size/(count+quiet*2);context.fillStyle='#111111';
+        var count=qr.getModuleCount(),quiet=3,unit=size/(count+quiet*2);context.fillStyle='#111111';
         for(var row=0;row<count;row++)for(var col=0;col<count;col++)if(qr.isDark(row,col))context.fillRect((col+quiet)*unit,(row+quiet)*unit,Math.ceil(unit),Math.ceil(unit));
         context.restore();
       }
@@ -1317,7 +1321,7 @@
         context.fillStyle=messageColor.value;var messageStart=Y(475)-(messageLines.length-1)*(38*sy);
         messageLines.forEach(function(line,index){context.fillText(line,X(540),messageStart+index*(78*sy))});
         context.shadowColor='transparent';context.fillStyle=gold;context.fillRect(X(190),Y(725),285*sx,Math.max(3,6*sy));context.fillRect(X(605),Y(725),285*sx,Math.max(3,6*sy));drawHeart(context,X(540),Y(707),35*Math.min(sx,sy),gold);
-        drawNfc(context,X(330),Y(940),250*sy,white);drawQr(context,normalizedReviewLink(),X(750),Y(940),245*sy);
+        drawNfc(context,X(330),Y(940),250*sy,white);drawQr(context,normalizedReviewLink(),X(750),Y(940),272*sy);
         context.shadowColor='rgba(0,0,0,.48)';context.shadowBlur=12;context.shadowOffsetY=5;context.fillStyle=white;context.font='800 '+Math.round(34*sy)+'px "DM Sans", Arial, sans-serif';context.fillText('APROXIME SEU CELULAR!',X(540),Y(1165));context.shadowColor='transparent';
         context.restore();
         if(shaped){plateShapePath(context,currentShape,shape.w,shape.h);context.strokeStyle='rgba(255,255,255,.35)';context.lineWidth=3;context.stroke()}
