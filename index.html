@@ -8,7 +8,7 @@
 <link rel="icon" href="data:," />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
 <title>placanota10 | Placas NFC personalizadas</title>
 <style>
     :root{
@@ -82,7 +82,7 @@
     .plate[data-shape="oval"] .nfc,.plate[data-shape="oval"] .qr{width:21cqw;height:21cqw;flex-basis:21cqw}
     .plate:is([data-shape="redonda"],[data-shape="quadrada"]) .plate-content{padding:4.5cqw 8cqw 4cqw}
     .plate:is([data-shape="redonda"],[data-shape="quadrada"]) .logo{height:17cqw;flex:0 0 17cqw;margin-bottom:3cqw}
-    .plate:is([data-shape="redonda"],[data-shape="quadrada"]) .company{font-size:6.4cqw;margin-bottom:3cqw}
+    .plate:is([data-shape="redonda"],[data-shape="quadrada"]) .company{font-size:calc(6.4cqw * var(--company-scale,1));margin-bottom:3cqw}
     .plate:is([data-shape="redonda"],[data-shape="quadrada"]) .touch-title{font-size:5.9cqw;max-width:84cqw}
     .plate:is([data-shape="redonda"],[data-shape="quadrada"]) .decorative-rule{width:64cqw;margin:3.5cqw 0}
     .plate:is([data-shape="redonda"],[data-shape="quadrada"]) .connect-row{width:62cqw}
@@ -216,7 +216,7 @@
     .plate-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;padding:6.5cqw 7cqw 6cqw;color:#fff;text-shadow:0 .7cqw 2cqw rgba(0,0,0,.5)}
     .logo{position:relative;width:62cqw;height:27cqw;min-width:0;min-height:0;max-width:62cqw;max-height:27cqw;flex:0 0 27cqw;display:grid;place-items:center;color:#fff;font-weight:800;font-size:4.2cqw;line-height:1;border:0;border-radius:0;overflow:hidden;background:transparent;margin-bottom:7cqw;contain:layout paint}
     .logo img{position:absolute;inset:0;margin:auto;display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;object-position:center;border:0;background:transparent;filter:drop-shadow(0 .8cqw 1.8cqw rgba(0,0,0,.3))}
-    .company{font-family:"League Spartan";font-size:7.4cqw;line-height:.95;font-weight:800;margin:0 0 4.5cqw;max-width:100%;overflow-wrap:anywhere;color:#fff}
+    .company{font-family:"League Spartan";font-size:calc(7.4cqw * var(--company-scale,1));line-height:.95;font-weight:800;margin:0 0 4.5cqw;max-width:100%;overflow-wrap:anywhere;color:#fff}
     .touch-title{font-family:"DM Sans",sans-serif;font-weight:700;letter-spacing:-.025em;font-size:6.9cqw;line-height:1.04;text-transform:uppercase;margin:0;color:var(--message-color,#fff);max-width:91cqw;overflow-wrap:anywhere}
     .decorative-rule{width:73cqw;display:flex;align-items:center;gap:3cqw;margin:5cqw 0 5cqw;color:var(--yellow);text-shadow:none}
     .decorative-rule:before,.decorative-rule:after{content:"";height:.65cqw;background:currentColor;flex:1}
@@ -406,6 +406,11 @@
 <div class="field">
 <label for="companyInput">Nome da empresa</label>
 <input class="text-input" id="companyInput" type="text" maxlength="28" value="SUA EMPRESA" autocomplete="organization" />
+</div>
+<div class="field">
+<span class="field-title">Tipo de letra do nome</span>
+<div class="fit-toggle" id="fontToggle"><button type="button" data-font="forte" aria-pressed="true">Forte</button><button type="button" data-font="suave" aria-pressed="false">Suave</button><button type="button" data-font="classica" aria-pressed="false">Clássica</button><button type="button" data-font="moderna" aria-pressed="false">Moderna</button></div>
+<div class="blur-control"><label for="companySizeRange">Tamanho da letra</label><input type="range" id="companySizeRange" min="70" max="140" step="5" value="100" /><span class="blur-value" id="companySizeValue">100%</span></div>
 </div>
 <div class="field">
 <label for="messageInput">Mensagem abaixo do nome</label>
@@ -718,6 +723,30 @@
         bgBlurValue.textContent=String(bgBlur);
         plate.style.setProperty('--plate-blur',bgBlur>0?'blur('+(bgBlur*0.75)+'px)':'none');
       });
+      var COMPANY_FONTS={
+        forte:{label:'Forte',family:'League Spartan',stack:'"League Spartan","DM Sans",sans-serif'},
+        suave:{label:'Suave',family:'DM Sans',stack:'"DM Sans",Arial,sans-serif'},
+        classica:{label:'Clássica',family:'Cormorant Garamond',stack:'"Cormorant Garamond",Georgia,serif'},
+        moderna:{label:'Moderna',family:'Montserrat',stack:'"Montserrat","DM Sans",sans-serif'}
+      };
+      var companyFontKey='forte',companyScale=1;
+      var fontToggle=document.getElementById('fontToggle'),companySizeRange=document.getElementById('companySizeRange'),companySizeValue=document.getElementById('companySizeValue');
+      function applyCompanyStyle(){
+        var f=COMPANY_FONTS[companyFontKey]||COMPANY_FONTS.forte;
+        companyPreview.style.fontFamily=f.stack;
+        plate.style.setProperty('--company-scale',String(companyScale));
+        fontToggle.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-font')===companyFontKey?'true':'false')});
+        companySizeRange.value=String(Math.round(companyScale*100));
+        companySizeValue.textContent=Math.round(companyScale*100)+'%';
+      }
+      fontToggle.addEventListener('click',function(event){
+        var b=event.target.closest('button[data-font]');if(!b)return;
+        companyFontKey=b.getAttribute('data-font');applyCompanyStyle();renderOrderReview();
+      });
+      companySizeRange.addEventListener('input',function(){
+        companyScale=(parseInt(companySizeRange.value,10)||100)/100;applyCompanyStyle();renderOrderReview();
+      });
+      applyCompanyStyle();
       var customColor=document.getElementById('customColor');
       var quantityValue=document.getElementById('quantityValue');
       var quantitySummary=document.getElementById('quantitySummary');
@@ -781,6 +810,7 @@
         return '*NOVO PEDIDO — PLACA NOTA 10* ✅\n\n'+
           '*PLACA*\n'+
           'Empresa: '+safeName()+'\n'+
+          'Letra do nome: '+(COMPANY_FONTS[companyFontKey]?COMPANY_FONTS[companyFontKey].label:'Forte')+' ('+Math.round(companyScale*100)+'%)\n'+
           'Formato: '+(PLATE_SHAPES[currentShape]?PLATE_SHAPES[currentShape].label:'Tradicional')+'\n'+
           (referenceModel?('Modelo de referência: '+referenceModel+'\n'):'')+
           'Mensagem: '+(safeMessage()||'Sem mensagem')+'\n'+
@@ -806,6 +836,7 @@
         var address=[deliveryStreet.value.trim()+(deliveryNumber.value.trim()?', '+deliveryNumber.value.trim():''),deliveryNeighborhood.value.trim(),cityUf,postalCode.value.trim()?'CEP '+postalCode.value.trim():''].filter(Boolean).join(' · ');
         var rows=[
           ['Empresa',safeName()],
+          ['Letra do nome',(COMPANY_FONTS[companyFontKey]?COMPANY_FONTS[companyFontKey].label:'Forte')+' · '+Math.round(companyScale*100)+'%'],
           ['Formato',(PLATE_SHAPES[currentShape]?PLATE_SHAPES[currentShape].label:'Tradicional')+(referenceModel?' · ref.: '+referenceModel:'')],
           ['Mensagem',safeMessage()||'Sem mensagem'],
           ['Link de avaliação',normalizedReviewLink()||'Não informado'],
@@ -1194,7 +1225,7 @@
         shippingRequestId++;shippingCents=null;shippingLookupCep='';shippingLookupPending=false;shippingAutoUnavailable=false;clearTimeout(cepLookupTimer);calculateShippingButton.disabled=false;calculateShippingButton.textContent='Calcular frete';setShippingStatus('Digite o CEP para preencher o endereço e calcular o frete.','');
         updateQuantity(1);updateName();updateMessage();updateMessageColor();updateReviewLink();updateOrderTotals();
         if(logoUrl)URL.revokeObjectURL(logoUrl);if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);
-        logoUrl='';backgroundUrl='';plate.style.setProperty('--plate-shade','rgba(6,6,10,0)');plate.style.setProperty('--plate-blur','none');logoInput.value='';backgroundInput.value='';bgFit='contain';plate.style.setProperty('--plate-fit','contain');bgFitToggle.hidden=true;bgBlurControl.hidden=true;bgBlur=4;bgBlurRange.value='4';bgBlurValue.textContent='4';bgFitToggle.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-fit')==='contain'?'true':'false')});
+        logoUrl='';backgroundUrl='';plate.style.setProperty('--plate-shade','rgba(6,6,10,0)');plate.style.setProperty('--plate-blur','none');companyFontKey='forte';companyScale=1;applyCompanyStyle();logoInput.value='';backgroundInput.value='';bgFit='contain';plate.style.setProperty('--plate-fit','contain');bgFitToggle.hidden=true;bgBlurControl.hidden=true;bgBlur=4;bgBlurRange.value='4';bgBlurValue.textContent='4';bgFitToggle.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-fit')==='contain'?'true':'false')});
         logoPreview.innerHTML='<span>LOGO</span>';logoStatus.textContent='PNG, JPG ou WebP · bordas vazias recortadas automaticamente';backgroundStatus.textContent='Opcional';
         plate.style.removeProperty('--plate-bg');setColor('transparent');setShape('tradicional');
       });
@@ -1585,8 +1616,8 @@
         context.save();context.shadowColor='rgba(0,0,0,.32)';context.shadowBlur=15;context.shadowOffsetY=6;
         context.drawImage(image,x-w/2,y-h/2,w,h);context.restore();
       }
-      function fitText(context,text,maxWidth,startSize,minSize){
-        var size=startSize;do{context.font='800 '+size+'px "DM Sans", Arial, sans-serif';size-=2}while(context.measureText(text).width>maxWidth&&size>minSize);return size+2;
+      function fitText(context,text,maxWidth,startSize,minSize,family){
+        var size=startSize;do{context.font='800 '+size+'px '+(family||'"DM Sans", Arial, sans-serif');size-=2}while(context.measureText(text).width>maxWidth&&size>minSize);return size+2;
       }
       function drawHeart(context,x,y,size,color){
         context.save();context.translate(x,y);context.scale(size/32,size/32);context.beginPath();context.moveTo(0,9);context.bezierCurveTo(-18,-5,-22,17,0,29);context.bezierCurveTo(22,17,18,-5,0,9);context.fillStyle=color;context.fill();context.restore();
@@ -1631,7 +1662,8 @@
         var white='#ffffff',gold='#f2b632';
         context.textAlign='center';context.textBaseline='alphabetic';context.shadowColor='rgba(0,0,0,.48)';context.shadowBlur=14;context.shadowOffsetY=6;
         if(logoUrl){try{drawLogo(context,await loadImage(logoUrl),X(540),Y(142),360*sx,140*sy)}catch(error){}}
-        context.fillStyle=white;var companySize=fitText(context,safeName().toUpperCase(),880*sx,74*sy,38*sy);context.font='800 '+companySize+'px "DM Sans", Arial, sans-serif';context.fillText(safeName().toUpperCase(),X(540),Y(340));
+        context.fillStyle=white;var companyFontSel=COMPANY_FONTS[companyFontKey]||COMPANY_FONTS.forte;try{await document.fonts.load('800 60px "'+companyFontSel.family+'"')}catch(e){}
+        var companySize=fitText(context,safeName().toUpperCase(),880*sx,74*sy*companyScale,34*sy,companyFontSel.stack);context.font='800 '+companySize+'px '+companyFontSel.stack;context.fillText(safeName().toUpperCase(),X(540),Y(340));
         context.font='700 '+Math.round(64*Math.min(sx,sy))+'px "DM Sans", Arial, sans-serif';var messageLines=wrapMessage(context,safeMessage(),820*sx,3);
         if(messageLines.length===3&&messageLines.some(function(line){return context.measureText(line).width>820*sx})){context.font='700 '+Math.round(52*Math.min(sx,sy))+'px "DM Sans", Arial, sans-serif';messageLines=wrapMessage(context,safeMessage(),820*sx,3)}
         context.fillStyle=messageColor.value;var messageStart=Y(475)-(messageLines.length-1)*(38*sy);
