@@ -1617,7 +1617,7 @@
         if(!transparent){var shade=context.createLinearGradient(0,0,0,shape.h);shade.addColorStop(0,'rgba(0,0,0,.02)');shade.addColorStop(1,'rgba(0,0,0,.38)');context.fillStyle=shade;context.fillRect(0,0,shape.w,shape.h)}
         var white='#ffffff',gold='#f2b632';
         context.textAlign='center';context.textBaseline='alphabetic';context.shadowColor='rgba(0,0,0,.48)';context.shadowBlur=14;context.shadowOffsetY=6;
-        if(logoUrl){try{drawLogo(context,await loadImage(logoUrl),X(540),Y(142),360*sx,140*sy)}catch(error){}}else{context.fillStyle=white;context.font='800 '+Math.round(42*sy)+'px "DM Sans", Arial, sans-serif';context.fillText('LOGO',X(540),Y(180))}
+        if(logoUrl){try{drawLogo(context,await loadImage(logoUrl),X(540),Y(142),360*sx,140*sy)}catch(error){}}
         context.fillStyle=white;var companySize=fitText(context,safeName().toUpperCase(),880*sx,74*sy,38*sy);context.font='800 '+companySize+'px "DM Sans", Arial, sans-serif';context.fillText(safeName().toUpperCase(),X(540),Y(340));
         context.font='700 '+Math.round(64*Math.min(sx,sy))+'px "DM Sans", Arial, sans-serif';var messageLines=wrapMessage(context,safeMessage(),820*sx,3);
         if(messageLines.length===3&&messageLines.some(function(line){return context.measureText(line).width>820*sx})){context.font='700 '+Math.round(52*Math.min(sx,sy))+'px "DM Sans", Arial, sans-serif';messageLines=wrapMessage(context,safeMessage(),820*sx,3)}
