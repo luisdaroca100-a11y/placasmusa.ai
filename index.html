@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
 <title>placanota10 | Placas NFC personalizadas</title>
-<meta name="description" content="Placa NFC personalizada pro seu negócio: o cliente encosta o celular e avalia no Google na hora. Personalize com sua logo ou escolha uma pronta — só R$ 49,99, envio pra todo o Brasil." />
-<meta property="og:description" content="Placa NFC personalizada pro seu negócio: o cliente encosta o celular e avalia no Google na hora. Personalize com sua logo ou escolha uma pronta — só R$ 49,99, envio pra todo o Brasil." />
+<meta name="description" content="Placa NFC personalizada pro seu negócio: o cliente encosta o celular e avalia no Google na hora. Personalize com sua logo ou escolha uma pronta — de R$ 69,99 por R$ 49,99 na promoção de inauguração, envio pra todo o Brasil." />
+<meta property="og:description" content="Placa NFC personalizada pro seu negócio: o cliente encosta o celular e avalia no Google na hora. Personalize com sua logo ou escolha uma pronta — de R$ 69,99 por R$ 49,99 na promoção de inauguração, envio pra todo o Brasil." />
 <style>
     :root{
       color-scheme:light dark;
@@ -289,12 +289,22 @@
 .site-footer a{color:#d7e3df;text-decoration:none;font-size:14.5px}
 .site-footer a:hover{color:#f2b632}
 .site-footer .f-bottom{border-top:1px solid rgba(255,255,255,.14);padding:15px 0 20px;font-size:13px;color:#8fa8a2;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
-.wa-float{position:fixed;right:16px;bottom:16px;width:57px;height:57px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(6,40,25,.35);z-index:90;transition:transform .15s ease}
+.promo-bar{overflow:hidden;background:linear-gradient(90deg,#a87b12,#e9c860 30%,#f4dc8a 50%,#e9c860 70%,#a87b12);color:#2a1f02;font-size:13.5px;font-weight:700;letter-spacing:.02em;border-bottom:1px solid rgba(0,0,0,.18)}
+    .promo-track{display:flex;width:max-content;animation:promoScroll 24s linear infinite;padding:7px 0}
+    .promo-chunk{white-space:nowrap;padding-right:56px}
+    .promo-chunk s{opacity:.62}
+    .promo-chunk .promo-timer{font-variant-numeric:tabular-nums;background:#2a1f02;color:#f4dc8a;border-radius:6px;padding:1px 7px}
+    @keyframes promoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .price-line s{opacity:.6;font-weight:600}
+    .shipping-total-row.promo-savings span,.shipping-total-row.promo-savings b{color:#0f766e}
+    @media (max-width:560px){.promo-bar{font-size:12.5px}}
+    .wa-float{position:fixed;right:16px;bottom:16px;width:57px;height:57px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(6,40,25,.35);z-index:90;transition:transform .15s ease}
 .wa-float:hover{transform:scale(1.06)}
 .wa-float svg{display:block}
 </style>
 <!-- cabecalho v2 --><!-- checkout v2 --></head>
 <body>
+<div class="promo-bar" role="note" aria-label="Promoção de inauguração"><div class="promo-track"><span class="promo-chunk">🎉 PROMOÇÃO DE INAUGURAÇÃO · Placa Nota 10 de <s>R$ 69,99</s> por <b>R$ 49,99</b> · termina em <b class="promo-timer">45:00</b> · aproveite!</span><span class="promo-chunk" aria-hidden="true">🎉 PROMOÇÃO DE INAUGURAÇÃO · Placa Nota 10 de <s>R$ 69,99</s> por <b>R$ 49,99</b> · termina em <b class="promo-timer">45:00</b> · aproveite!</span></div></div>
 <header class="topnav">
 <div class="shell topnav-inner">
 <a class="topnav-brand" href="#inicio">Placa <span>Nota 10</span></a>
@@ -314,7 +324,7 @@
 </figure>
 <h1>Sua marca, a um toque.</h1>
 <p class="intro-copy">Placas NFC personalizadas para apresentar sua empresa com clareza. Visualize nome, logo e fundo na placa de acrílico, reta e de frente.</p>
-<div class="price-line"><span>A partir de</span><strong>R$ 49,99</strong><span>/ unidade</span></div>
+<div class="price-line"><span>De</span><s>R$ 69,99</s><strong>R$ 49,99</strong><span>/ unidade</span></div>
 <ul class="proofs" aria-label="Recursos da personalização">
 <li>Prévia em tempo real</li>
 <li>Vista frontal</li>
@@ -497,6 +507,7 @@
 </div>
 <div class="shipping-totals" aria-live="polite">
 <div class="shipping-total-row"><span id="productsLabel">Produtos (1 placa)</span><b id="productsTotal">R$ 49,99</b></div>
+<div class="shipping-total-row promo-savings"><span>Promoção de inauguração (de R$ 69,99/un)</span><b id="promoSavings">− R$ 20,00</b></div>
 <div class="shipping-total-row"><span>Frete</span><b id="shippingTotal">A calcular</b></div>
 <div class="shipping-total-row grand"><span>Total do pedido</span><b id="orderTotal">R$ 49,99</b></div>
 </div>
@@ -683,6 +694,7 @@
       var calculateShippingButton=document.getElementById('calculateShippingButton');
       var shippingStatus=document.getElementById('shippingStatus');
       var productsTotal=document.getElementById('productsTotal');
+      var promoSavings=document.getElementById('promoSavings');
       var shippingTotal=document.getElementById('shippingTotal');
       var orderTotal=document.getElementById('orderTotal');
       var quantity=1,unitPriceCents=4999,shippingCents=null,shippingLookupCep='',shippingLookupPending=false;
@@ -729,7 +741,7 @@
           'Link de avaliação (NFC e QR Code): '+(normalizedReviewLink()||'Não informado')+'\n\n'+
           '*PEDIDO*\n'+
           'Quantidade: '+quantity+' '+(quantity===1?'placa':'placas')+'\n'+
-          'Valor unitário: '+formatPrice(unitPriceCents)+'\n'+
+          'Valor unitário: '+formatPrice(unitPriceCents)+' (promoção de inauguração — de R$ 69,99)\n'+
           'Subtotal: '+formatPrice(productCents)+'\n\n'+
           '*ENTREGA*\n'+
           'CEP: '+postalCode.value.trim()+'\n'+
@@ -763,9 +775,9 @@
       }
       function updateOrderTotals(){
         var productCents=quantity*unitPriceCents,totalCents=productCents+(shippingCents||0),quantityName=quantity===1?'placa':'placas';
-        quantitySummary.textContent=quantity+' '+quantityName+' × '+formatPrice(unitPriceCents)+' cada';
+        quantitySummary.textContent=quantity+' '+quantityName+' × '+formatPrice(unitPriceCents)+' cada (de R$ 69,99)';
         productsLabel.textContent='Produtos ('+quantity+' '+quantityName+')';
-        productsTotal.textContent=formatPrice(productCents);
+        productsTotal.textContent=formatPrice(productCents);if(promoSavings)promoSavings.textContent='− '+formatPrice(quantity*2000);
         shippingTotal.textContent=shippingLabel();orderTotal.textContent=formatPrice(totalCents);renderOrderReview();
       }
       function updateWhatsAppLink(){
@@ -1366,9 +1378,27 @@
 <nav aria-label="Páginas do site"><b>Navegue</b><a href="#inicio">Início</a><a href="#fundos">Fundos temáticos</a><a href="#personalizar">Personalizar minha placa</a></nav>
 <div class="f-contact"><b>Atendimento</b><p><a href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Placa%20Nota%2010." target="_blank" rel="noopener">WhatsApp: (19) 97199-5144</a><br/>Piracicaba – SP<br/>Envio pra todo o Brasil</p></div>
 </div>
-<div class="f-bottom"><span>© 2026 Placa Nota 10. Todos os direitos reservados.</span><span>Placas NFC personalizadas · R$ 49,99</span></div>
+<div class="f-bottom"><span>© 2026 Placa Nota 10. Todos os direitos reservados.</span><span>Placas NFC personalizadas · de R$ 69,99 por R$ 49,99</span></div>
 </div>
 </footer>
 <a class="wa-float" href="https://wa.me/5519971995144?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Placa%20Nota%2010." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg width="31" height="31" viewBox="0 0 448 512" fill="#fff" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.5 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-36.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-24.5 4.6-11 4.6-20.4 3.2-22.4-1.3-2-5-3.9-10.5-6.6z"/></svg></a>
+
+<script>
+(function(){
+  var KEY='pn10_promo_fim', DUR=45*60*1000, fim=0;
+  try{ fim=parseInt(localStorage.getItem(KEY)||'0',10)||0; }catch(e){}
+  function ciclo(){ fim=Date.now()+DUR; try{ localStorage.setItem(KEY,String(fim)); }catch(e){} }
+  if(!fim || fim<=Date.now()) ciclo();
+  function pad(n){ return (n<10?'0':'')+n; }
+  function tick(){
+    var rest=fim-Date.now();
+    if(rest<=0){ ciclo(); rest=DUR; }
+    var s=Math.ceil(rest/1000), txt=pad(Math.floor(s/60))+':'+pad(s%60);
+    var els=document.querySelectorAll('.promo-timer');
+    for(var i=0;i<els.length;i++) els[i].textContent=txt;
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
 </body>
 </html>
