@@ -207,7 +207,7 @@
     .fit-toggle{display:flex;gap:8px;margin-top:8px}.fit-toggle[hidden]{display:none}.fit-toggle button{flex:1;padding:8px 6px;border-radius:8px;border:1px solid #2e423b;background:#16211d;color:#cfe3da;font:600 13px "DM Sans",Arial,sans-serif;cursor:pointer}.fit-toggle button[aria-pressed="true"]{background:#173f39;border-color:#2dd4bf;color:#a7f3ea}
     .plate{container-type:inline-size;position:absolute;z-index:3;left:49.1%;top:6.9%;transform:translateX(-50%);width:51.7%;height:77.9%;background-color:transparent;border:1px solid rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(35,29,23,.07);overflow:hidden;color:var(--plate-ink)}
     .plate:before{content:"";position:absolute;inset:0;background:none}
-    .plate:after{content:"";position:absolute;inset:0;background-image:linear-gradient(110deg,rgba(255,255,255,.15),transparent 22% 68%,rgba(255,255,255,.08)),var(--plate-bg,none);background-size:auto,var(--plate-fit,contain);background-position:center,center;background-repeat:no-repeat,no-repeat;pointer-events:none}
+    .plate:after{content:"";position:absolute;inset:0;filter:var(--plate-blur,none);background-image:linear-gradient(110deg,rgba(255,255,255,.15),transparent 22% 68%,rgba(255,255,255,.08)),linear-gradient(var(--plate-shade,rgba(6,6,10,0)),var(--plate-shade,rgba(6,6,10,0))),var(--plate-bg,none);background-size:auto,auto,var(--plate-fit,contain);background-position:center,center,center;background-repeat:no-repeat,no-repeat,no-repeat;pointer-events:none}
     .plate-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;padding:6.5cqw 7cqw 6cqw;color:#fff;text-shadow:0 .7cqw 2cqw rgba(0,0,0,.5)}
     .logo{position:relative;width:62cqw;height:27cqw;min-width:0;min-height:0;max-width:62cqw;max-height:27cqw;flex:0 0 27cqw;display:grid;place-items:center;color:#fff;font-weight:800;font-size:4.2cqw;line-height:1;border:0;border-radius:0;overflow:hidden;background:transparent;margin-bottom:7cqw;contain:layout paint}
     .logo img{position:absolute;inset:0;margin:auto;display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;object-position:center;border:0;background:transparent;filter:drop-shadow(0 .8cqw 1.8cqw rgba(0,0,0,.3))}
@@ -1136,7 +1136,7 @@
           logoStatus.textContent=file.name+' · bordas vazias recortadas';
         }else{
           if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);
-          backgroundUrl=url;plate.style.setProperty('--plate-bg','url("'+url+'")');backgroundStatus.textContent=file.name;bgFitToggle.hidden=false;setColor(currentColor);
+          backgroundUrl=url;plate.style.setProperty('--plate-bg','url("'+url+'")');plate.style.setProperty('--plate-shade','rgba(6,6,10,.58)');plate.style.setProperty('--plate-blur','blur(3px)');backgroundStatus.textContent=file.name;bgFitToggle.hidden=false;setColor(currentColor);
         }
       }
       logoInput.addEventListener('change',function(){setFile(logoInput,'logo')});
@@ -1182,7 +1182,7 @@
         shippingRequestId++;shippingCents=null;shippingLookupCep='';shippingLookupPending=false;shippingAutoUnavailable=false;clearTimeout(cepLookupTimer);calculateShippingButton.disabled=false;calculateShippingButton.textContent='Calcular frete';setShippingStatus('Digite o CEP para preencher o endereço e calcular o frete.','');
         updateQuantity(1);updateName();updateMessage();updateMessageColor();updateReviewLink();updateOrderTotals();
         if(logoUrl)URL.revokeObjectURL(logoUrl);if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);
-        logoUrl='';backgroundUrl='';logoInput.value='';backgroundInput.value='';bgFit='contain';plate.style.setProperty('--plate-fit','contain');bgFitToggle.hidden=true;bgFitToggle.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-fit')==='contain'?'true':'false')});
+        logoUrl='';backgroundUrl='';plate.style.setProperty('--plate-shade','rgba(6,6,10,0)');plate.style.setProperty('--plate-blur','none');logoInput.value='';backgroundInput.value='';bgFit='contain';plate.style.setProperty('--plate-fit','contain');bgFitToggle.hidden=true;bgFitToggle.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-fit')==='contain'?'true':'false')});
         logoPreview.innerHTML='<span>LOGO</span>';logoStatus.textContent='PNG, JPG ou WebP · bordas vazias recortadas automaticamente';backgroundStatus.textContent='Opcional';
         plate.style.removeProperty('--plate-bg');setColor('transparent');setShape('tradicional');
       });
@@ -1613,7 +1613,8 @@
         if(shaped){plateShapePath(context,currentShape,shape.w,shape.h);context.clip()}
         var transparent=currentColor==='transparent'&&!backgroundUrl;
         if(!transparent){context.fillStyle=currentColor==='transparent'?'#e9eff0':currentColor;context.fillRect(0,0,shape.w,shape.h)}
-        if(backgroundUrl){try{var bgImg=await loadImage(backgroundUrl);if(bgFit==='cover')drawCover(context,bgImg,0,0,shape.w,shape.h,.9);else drawContained(context,bgImg,shape.w,shape.h,.94)}catch(error){}}
+        if(backgroundUrl){try{var bgImg=await loadImage(backgroundUrl);context.save();try{context.filter='blur(4px)'}catch(e){}if(bgFit==='cover')drawCover(context,bgImg,0,0,shape.w,shape.h,.9);else drawContained(context,bgImg,shape.w,shape.h,.94);context.restore()}catch(error){}}
+        if(backgroundUrl){context.fillStyle='rgba(6,6,10,.58)';context.fillRect(0,0,shape.w,shape.h)}
         if(!transparent){var shade=context.createLinearGradient(0,0,0,shape.h);shade.addColorStop(0,'rgba(0,0,0,.02)');shade.addColorStop(1,'rgba(0,0,0,.38)');context.fillStyle=shade;context.fillRect(0,0,shape.w,shape.h)}
         var white='#ffffff',gold='#f2b632';
         context.textAlign='center';context.textBaseline='alphabetic';context.shadowColor='rgba(0,0,0,.48)';context.shadowBlur=14;context.shadowOffsetY=6;
@@ -1720,7 +1721,7 @@
           fetch(img.src).then(function(r){return r.blob()}).then(function(blob){
             if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);
             backgroundUrl=URL.createObjectURL(blob);
-            plate.style.setProperty('--plate-bg','url("'+backgroundUrl+'")');
+            plate.style.setProperty('--plate-bg','url("'+backgroundUrl+'")');plate.style.setProperty('--plate-shade','rgba(6,6,10,.58)');plate.style.setProperty('--plate-blur','blur(3px)');
             backgroundStatus.textContent='Fundo da galeria: '+nome;
             bgFitToggle.hidden=false;setColor(currentColor);
             bgFit='cover';plate.style.setProperty('--plate-fit','cover');bgFitToggle.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-fit')==='cover'?'true':'false')});
