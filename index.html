@@ -354,7 +354,6 @@
     .faq-item .faq-a{padding:0 18px 16px;color:var(--muted);line-height:1.55}
     .faq-item .faq-a strong{color:var(--ink)}
     .guarantee-seal{display:flex;gap:9px;align-items:flex-start;background:#fdf6e0;border:1px solid #e8cf7e;color:#5c4703;border-radius:12px;padding:11px 13px;margin:12px 0 0;font-size:.92rem;line-height:1.45}.guarantee-seal strong{color:#3d2f02}
-    .plate{transition:transform .35s ease}.plate[data-base="inclinada"]{transform:perspective(850px) rotateX(17deg);transform-origin:50% 100%}
     .wa-float{bottom:88px}
       body{padding-bottom:72px}
     }
@@ -554,7 +553,7 @@
 <input class="color-input" id="customColor" type="color" value="#151515" aria-label="Escolher outra cor" />
 </div>
 </div>
-<div class="field"> <span class="field-title">Formato da placa</span> <div class="shapes" id="shapeOptions"> <button class="shape-btn" type="button" data-shape="tradicional" aria-pressed="true">Tradicional</button> <button class="shape-btn" type="button" data-shape="redonda" aria-pressed="false">Redonda</button> <button class="shape-btn" type="button" data-shape="quadrada" aria-pressed="false">Quadrada</button> <button class="shape-btn" type="button" data-shape="oval" aria-pressed="false">Oval</button>  </div> <p class="hint">O formato vale pra prévia, pra arte do pedido (PNG) e vai avisado na mensagem do WhatsApp.</p> </div> <div class="field" id="baseField"> <span class="field-title">Base da placa</span> <div class="shapes" id="baseOptions"> <button class="shape-btn" type="button" data-base="reta" aria-pressed="true">Reta</button> <button class="shape-btn" type="button" data-base="inclinada" aria-pressed="false">Inclinada (display)</button> </div> <p class="hint">A inclinada fica virada pra cima: o cliente escaneia em pé, sem se abaixar.</p> </div> <div class="actions">
+<div class="field"> <span class="field-title">Formato da placa</span> <div class="shapes" id="shapeOptions"> <button class="shape-btn" type="button" data-shape="tradicional" aria-pressed="true">Tradicional</button> <button class="shape-btn" type="button" data-shape="redonda" aria-pressed="false">Redonda</button> <button class="shape-btn" type="button" data-shape="quadrada" aria-pressed="false">Quadrada</button> <button class="shape-btn" type="button" data-shape="oval" aria-pressed="false">Oval</button>  </div> <p class="hint">O formato vale pra prévia, pra arte do pedido (PNG) e vai avisado na mensagem do WhatsApp.</p> </div> <div class="actions">
 <button class="button primary" id="downloadButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 20h14"/></svg>Baixar arte em PNG</button>
 <div class="quantity-selector" aria-label="Quantidade de placas">
 <div class="quantity-copy">
@@ -815,8 +814,6 @@
       var orderTotal=document.getElementById('orderTotal');
       var quantity=1,unitPriceCents=4999,shippingCents=null,shippingLookupCep='',shippingLookupPending=false;
       var logoUrl='',backgroundUrl='',referenceModel='',currentColor='transparent',bgFit='contain',bgBlur=4,currentShape='tradicional';
-      var currentBase='reta';
-      var BASE_LABELS={reta:'Reta',inclinada:'Inclinada (display)'};
       var PLATE_SHAPES={
         tradicional:{label:'Tradicional',w:1000,h:1800,x0:0,x1:1000,y0:0,y1:1800},
         redonda:{label:'Redonda',w:1200,h:1200,x0:70,x1:1130,y0:60,y1:1140},
@@ -853,7 +850,6 @@
           'Empresa: '+safeName()+'\n'+
           'Letra do nome: '+(COMPANY_FONTS[companyFontKey]?COMPANY_FONTS[companyFontKey].label:'Forte')+' ('+Math.round(companyScale*100)+'%)\n'+
           'Formato: '+(PLATE_SHAPES[currentShape]?PLATE_SHAPES[currentShape].label:'Tradicional')+'\n'+
-          'Base: '+(BASE_LABELS[currentBase]||'Reta')+'\n'+
           (referenceModel?('Modelo de referência: '+referenceModel+'\n'):'')+
           'Mensagem: '+(safeMessage()||'Sem mensagem')+'\n'+
           'Cor da mensagem: '+messageColor.value.toUpperCase()+'\n'+
@@ -880,7 +876,6 @@
           ['Empresa',safeName()],
           ['Letra do nome',(COMPANY_FONTS[companyFontKey]?COMPANY_FONTS[companyFontKey].label:'Forte')+' · '+Math.round(companyScale*100)+'%'],
           ['Formato',(PLATE_SHAPES[currentShape]?PLATE_SHAPES[currentShape].label:'Tradicional')+(referenceModel?' · ref.: '+referenceModel:'')],
-          ['Base',BASE_LABELS[currentBase]||'Reta'],
           ['Mensagem',safeMessage()||'Sem mensagem'],
           ['Link de avaliação',normalizedReviewLink()||'Não informado'],
           ['Quantidade',quantity+' '+(quantity===1?'placa':'placas')+' × '+formatPrice(unitPriceCents)],
@@ -1251,30 +1246,16 @@
       customColor.addEventListener('input',function(){setColor(customColor.value)});
       function setShape(shape){
         currentShape=PLATE_SHAPES[shape]?shape:'tradicional';
-        var bf=document.getElementById('baseField');
-        if(bf)bf.style.display=currentShape==='tradicional'?'':'none';
-        if(currentShape!=='tradicional'&&currentBase!=='reta')setBase('reta');
         plate.dataset.shape=currentShape;
         plate.classList.toggle('shaped',currentShape!=='tradicional');
         document.querySelector('.stage').dataset.shape=currentShape;
-        document.querySelectorAll('#shapeOptions .shape-btn').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.shape===currentShape))});
+        document.querySelectorAll('.shape-btn').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.shape===currentShape))});
         plate.style.backgroundColor=colorWithAcrylic(currentColor)
         preparedOrderBlob=null;preparedOrderPdfBlob=null;
       }
       document.getElementById('shapeOptions').addEventListener('click',function(event){
         var button=event.target.closest('.shape-btn');
         if(button)setShape(button.dataset.shape);
-      });
-      function setBase(base){
-        currentBase=BASE_LABELS[base]?base:'reta';
-        plate.dataset.base=currentBase;
-        document.querySelectorAll('#baseOptions .shape-btn').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.base===currentBase))});
-        preparedOrderBlob=null;preparedOrderPdfBlob=null;
-        renderOrderReview();
-      }
-      document.getElementById('baseOptions').addEventListener('click',function(event){
-        var button=event.target.closest('.shape-btn');
-        if(button)setBase(button.dataset.base);
       });
       document.getElementById('resetButton').addEventListener('click',function(){referenceModel='';
         companyInput.value='SUA EMPRESA';messageInput.value='Sua avaliação é muito importante para nós ❤️';messageColor.value='#ffffff';reviewLink.value='';
@@ -1284,7 +1265,7 @@
         if(logoUrl)URL.revokeObjectURL(logoUrl);if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);
         logoUrl='';backgroundUrl='';plate.style.setProperty('--plate-shade','rgba(6,6,10,0)');plate.style.setProperty('--plate-blur','none');companyFontKey='forte';companyScale=1;applyCompanyStyle();logoInput.value='';backgroundInput.value='';bgFit='contain';plate.style.setProperty('--plate-fit','contain');bgFitToggle.hidden=true;bgBlurControl.hidden=true;bgBlur=4;bgBlurRange.value='4';bgBlurValue.textContent='4';bgFitToggle.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-fit')==='contain'?'true':'false')});
         logoPreview.innerHTML='<span>LOGO</span>';logoStatus.textContent='PNG, JPG ou WebP · bordas vazias recortadas automaticamente';backgroundStatus.textContent='Opcional';
-        plate.style.removeProperty('--plate-bg');setColor('transparent');setShape('tradicional');setBase('reta');
+        plate.style.removeProperty('--plate-bg');setColor('transparent');setShape('tradicional');
       });
       function safeDownloadName(value){
         return value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'logo';
