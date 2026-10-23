@@ -354,6 +354,7 @@
     .faq-item .faq-a{padding:0 18px 16px;color:var(--muted);line-height:1.55}
     .faq-item .faq-a strong{color:var(--ink)}
     .guarantee-seal{display:flex;gap:9px;align-items:flex-start;background:#fdf6e0;border:1px solid #e8cf7e;color:#5c4703;border-radius:12px;padding:11px 13px;margin:12px 0 0;font-size:.92rem;line-height:1.45}.guarantee-seal strong{color:#3d2f02}
+    .plate{transition:transform .35s ease}.plate[data-base="inclinada"]{transform:perspective(850px) rotateX(17deg);transform-origin:50% 100%}
     .wa-float{bottom:88px}
       body{padding-bottom:72px}
     }
@@ -553,7 +554,7 @@
 <input class="color-input" id="customColor" type="color" value="#151515" aria-label="Escolher outra cor" />
 </div>
 </div>
-<div class="field"> <span class="field-title">Formato da placa</span> <div class="shapes" id="shapeOptions"> <button class="shape-btn" type="button" data-shape="tradicional" aria-pressed="true">Tradicional</button> <button class="shape-btn" type="button" data-shape="redonda" aria-pressed="false">Redonda</button> <button class="shape-btn" type="button" data-shape="quadrada" aria-pressed="false">Quadrada</button> <button class="shape-btn" type="button" data-shape="oval" aria-pressed="false">Oval</button>  </div> <p class="hint">O formato vale pra prévia, pra arte do pedido (PNG) e vai avisado na mensagem do WhatsApp.</p> </div> <div class="field"> <span class="field-title">Base da placa</span> <div class="shapes" id="baseOptions"> <button class="shape-btn" type="button" data-base="reta" aria-pressed="true">Reta</button> <button class="shape-btn" type="button" data-base="inclinada" aria-pressed="false">Inclinada (display)</button> </div> <p class="hint">A inclinada fica virada pra cima: o cliente escaneia em pé, sem se abaixar.</p> </div> <div class="actions">
+<div class="field"> <span class="field-title">Formato da placa</span> <div class="shapes" id="shapeOptions"> <button class="shape-btn" type="button" data-shape="tradicional" aria-pressed="true">Tradicional</button> <button class="shape-btn" type="button" data-shape="redonda" aria-pressed="false">Redonda</button> <button class="shape-btn" type="button" data-shape="quadrada" aria-pressed="false">Quadrada</button> <button class="shape-btn" type="button" data-shape="oval" aria-pressed="false">Oval</button>  </div> <p class="hint">O formato vale pra prévia, pra arte do pedido (PNG) e vai avisado na mensagem do WhatsApp.</p> </div> <div class="field" id="baseField"> <span class="field-title">Base da placa</span> <div class="shapes" id="baseOptions"> <button class="shape-btn" type="button" data-base="reta" aria-pressed="true">Reta</button> <button class="shape-btn" type="button" data-base="inclinada" aria-pressed="false">Inclinada (display)</button> </div> <p class="hint">A inclinada fica virada pra cima: o cliente escaneia em pé, sem se abaixar.</p> </div> <div class="actions">
 <button class="button primary" id="downloadButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 20h14"/></svg>Baixar arte em PNG</button>
 <div class="quantity-selector" aria-label="Quantidade de placas">
 <div class="quantity-copy">
@@ -1250,6 +1251,9 @@
       customColor.addEventListener('input',function(){setColor(customColor.value)});
       function setShape(shape){
         currentShape=PLATE_SHAPES[shape]?shape:'tradicional';
+        var bf=document.getElementById('baseField');
+        if(bf)bf.style.display=currentShape==='tradicional'?'':'none';
+        if(currentShape!=='tradicional'&&currentBase!=='reta')setBase('reta');
         plate.dataset.shape=currentShape;
         plate.classList.toggle('shaped',currentShape!=='tradicional');
         document.querySelector('.stage').dataset.shape=currentShape;
